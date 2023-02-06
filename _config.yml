@@ -1,8 +1,8 @@
 title: Anti's Site
 author:
-  name: Antimatter/Antiraedus
+  name: Anti's Site of Wonderous...ness?
   # email: your-email@domain.com
-permalink: /:title/
+permalink: :year/:month/:day/:title #/:title/
 description:  Anti's website. I'm not sure what else to put here.
 show_excerpts: true
 comments: # comments on by default
@@ -23,7 +23,6 @@ minima:
   # skin: wh
   # Minima date format.
   # Refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this.
-  # #
   # date_format: "%b %-d, %Y"
 
   # Generate social links in footer.
