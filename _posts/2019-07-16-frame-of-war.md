@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Frame of War"
-reviewed: 2021-05-12
+modified_date: 2021-05-12
 tags: professional
 publish: true
 excerpt: "First game I've made, using gamemaker (lol). It's pretty hard. You should try it ;) "

@@ -2,7 +2,7 @@
 layout: post
 title: Exploration of Multidimensional Pyramids and Cuboids (Hyperpyramids and Hypercubes) 
 date: 2021-06-06
-reviewed: 2021-06-10
+modified_date: 2021-06-10
 publish: false
 tags: non-professional 
 excerpt: Playing around with the proportion of volume for an N-dimensional pyramid within an N dimensional cuboid. Tried to figure ouut the proportion using only my background knowledge and no researching. 
