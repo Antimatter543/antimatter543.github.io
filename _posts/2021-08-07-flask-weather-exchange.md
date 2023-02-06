@@ -21,7 +21,7 @@ Github repo: <https://github.com/Antimatter543/flask-weather-exchange>
 
 Here's a 1-2 minute video that definitely wasn't on 1.15x speed to make it fit the criteria requirements.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/BFlL4tBam1w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{% include embed.html url="https://www.youtube.com/embed/BFlL4tBam1w" %}
 
 All the code had to be self-taught, as previously done. Anyways, now I only have tests left. Woo!
 

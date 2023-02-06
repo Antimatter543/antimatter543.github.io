@@ -10,6 +10,6 @@ title: Home
 ---
 ## Hey! 👋
 
-I'm in the process of changing my website, after not liking my original one, changing, realising it wasn't this bad, and then just deciding to go with this template (albeit editting to my liking). Should be done by the 20th February.
+Welcome to my new website! Should be finalising some minor changes for now: should be done by the 20th February.
 
 No Disqus!

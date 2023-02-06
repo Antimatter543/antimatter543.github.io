@@ -15,6 +15,7 @@ I made a simple flask website for a school assignment in Year 12 that lets you r
 
 I had to make a video for this, so I'm blaming the teacher's lack of teaching for my complete lack of enthusiasm in it. I suggest at least putting it on 1.25x speed.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/n67xx0gMZWQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{% include embed.html url="https://www.youtube.com/embed/n67xx0gMZWQ" %}
+
 
 Flask is pretty nifty!
