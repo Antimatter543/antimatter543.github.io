@@ -1,0 +1,285 @@
+// Placeholder to allow defining custom styles that override everything else.
+// (Use `_sass/minima/custom-variables.scss` to override variable defaults)
+
+/**
+ * General and home
+ */
+.post-link {
+	line-height: 1; // Less distance between dates and titles for posts
+}
+
+.page-heading {
+	text-align: center;
+}
+
+.archive li {
+	margin-bottom: 10px;
+}
+
+.site-footer {
+	box-shadow: 0 0 0.6em rgb(33 34 40 / 4%) inset;
+}
+/* Some dividers */
+.page-divider {
+	display: block;
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	border-top: 1px solid #ddd;
+	height: 10px;
+	}
+	.one {
+		position: relative;
+		top: -9px;
+		display: block;
+		background: #ddd;
+		width: 18px;
+		height: 18px;
+		margin-left: auto;
+		margin-right: auto;
+		border-radius: 50%;
+	}
+	.two {
+		position: relative;
+		top: -26px;
+		display: block;
+		background: #fff;
+		width: 16px;
+		height: 16px;
+		margin-left: auto;
+		margin-right: auto;
+		border-radius: 50%;
+	}
+
+
+
+/**
+ * Navbar stuff
+ */
+	// Because I'm going my own way with padding. Takes out weird margins.
+.site-nav {
+	.page-link:not(:last-child) {
+		margin-right: 0;
+	}
+
+	.page-link {
+		color: $nav-color;
+		padding: 0px 15px 0px 15px;
+		font-weight: 450;
+	}
+}
+
+.site-header {
+	background-color: $nav-bg-colour;
+	color: $nav-color;
+	border-top: 0px;
+	border-bottom: 0px;
+	// font-size: 30px;
+	padding-left: $nav-padding;
+	padding-right: $nav-padding;
+	
+	img { 
+		padding-right: $nav-padding;
+	}
+	
+}
+
+.site-title, .site-title:visited {
+	color: $nav-color;
+	font-size: 30px;
+	font-weight: normal;
+
+}
+
+/* Posts
+*/
+// Code
+.reversefootnote {
+	font-family:  sans-serif;
+}
+
+#markdown-toc{
+    border: 1px solid #000;
+    padding: 1.5em;
+    list-style: decimal;
+    display: inline-block;
+    // /* background: #f9f9f9 none repeat scroll 0 0
+    // border: 1px solid #aaa;
+    // display: table;
+    // font-size: 95%;
+    // margin-bottom: 1em;
+    // padding: 20px;
+    // width: auto; **/
+}
+
+
+// gotta fix the white etext in the codeblock somehow
+// .pre .code {
+// 	background-color: none;
+// }
+
+// this bit from the contrast template
+pre {
+	background: reduce(12);
+	border-radius: 2px;
+	font-size: .8em;
+	margin: 1.5em 0;
+	padding: .8em 1.2em;
+	overflow-x: auto;
+  }
+:not(pre) > code {
+	font-size: .9em;
+	background: reduce(15);
+	opacity: .7;
+	border-radius: 2px;
+	margin: 0 .1em;
+	padding: .2em .4em;
+	background: rgba(144, 145, 148, 0.15);
+  }
+
+.highlight {
+	pre {
+	  background: rgba(lighten($dark, 6%), 0.9);
+	  color: white;
+	}
+	.c {
+	  color: #a29f90;
+	}
+	.err {
+	  color: #960050;
+	  background-color: #1e0010;
+	}
+	.k {
+	  color: #66d9ef;
+	}
+	.l {
+	  color: #ae81ff;
+	}
+	.n {
+	  color: #f8f8f2;
+	}
+	.o {
+	  color: #f92672;
+	}
+	.p {
+	  color: #f8f8f2;
+	}
+	.cm,
+	.cp,
+	.c1,
+	.cs {
+	  color: #75715e;
+	}
+	.ge {
+	  font-style: italic;
+	}
+	.gs {
+	  font-weight: bold;
+	}
+	.kc,
+	.kd {
+	  color: #66d9ef;
+	}
+	.kn {
+	  color: #f92672;
+	}
+	.kp,
+	.kr,
+	.kt {
+	  color: #66d9ef;
+	}
+	.ld {
+	  color: #e6db74;
+	}
+	.m {
+	  color: #ae81ff;
+	}
+	.s {
+	  color: #e6db74;
+	}
+	.na {
+	  color: #a6e22e;
+	}
+	.nb {
+	  color: #f8f8f2;
+	}
+	.nc {
+	  color: #a6e22e;
+	}
+	.no {
+	  color: #66d9ef;
+	}
+	.nd {
+	  color: #a6e22e;
+	}
+	.ni {
+	  color: #f8f8f2;
+	}
+	.ne,
+	.nf {
+	  color: #a6e22e;
+	}
+	.nl,
+	.nn {
+	  color: #f8f8f2;
+	}
+	.nx {
+	  color: #a6e22e;
+	}
+	.py {
+	  color: #f8f8f2;
+	}
+	.nt {
+	  color: #f92672;
+	}
+	.nv {
+	  color: #f8f8f2;
+	}
+	.ow {
+	  color: #f92672;
+	}
+	.w {
+	  color: #f8f8f2;
+	}
+	.mf,
+	.mh,
+	.mi,
+	.mo {
+	  color: #ae81ff;
+	}
+	.sb,
+	.sc,
+	.sd,
+	.s2 {
+	  color: #e6db74;
+	}
+	.se {
+	  color: #ae81ff;
+	}
+	.sh,
+	.si,
+	.sx,
+	.sr,
+	.s1,
+	.ss {
+	  color: #e6db74;
+	}
+	.bp,
+	.vc,
+	.vg,
+	.vi {
+	  color: #f8f8f2;
+	}
+	.il {
+	  color: #ae81ff;
+	}
+	.gu {
+	  color: #75715e;
+	}
+	.gd {
+	  color: #f92672;
+	}
+	.gi {
+	  color: #a6e22e;
+	}
+  }

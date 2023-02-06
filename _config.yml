@@ -1,0 +1,45 @@
+title: Anti's Site
+author:
+  name: Antimatter/Antiraedus
+  # email: your-email@domain.com
+permalink: /:title/
+description:  Anti's website. I'm not sure what else to put here.
+show_excerpts: true
+comments: # comments on by default
+  utterances: true
+
+# Build settings
+
+theme: minima
+
+# no idea what this does
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Theme-specific settings
+
+minima:
+  # skin: wh
+  # Minima date format.
+  # Refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this.
+  # #
+  # date_format: "%b %-d, %Y"
+
+  # Generate social links in footer.
+  #
+  social_links:
+    - { platform: github,         user_url: "https://github.com/Antimatter543" }
+  #   - { platform: linkedin,       user_url: "https://www.linkedin.com/in/jekyll" }
+  #   - { platform: twitter,        user_url: "https://twitter.com/jekyllrb" }
+    - { platform: youtube,        user_url: "https://www.youtube.com/channel/UChio3fRGy3J8pOCOsc-kxow" }
+
+google_analytics: G-YSP8DJ67RB
+# If you want to link only specific pages in your header, uncomment this and add the path to the pages in
+# order as they should show up.
+#
+header_pages:
+  - about.md
+  - archive.html
+  - 404.html
+  - test.md
