@@ -6,9 +6,8 @@ modified_date: 2021-06-10
 publish: false
 tags: non-professional 
 excerpt: Playing around with the proportion of volume for an N-dimensional pyramid within an N dimensional cuboid. Tried to figure ouut the proportion using only my background knowledge and no researching. 
-comments: false
 ---
-NOT  COMPLETE
+NOT  COMPLETE -- YOU KNOW WHAT, ABANDONED TBD. Why are you here!?!? Stop looking! Just read A Mathematician's Lament and begone! AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH
 
 After reading an excerpt of [A Mathematician's Lament](https://www.maa.org/external_archive/devlin/LockhartsLament.pdf) (a good short read, by the way), I became intrigued by an extension of a problem they solved which involved splitting a triangle stored within a rectangle by 2, and coming to the natural conclusion (via logic) that the triangle was half the area of the rectangle. Obviously, there's the hidden assumption that the base of the triangle is also covering the base of the rectangle, and that the triangle's top must be touching the top of the rectangle, but that's it. Insane!
 
