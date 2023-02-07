@@ -96,32 +96,82 @@
 
 /* Posts
 */
-// Code
+
+/* Table of Contents */
+#markdown-toc::before {
+	content: "Contents";
+    font-weight: bold;
+    text-align: center;
+}
+
+#markdown-toc{
+	border: 1px solid #000;
+    padding: 1.5em;
+    list-style: decimal;
+    display: inline-block;
+}
+
+
 .reversefootnote {
 	font-family:  sans-serif;
 }
 
-#markdown-toc{
-    border: 1px solid #000;
-    padding: 1.5em;
-    list-style: decimal;
-    display: inline-block;
-    // /* background: #f9f9f9 none repeat scroll 0 0
-    // border: 1px solid #aaa;
-    // display: table;
-    // font-size: 95%;
-    // margin-bottom: 1em;
-    // padding: 20px;
-    // width: auto; **/
+.post img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
 }
-
+/* Tooltips, 2nd answer from https://stackoverflow.com/questions/19129519/how-to-create-tooltip-without-javascript-using-only-inline-css/19129758 */
+a.tooltip {
+	outline: none;
+}
+a.tooltip strong {
+	line-height:30px;
+}
+a.tooltip:hover {
+	text-decoration: none;
+}
+a.tooltip span {
+	z-index:10;
+	display:none;
+	padding:14px 20px;
+	margin-top:-30px;
+	margin-left:28px;
+	width: 500px;
+	line-height:25px;
+}
+a.tooltip:hover span {
+	display:inline;
+	position:absolute;
+	color:#fff;
+	border:1px solid #DCA;
+	background:#555;
+}
+.callout {
+	z-index:20;
+	position:absolute;
+	top:30px;
+	border:0;
+	left:-12px;
+}
+/*CSS3 extras*/
+a.tooltip span {
+	border-radius:4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-box-shadow: 5px 5px 8px #CCC;
+	-webkit-box-shadow: 5px 5px 8px #CCC;
+	box-shadow: 5px 5px 8px #CCC;
+}
 
 // gotta fix the white etext in the codeblock somehow
 // .pre .code {
 // 	background-color: none;
 // }
 
-// this bit from the contrast template
+
+// This is the way codeblocks look from contrast template
 pre {
 	background: reduce(12);
 	border-radius: 2px;
