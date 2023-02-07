@@ -32,7 +32,8 @@ layout: default
 		<li>
 			<span class="post-meta">{{ post.date | date: date_format }}</span>
 			<h3>
-			<a class="post-link" href="{{ post.url | relative_url }}">
+			<a class="post-link" href="{{ post.url | relative_url }}" 
+				{% if post.tags[1] == 'gold'%} style="color: rgb(184, 175, 48); font-weight: 450;" {%endif%}>
 				{{ post.title | escape }}
 			</a>
 			</h3>
