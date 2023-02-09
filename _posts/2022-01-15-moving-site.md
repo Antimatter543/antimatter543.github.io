@@ -1,8 +1,7 @@
 ---
 title:  "Moving to a new site (WIP)!"
 layout: post
-categories: media
-publish: true
+publish: false
 draft: true
 comments: true
 ---
