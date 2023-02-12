@@ -34,9 +34,7 @@ minima:
     - { platform: youtube,        user_url: "https://www.youtube.com/channel/UChio3fRGy3J8pOCOsc-kxow" }
 
 google_analytics: G-YSP8DJ67RB
-# If you want to link only specific pages in your header, uncomment this and add the path to the pages in
-# order as they should show up.
-#
+# If you want to link only specific pages in your header, uncomment this and add the path to the pages in order as they should show up.
 header_pages:
   - about.md
   - archive.html

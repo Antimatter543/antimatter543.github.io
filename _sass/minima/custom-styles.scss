@@ -16,6 +16,9 @@
 	margin-bottom: 10px;
 }
 
+.post-content {
+	h1, h2, h3, h4, h5, h6 { letter-spacing: -1px;}
+}
 
 // This causes a build error for gh pages but works fine locally, no idea why.
 // .site-footer {
@@ -122,6 +125,35 @@
     margin-right: auto;
     width: 80%;
 }
+
+// tangent test. omg you know chatgpt made this? That's fucking insane LOL.
+// Actually, it doesn't do the wrapping of text well. Idk how to fix :flushed:
+// tangent {
+// 	position: relative;
+// 	display: inline-block;
+// 	cursor: help;
+// 	color: $link-base-color;
+//   }
+  
+//   tangent::before {
+// 	content: attr(content);
+// 	position: absolute;
+// 	left: 100%;
+// 	top: -0.75em;
+// 	background: $code-background-color;
+// 	color: #fff;
+// 	padding: 0.25em 0.5em;
+// 	border-radius: 0.25em;
+// 	white-space: nowrap;
+// 	z-index: 1;
+// 	opacity: 0;
+// 	transition: opacity 0.25s ease-in-out;
+//   }
+  
+//   tangent:hover::before {
+// 	opacity: 1;
+//   }
+  
 /* Tooltips, 2nd answer from https://stackoverflow.com/questions/19129519/how-to-create-tooltip-without-javascript-using-only-inline-css/19129758 */
 a.tooltip {
 	outline: none;

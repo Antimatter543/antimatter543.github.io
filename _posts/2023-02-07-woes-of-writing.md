@@ -26,3 +26,6 @@ Like, people can have so many good ideas, and write down dot points, or raw form
 Cheers to ideas, reader!
 
 I wrote all that in one go (with some minor tweaks). I'm going to publish it anyways. I'm feeling spicy, and for what it's worth this was directly copied from my Obsidian vault. I'm not really that sure how I'm going to write blog posts/change them if they are both going to be on here and on Obsidian... Aaaaaah.
+
+Extras: 
+I have a habit of always jumping around from idea to idea, i.e following the trail. Unfortunately, a lot of the times I don't really keep a pointer as to where I leap from and wholeheartedly put all my energy into figuring out/exploring the idea. This means, once I'm finished with a trail, I'm kinda like "wait, where did I come from again? What was I doing?".
