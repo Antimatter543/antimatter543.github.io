@@ -5,10 +5,14 @@
 // General
 $spacing-unit: 20px;
 $content-width: 850px; // default 800px
-$base-font-size: 17px;
 $code-background-color: rgba(47, 48, 57, 0.9);
 $link-base-color: #68f;
 $link-visited-color: #68f;
+
+
+$base-font-size: 17px;
+$text-color: #212228; //#313131; // general text
+// $base-font-family: Helvetica, Arial, sans-serif;
 
 // Nav
 $nav-color: #8ed4a6; // usual is #999999 or just white.
@@ -16,4 +20,5 @@ $nav-padding: 15px; // for navbar. If you want the original minima navbar size b
 $nav-bg-colour: #212228; // #333;
 $dark: #212228 !default;
 
-$text-color: #212228; //#313131; // general text
+// Post
+$post-spacing: 15px;

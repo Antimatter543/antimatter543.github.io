@@ -19,7 +19,6 @@ Edit from the future 7/02/23 me here speaking: I was considering not uploading t
 </ol>
 * Table of Contents (this text is replaced with the table of contents)
 {:toc}
-
 ## Introduction 
 
 I implore you to look around.

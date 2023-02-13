@@ -125,7 +125,14 @@
     margin-right: auto;
     width: 80%;
 }
-
+.post-content {
+	h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+ul, ol, dl, figure,
+	%vertical-rhythm {
+	margin-bottom: $post-spacing;
+	}
+}
 // tangent test. omg you know chatgpt made this? That's fucking insane LOL.
 // Actually, it doesn't do the wrapping of text well. Idk how to fix :flushed:
 // tangent {
