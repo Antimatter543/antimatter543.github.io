@@ -2,7 +2,7 @@
 title:  "The Woes of Writing Posts"
 layout: post
 publish: true
-excerpt: Posts take time to write :(. But rarely, they don't!
+excerpt: Posts take time to write :(. However, sometimes they don't!
 ---
 
 - meant to be a funny blog kinda in general, self reflective
