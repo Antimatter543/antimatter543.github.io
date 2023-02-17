@@ -6,9 +6,17 @@ layout: default
   <header class="post-header">
     <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
     <p class="post-meta">
+		<!-- Dates and Modification-->
 		{% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
 		{{ page.date | date: date_format }}{% if page.author %} asdasd• {{ page.author }}{% endif %}{% if page.modified_date %} • Modified {{ page.modified_date | date: date_format }}{% endif %}
-		
+		<!-- Word count + read times -->
+		{% capture words %}
+		{{ content | number_of_words | minus: 250 }}
+		{% endcapture %}
+		{% unless words contains '-' %}
+		— {{ words | plus: 250 | divided_by: 180 | append: ' minute read' }}
+		{% endunless %}
+
       <!-- {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
       <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
         {{ page.date | date: date_format }}
@@ -28,7 +36,7 @@ layout: default
             {%- if forloop.last == false %}, {% endif -%}
         {% endfor %}
       {%- endif -%} -->
-    </p>
+	</p>
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
