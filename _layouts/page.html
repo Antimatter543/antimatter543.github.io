@@ -4,9 +4,17 @@ layout: default
 <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">{{ page.title | escape }}</h1>
+	  <!-- Title yay! -->
+		  {%- if page.title -%}
+		  <h1 class="page-heading">{{ page.title }}</h1>
+		  <span class='page-divider'> 
+			  <span class='one'></span>
+			  <span class='two'></span>
+		  </span>
+		  {%- endif -%}
   </header>
 
+		
   <div class="post-content">
     {{ content }}
   </div>
