@@ -9,7 +9,6 @@ comments: # comments on by default
   utterances: true
 
 # Build settings
-
 theme: minima
 
 # no idea what this does
@@ -24,7 +23,6 @@ minima:
   # Minima date format.
   # Refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this.
   # date_format: "%b %-d, %Y"
-
   # Generate social links in footer.
   #
   social_links:
@@ -36,6 +34,10 @@ minima:
 google_analytics: G-YSP8DJ67RB
 # If you want to link only specific pages in your header, uncomment this and add the path to the pages in order as they should show up.
 header_pages:
-  - archive.html
+  - projects.md
+  - archive.md
   - about.md
   - 404.html
+
+collections:
+  - projects

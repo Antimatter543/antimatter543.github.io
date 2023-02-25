@@ -57,7 +57,36 @@
 		border-radius: 50%;
 	}
 
+// Projects // 
+ul.horizontal-list {
+    display: flex;
+    margin-top: 0em;
+    // margin-left: -40px;
+	margin: auto;
+    flex-wrap: wrap;
+	li { 
+		display: inline;
+		margin-right: 1em;
+		color: $text-color;
+	}
+	p, hr {
+		color: $text-color;
+	}
 
+
+}
+.card {
+    padding: 1em;
+    border: 1px $text-color solid;
+    width: 11em;
+    height: auto;
+    text-align: center;
+    font-size: 1em;
+    align-items: center;
+    background-color: #f3f4f6;
+    margin-bottom: 0.8em;
+    border-radius: 0.5em;
+}
 
 /**
  * Navbar stuff

@@ -1,0 +1,18 @@
+
+project_entries:
+  - title: Karpathy's NN Lectures
+    url: https://github.com/Antimatter543/karpathy-NN-lectures
+    desc: This is an example project, configured in _data/home.yml
+
+  - title: Project 2
+    url: /
+    desc: Projects are shown in card layout
+
+  # - title: Project 3
+  #   url: overview-post
+  #   desc: You can control visibility from _config.yml file
+
+  # - title: Project 4
+  #   url: overview-post
+  #   desc: This project uses highlight markup, configured in _data/home.yml
+  #   highlight: WIP

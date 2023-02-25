@@ -25,7 +25,7 @@
 
 	{% endunless %}
 	{% if post.publish %}
-		<a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a><br>
+		<a href="{{ post.url | prepend: site.baseurl }}">» {{ post.title }}</a><br>
 	<!-- <p>{% assign wordCount = post.content | number_of_words %}
 		{{ wordCount}}
 	</p> -->
@@ -33,3 +33,5 @@
 	{%endif%}
   {% endfor %}
 </article>
+
+<!--  https://www.abhinavsaxena.com/moonwalk/blog Should we go moonwalk version like this?? I do kinda like it... -->
