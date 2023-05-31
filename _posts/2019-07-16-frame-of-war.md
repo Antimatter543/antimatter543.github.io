@@ -13,7 +13,7 @@ excerpt: "First game I've made, using gamemaker (lol). It's pretty hard. You sho
 | ---- | ---- | ---------- |
 | -Boss is extremely fun <br> -Cheat command to skip initial stages <br> - Difficult game, challenging for even those who consider themselves good.   | - First level (maybe next two as well) are slightly boring. Intended to be this way, but not to *that* degree. <br>- Not designed at all for casual players.    | - Make initial stages more fun/interactive. <br> - Add difficulty levels to game so the player can decide on what to do      |
 
-The first game I made (used Gamemaker, not a programming language), from 2019. <a href="/assets/frameofwar/Frame of War Mouse Move - Yuvraj Fowdar.exe"> Click here for the mouse control version </a> <a href="/assets/frameofwar/Frame Of War.exe"> Click here for the arrow key version. </a> If you get a thing telling you to install something or skip the installation, just skip it. To my knowledge, it doesn't actually do anything (you don't need it to play the game).
+The first game I made (used Gamemaker, not a programming language), from 2019. <a href="https://github.com/Antimatter543/old-site/releases/download/1.0/Frame.Of.War.exe"> Click here for arrow key version. </a> <a href="https://github.com/Antimatter543/old-site/releases/download/1.0/Frame.of.War.Mouse.Move.exe"> Click here for the mouse move (my preferred) version. </a> If you get a thing telling you to install something or skip the installation, just skip it. To my knowledge, it doesn't actually do anything (you don't need it to play the game).
 
 
 <h3> Post </h3>
