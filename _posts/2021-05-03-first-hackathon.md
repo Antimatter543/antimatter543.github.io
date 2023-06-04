@@ -10,6 +10,11 @@ excerpt: 'A little analysis on my first ever hackathon. Hosted by Coder One as t
 # comments: false
 ---
 
+<style>
+	.post img {
+		width: 50%;
+	}
+</style>
 
 
 ### Abstract (Spoilers) 

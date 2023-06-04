@@ -4,15 +4,16 @@
 
 // General
 $spacing-unit: 20px;
-$content-width: 850px; // default 800px
+$content-width: 800px; // default 800px
 $code-background-color: rgba(47, 48, 57, 0.9);
 $link-base-color: #68f;
 $link-visited-color: #1a0dab;
 
 
-$base-font-size: 17px;
+$base-font-size: 18px;
 $text-color: #212228; //#313131; // general text
 // $base-font-family: Helvetica, Arial, sans-serif;
+
 
 // Nav
 $nav-color: #8ed4a6; // usual is #999999 or just white.
@@ -21,4 +22,6 @@ $nav-bg-colour: #212228; // #333;
 $dark: #212228 !default;
 
 // Post
-$post-spacing: 15px;
+$post-spacing: 15px; 
+$custom-text-align: block; // justify
+$img-width: 80%;

@@ -152,7 +152,7 @@ ul.horizontal-list {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 80%;
+    width: $img-width;
 }
 .post-content {
 	h1, h2, h3, h4, h5, h6,
@@ -160,6 +160,7 @@ p, blockquote, pre,
 ul, ol, dl, figure,
 	%vertical-rhythm {
 	margin-bottom: $post-spacing;
+    text-align: $custom-text-align;
 	}
 }
 // tangent test. omg you know chatgpt made this? That's fucking insane LOL.
