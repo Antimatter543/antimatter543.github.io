@@ -6,10 +6,17 @@ https://antimatter543.github.io/
 
 
 To execute:
-`jekyll serve` in console.
+`jekyll serve` in console, or `bundle exec jekyll serve --port 5000`.
 
 ## Styling
 Stying occurs and gets overridden in custom-styles.scss and custom-variables.scss.
+
+#### Custom Specialties
+Doing
+```
+<a href='' class='tooltip'> Test. <span> Hovering over test shows this magic text!! </span> </a>
+```
+makes the word 'Test.' hoverable, and upon hover you can see all that hidden text. Good for side tangents.
 
 ## Projects
 Projects are stored in the _data/home.yml, and follow this format:

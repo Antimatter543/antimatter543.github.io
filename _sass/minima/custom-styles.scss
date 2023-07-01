@@ -12,12 +12,18 @@
 	text-align: center;
 }
 
+.page-content {
+    /* Add a light gray background color */
+    background-color: #f0f0f0;
+}
 .archive li {
 	margin-bottom: 10px;
 }
 
 .post-content {
 	h1, h2, h3, h4, h5, h6 { letter-spacing: -1px;}
+    // border: 2px solid purple;
+    padding: 10px;
 }
 
 // This causes a build error for gh pages but works fine locally, no idea why.
@@ -128,6 +134,23 @@ ul.horizontal-list {
 
 /* Posts
 */
+
+/* Footnotes Stuff */
+.footnotes:before {
+    content: "Footnotes:";
+    font-weight: 500;
+    font-size: 25px;
+    border-top: 1px solid black; // testing
+}
+
+footnotes {
+    font-size: 14px;
+    margin: -10px 20px;
+  }
+
+.footnotes p {
+margin: 10px;
+}
 
 /* Table of Contents */
 #markdown-toc::before {

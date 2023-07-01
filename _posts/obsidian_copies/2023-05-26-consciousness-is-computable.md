@@ -11,7 +11,8 @@ excerpt: A small post detailing my view on consciousness and computability. Mean
 ---
 
 
-Note that this is unsolved, with a major proponent against this being Penrose. However, I agree with [Demis' viewpoint](https://www.youtube.com/watch?v=Gfr50f6ZBvo&t=1941s) that it is in fact computable.
+##### Author's Notes
+Note that this is unsolved, with a major proponent against this being Penrose. However, I agree with [Demis' viewpoint](https://www.youtube.com/watch?v=Gfr50f6ZBvo&t=1941s) that it is in fact computable. There are many arguments you could try to make as for/against, but I'm going to present a simple idea that may convince you. It might sound stupidly simple, and the first time I heard it I thought so too and wasn't sure about how rigorous this was, but I guess it's grown on me over time. There are different routes you can go to try and argue for the computability of the mind, but I'll go with something [Church-Turing thesis](https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis)-esque. Enjoy!
 
 ## Turing Completeness
 
@@ -21,7 +22,7 @@ $$ (A \subseteq B) \wedge (B \subseteq A) \to A = B$$
 
 [^1]
 
-This isn't even related to computers, but a key part of (discrete) mathematics. This is how you show that two sets are equal (by showing each set is a subset of the other).
+This isn't even necessarily related to computers, but a key part of (discrete) mathematics. This is how you show that two sets are equal (by showing each set is a subset of the other).
 
 - For instance, a Turing machine can be modelled by lambda calculus and the lambda calculus can be modelled by a turing machine. Since they can both model each other, their capabilities must be equal. [A proof is here](https://arxiv.org/pdf/2010.15600.pdf )[^2]. More generally, this idea is known as *[turing completeness](https://en.wikipedia.org/wiki/Turing_completeness)*.[^3]
 

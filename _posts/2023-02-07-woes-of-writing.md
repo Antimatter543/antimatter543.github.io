@@ -7,10 +7,10 @@ excerpt: Posts take time to write :( However, sometimes they don't!
 
 - meant to be a funny blog kinda in general, self reflective
 - can post on site :P 
-
+- is different to the usual style -- very little refinement done!
 ## The Post
 - I want to share my ideas with the world
-- Sometimes, I enter a sort of writing frenzy and can bust out 1000 words relating to a topic set within 10-30 minutes. And they're all in bullet points, semi chaotic, ideas everywhere.
+- Sometimes, I enter a sort of writing frenzy and can bust out 1000 words relating to a topic set within 20-30 minutes. And they're all in bullet points, semi chaotic, ideas everywhere.
 - And then I have to go and try and make that neat and presentable, for a human to consume in our text to text representation. But it's so hard.
 
 Do you know how much easier it would be if I could just directly transmit these thoughts to you, without having to go through the information middleman of text? Of this somewhat crude approximation of thought, of the ideas and their linkages all in one in this linear reading that you have?
