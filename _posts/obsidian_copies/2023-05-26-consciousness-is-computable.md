@@ -11,7 +11,9 @@ excerpt: A small post detailing my view on consciousness and computability. Mean
 ---
 
 
-##### Author's Notes
+
+## Preface
+
 Note that this is unsolved, with a major proponent against this being Penrose. However, I agree with [Demis' viewpoint](https://www.youtube.com/watch?v=Gfr50f6ZBvo&t=1941s) that it is in fact computable. There are many arguments you could try to make as for/against, but I'm going to present a simple idea that may convince you. It might sound stupidly simple, and the first time I heard it I thought so too and wasn't sure about how rigorous this was, but I guess it's grown on me over time. There are different routes you can go to try and argue for the computability of the mind, but I'll go with something [Church-Turing thesis](https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis)-esque. Enjoy!
 
 ## Turing Completeness
@@ -67,9 +69,9 @@ Who knows, but I don't get why it *wouldn't* be possible. What would be preventi
 
 Perhaps I'm being biased. To me, a world where the mind is computable is much more interesting than one where it isn't. Imagine — if we are the only special entities capable of consciousness, would that not make us so much lonelier in this grand universe?[^8]
 
-#### Extras: A curiosity on Penrose's arguments
+## Extras: A curiosity on Penrose's arguments
 
-Apologies to all who expected a non-controversial post. Oh well — I can't *just* be a poster of already-known things.
+Apologies to all who expected a non-controversial post. Oh well — I can't *just* be a poster of already-known things. I guess this is more of me 'thinking' aloud — exploration is important!
 
 Now, I haven't actually read the books, but I've read some summaries and the general idea seems to be around quantum phenomena in the brain causing conscience, and this phenomena by some mechanism (either specified in the book or unspecified — don't know, haven't read) cannot be attained by machines.
 
@@ -86,7 +88,7 @@ Either way, anyone who even tries to tackle these subjects are *incredibly based
 [^1]: "If (A is a subset of B) AND (B is a subset of A) this implies A is equivalent to B."
 [^2]: and other places. Now, I haven't actually read it because I have semester finals in a week, but one can always trust latex documents :P
 [^3]: My precise wording may be a bit off — there seem to be a lot of nuance and turing complete vs turing equivalent vs blah blah. You get the idea, that's all that matters right now.
-[^4]: Yes, you can include the spine if you want. Hell, include the whole body. Happy? 
+[^4]: Yes, you can include the spine if you want. Hell, include the whole body. And hormonal influences. Happy? 
 [^5]: I didn't have a good place to mention this, since this post just came out of the blue from another, larger post but how could I not mention the Church-Turing thesis here???
 [^6]: Game of life, etc…
 [^7]: Be very careful when you say the words "Just". Some people would say "Oh the brain can't *just* be a statistical prediction engine". Bet?
