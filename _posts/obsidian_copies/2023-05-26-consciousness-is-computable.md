@@ -49,7 +49,7 @@ In the latter case, this means that the human brain is a model of *[hypercomputa
 
 Hypercomputation so far seem to be a mathematical abstraction. [Church-Turing](https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis) thesis stuff.[^5]  
 
-Our little 'rigid' Turing machine systems have given us a communication system across the entire planet, ways to explore stars, emergence[^6]. *Video games*. Capturing of media — image, text, whatever you want. Simple instructions can generate effectively any image you could imagine — [[A Tale of Finite - Images of Babel]].
+Our little 'rigid' Turing machine systems have given us a communication system across the entire planet, ways to explore stars, emergence[^6]. *Video games*. Capturing of media — image, text, whatever you want. Simple instructions can generate effectively any image you could imagine — [[Tale of Finite Images of Babel]].
 
 AI — built from simple mathematical foundations (really "just"[^7] matrices and a bit of calculus) — has exceeded the practical expectations of humans again and again and again *and again*. From Go to computer vision to face generation to diffusion to photo editting to text generation.
 
