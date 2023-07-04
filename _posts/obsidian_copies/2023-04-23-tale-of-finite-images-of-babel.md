@@ -6,7 +6,7 @@ modified_date: 2023-07-01
 publish: true
 tags: ['thoughts', 'exploratory']
 mathjax: true
-excerpt: Inside a simple construction of maths and (really big) numbers, we can find a photo of your first birthday, with your family surrounding you — even if nobody took that photo. Anyone can find anything about you, if only they knew were to look. Let's find out how!
+excerpt: Inside a simple construction of maths and (really big) numbers, we can find a photo of your first birthday, with your family surrounding you — even if nobody took that photo. Anyone can find anything about you, if only they knew where to look. Let's find out how!
 comments: true
 ---
 
