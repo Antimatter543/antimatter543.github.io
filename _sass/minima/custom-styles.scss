@@ -4,7 +4,7 @@
 /**
  * General and home
  */
-.post-link {
+ .post-link {
 	line-height: 1; // Less distance between dates and titles for posts
 }
 
@@ -185,21 +185,21 @@ ul.horizontal-list {
 p, blockquote, pre,
 ul, ol, dl, figure,
 	%vertical-rhythm {
-	margin: 20px; //0;
+	margin: $spacing-unit 0;
     text-align: $custom-text-align;
 	}
 
-    // h1, h2, h3, h4, h5, h6 { 
-    //     letter-spacing: -1px;
-    //     margin-top: $spacing-unit * 1.5;
-    // }
-    // // padding: 10px;
-    // // border: 2px solid purple;
+    h1, h2, h3, h4, h5, h6 { 
+        letter-spacing: -1px;
+        margin-top: $spacing-unit * 1.5;
+    }
+    // padding: 10px;
+    // border: 2px solid purple;
 
-    // // Lists 
-    // ul, ol {
-    //     padding-left: 20px
-    // }
+    // Lists 
+    ul, ol {
+        padding-left: 20px
+    }
 }
 
 // .post-content {
