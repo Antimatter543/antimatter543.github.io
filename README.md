@@ -1,4 +1,4 @@
-My Jekyll site, woohoo! This is the 3rd website design I've had, but hopefully I'll like it enough for it to stay. If I get around to it (lol), I'll write up how this website works in this readme.
+My Jekyll site, woohoo! This is the 3rd website design I've had, but hopefully I'll like it enough for it to stay. If I get around to it (lol), I'll write up how this website works in this readme. Using Utterances instead of Disqus. Why? Well, a friend showed me a thirst clickbait scam ad (came from Disqus ads!) on their phone when they went on my website. That's why. Was a bit awkward to see.
 
 Side note: I highly recommend being exposed to at least *some* discrete maths in your lifetime -- sets, boolean logic, implies, basic proofs. It gives you an understanding of *precision*, and lets you understand how important definitions are. If you have different definitions, then, you can't undermine someone else's statements.
 

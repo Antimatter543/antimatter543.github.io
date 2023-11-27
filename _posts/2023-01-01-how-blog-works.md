@@ -1,7 +1,7 @@
 ---
 title:  "My blog notation"
 layout: post
-publish: true
+publish: false
 # draft: true
 comments: true
 ---
