@@ -92,7 +92,7 @@ For instance, simple bacteria can interact with their environment in few ways â€
 
 Note: while changing physical machinery during a lifetime is hard (i.e, your arm does not change to wings when you need to fly), changing the program for *neural networks* (brains; *code*) can be a lot faster (you can learn to not jump off cliffs). All you need is energy. Which is probably why brains evolved â€” fast adaptability for complex algorithms (strategies) at the cost of high energy usage provided an evolutionary advantage, in that it allowed you to find exploitable patterns (say seasons, or animal/predator pathings, etc) to increase your fitness.
 
-###### You are a biased network
+### You are a biased network
 
 This is partially related to conscience, partially related to the mind.
 
