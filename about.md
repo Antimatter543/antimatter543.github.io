@@ -17,3 +17,5 @@ It's a bit strange to do this, but I realised something very simple but also ver
 XKCD 137!
 
 
+Side note: I highly recommend being exposed to at least some discrete maths in your lifetime -- sets, boolean logic, implies, basic proofs. It gives you an understanding of precision, and lets you understand how important definitions are. If you have different definitions, then, you can't undermine someone else's statements.
+
