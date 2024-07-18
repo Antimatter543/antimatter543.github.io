@@ -23,6 +23,7 @@ After having walked a few miles in, the creepers begun to recede. Intricate patt
 <div align="center"> *** </div>
 <div style="color:#444; text-align:center;">
 “Stay still!” The young girl tried to wrangle still the boy’s face with her vice-like grip, “I can’t bandage your face if you keep wriggling around like a brat!”
+
 The boy tried to squirm away, protesting against this gorilla with yelps of pain. But nobody could save him in this small wooden house that laid from the outskirts of a rural road. “That strength isn’t fair,” he muttered as the girl forced a scolding wet cloth onto the deep slash that scoured his face, which made his vision go blurry as pain bubbled up.
 “Yeah, well… Shut up.” She quickly wrapped the boy’s head with a poorly done bandage, but he would not argue. “My mum told me to help anyone that doesn’t want to kill you, eat you, or hurt you.”
 
