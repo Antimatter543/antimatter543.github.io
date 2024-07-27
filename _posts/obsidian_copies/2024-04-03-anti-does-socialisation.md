@@ -4,8 +4,8 @@ title: Anti's Incomprehensive Notes and Thoughts On Socialisation
 post-name: anti-does-socialisation
 excerpt: A guide on how to socialise with people, with rough data and thoughts. Let's build a model of socialisation!
 date: 2024-04-03
-publish: true
-draft: false
+publish: True
+draft: False
 tags: ['normal']
 date created: Sunday, April 14th 2024, 5:11 pm
 modified_date: 2024-07-27
@@ -13,9 +13,7 @@ modified_date: 2024-07-27
 
 
 
-# Anti's Incomprehensive Guide to Socialisation
-
-<h2> Table of Contents </h2>
+*<h2> Table of Contents </h2>*
 
 * Table of Contents (this text is replaced with the table of contents)  
 {:toc}
@@ -28,16 +26,16 @@ This is a mix of advice, data, hypotheses, and whatever else I want. Like the cr
 
 ## Introduction & Rationale
 
-Humans are social creatures. This is obvious. You reading this right now is proof of it — you are interacting with an aspect of myself, thus, interaction. You are conferring with another human!
+Humans are social creatures, this is obvious. You reading this right now is proof of it — you are interacting with an aspect of myself and therefore interacting with me. You are conferring with another human!
 
 Socialisation, and what this post focuses on — small talk — is quite multipurposed. One may see it as superficial at first, but really, talking is a potential *gateway* to genuine relationships with people you may otherwise have never met. Seriously, how are you meant to become great friends with someone if you've never bloody talked? You can talk to gain *vibe knowledge* about a person or to simply pass time.  Understand that socialisation is something that life will likely require of you and the better you are at it, the better your (probable) life outcomes.
 
-Learning the social dynamics and how they flow, how to do well in them, how to well just traverse that environment **is extremely useful**. You will ALWAYS have social interactions in your life (for better or worse), and I'd probably argue that the types of social interactions you do effectively dictate how your life will ultimately go. Whether people say yes or no to you, whether they think of you being good at something and recommend you or not, blah blah. Whether you're a *romantic* interest.  
+Learning  social dynamics and how they flow, how to do well in them, and even simply traversing that environment **is extremely useful**. You will ALWAYS have social interactions in your life (for better or worse), and I'd probably argue that the types of social interactions you do effectively dictate how your life will ultimately go. It helps you meet new and interesting people. Whether people say yes or no, whether they think of you being good at something and recommend you or not, blah blah. Whether you're a *romantic* interest.
 
 All this **matters**. It always has. What your peers, colleagues and supervisors think of you. It's all tied together. People cannot hire you if they do not know you exist. All this shit. Getting good at human stuff allows you to leverage life better — you can find opportunities, engage with really cool people(!!!), and all around understand the world better. It's kind of annoying, but, life has always been a harsh mistress.
 
 
-Not to mention, **socialisation is good for you**. Loneliness is straight up an [objectively dangerous phenomena]('https://www.cdc.gov/aging/publications/features/lonely-older-adults.html). Over the course of your lifespan, combating loneliness and being social means you will likely live longer, can have [2.4x reduced risk of cardiac death](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3150158/) and a bunch of other health benefits I won't list here, because you already know and people have explained all this much better than me.
+Not to mention, **socialisation is good for you**. Loneliness is straight up an [objectively dangerous phenomena]('https://www.cdc.gov/aging/publications/features/lonely-older-adults.html). Over the course of your lifespan, combating loneliness and being social means you will likely live longer, have [2.4x reduced risk of cardiac death](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3150158/) and a bunch of other health benefits I won't list here, because you already know and people have explained all this much better than me.
 
 Like Kurzgesagt!  
 
@@ -47,11 +45,11 @@ Like Kurzgesagt!
 Also, *it's just nice to have friends and a social circle too*. People who you can talk to when things get tough, classmates you can share ideas about hard assignment problems with, or genuine friends who are with you at your ups, downs, and everything in between. Friends do not happen in a vacuum.
 
 If you want to **improve** your ability to talk to humans, it's good to find a reason you want to do this. Why do you actually want to talk to more people? In my case, it's actually been a long time coming — I am quite interested in people, how they've lived their lives, their motives, goals, aspirations. I like biographies, y'know! And I find it interesting how two people the same age in the same location can have led such different lives, and yet still meet in that point of spacetime. Is that not cool?  
-It's a genuine interest in how someone else has lived life, because I feel like that lets me inspect my life and see how I've done, if there's any changes I might want to make, etc. And it's fun!
+It's a genuine interest in how someone else has lived life, because I feel like that lets me inspect my life and see how I've done, if there's any changes I might want to make, etc. And it's fun! But overcoming the cliff that is *starting* a conversation was always in the way.
 
 ### Who am I - Details about the author
 
-I've always thought that advice should be understood with the context of the person giving it. Knowing the person whose words you read or listen to lets you understand *where and why[^2]* their advice is coming from. *Advice and knowledge is good, but it is also contextual.* Not very useful to listen to someone born with stupendous wealth talk about how they went through life if you started just above the poverty line for instance.
+I've always thought that advice should be understood with the context of the person giving it. Knowing the person whose words you read or listen to lets you understand *where and why[^2]* their advice is coming from. *Advice and knowledge is good, but it is also contextual.* It's not very useful to listen to someone born with stupendous wealth talk about how they went through life if you started just above the poverty line for instance.
 
 A lot of this knowledge effectively comes from me **brute force increasing my interactions**, post-August of 2023 (during semester 2 of uni).[^3] I forced myself to talk to a **minimum** of 2x strangers, twice a week, for around 11 weeks. Strangers mind you! I had to cold start conversations with people SO MUCH. In the first three weeks of going back to university I had talked to more unique people than I had in the last 6 months. Seriously. Of course, talking to someone I had already interacted with/am friends with *did not count* — I personally feel comfortable talking to friends, and I needed to get slightly uncomfortable — I needed to push myself.
 
@@ -72,7 +70,7 @@ To explain how annoying this was to figure out, **did you know that for almost a
 - upper + bottom teeth, or 
 - no teeth showing?  
 
-It's rare to see someone (especially someone conventionally attractive) smile showing only their bottom teeth. I'm not joking. Google "person smiling". Not a single one there[^5].
+It's rare to see someone (especially someone conventionally attractive) smile showing only their bottom teeth. I'm not joking. Google "[person smiling](https://www.google.com/search?sca_esv=045202e8b9d90fc1&sca_upv=1&rlz=1C1GCEA_enAU918AU918&sxsrf=ADLYWIJac04Rz7rxa9CED94TCwnOH4GiUA:1722070138293&q=person+smiling&udm=2&fbs=AEQNm0B8dVdIWR07uWWlg1TdKnNtA1cwMugrQsIKmAo5AEZHWRFlUeGLxYlhagMfUatSvHu3MSamP9Qd2SfjyZyVIdPFrZFmdorP0BQX-5QUvERZ7CgntLysKxPYR85LNkkQ-ODVQlzCBgHDwYGwBEtb1wyzIiqYOAGOFOhRLG73H-MUdJY1ZFjTgiSsk2gQgTHDHU_Mnn5ewYy4nGfZAENFgsXyYdMtYQ&sa=X&ved=2ahUKEwjR7vuW68aHAxWBr1YBHcmMFLwQtKgLegQIEhAB&biw=1920&bih=919&dpr=1)". Not a single one there[^5].
 
  ![Image Description](/assets/obsidianposts/people_smiling.png)
 <div class="caption">Seriously, see how long you'll scroll until you find a picture of someone doing bottom teeth only.   </div>
@@ -80,13 +78,13 @@ It's rare to see someone (especially someone conventionally attractive) smile sh
 
 And yet, despite my natural introvertedness, I — and yes, you too! — can build some practical model of socialisation to get you through these times we call life. And it can even be fun! 
 
-I'm not the worst case of social anxiety by any means, but it wasn't easy. Actually… it kinda was?[^6] Despite me missing a fair bit, you could say I was doing 'fine' — it wasn't like I had no friends[^7], and I seem to be very good at observation and understanding what humans are feeling (which helped when learning how to mask). However. I wanted *more*: To talk to people I found interesting. To not feel dread when simply thinking about having to speak to somebody. That was my personal goal. As well as all the rationale above.
+I'm not the worst case of social anxiety by any means, but it wasn't easy. Actually… it kinda was[^6]? Despite me missing a fair bit, you could say I was doing 'fine' — it wasn't like I had no friends[^7], and I seem to be very good at observation and understanding what humans are feeling (which helped when learning how to mask). However. I wanted *more*: To talk to people I found interesting. To not feel dread when simply thinking about having to speak to somebody. That was my personal goal. As well as all the rationale above.
 
-And now? Well, sometimes the dread is still there, but even then it is a very weak voice that I can easily ignore, because of the weight of my positive experiences. Of *actual practice*.
+And now? Well, sometimes the dread is still there, but even then it is a very weak voice that I can ignore, because of the weight of my positive experiences. Of *actual practice*.
 
-Of course, even now there are some days where I am completely asocial and simply do not care, or I just seriously don't have the enregy to — that's okay. You don't have to forcekill your personality — socialising is simply letting **yourself** interact with the world in some capacity. The point is to be an enhanced version of you, and to be able to communicate that with other people.
+Of course, even now there are some days where I am completely asocial and simply do not care, or I just seriously don't have the energy to — that's okay. You don't have to forcekill your personality — socialising is simply letting **yourself** interact with the world in some capacity. The point is to be an enhanced version of you, and to be able to communicate that with other people.
 
-Let's get to *how* and *what* we should do now. I hate articles that ramble on and on and never actually tell you anything (and worse, they say SIGN UP for the secret. How about I sign a petition to exile you from earth, you rat). Also, you technically know what you have to do — I said it in the preface after all. But knowing all the *why* behind a statement lets you *understand the statement*, and make your own judgment on novel situations. That's why build not only a model, but an *understanding of the model* is important too! And this isn't just about socialisation.
+Let's get to *how* and *what* we should do now. I hate articles that ramble on and on and never actually tell you anything (and worse, they say SIGN UP for the secret. How about I sign a petition to exile you from earth, you rat). Also, you technically know what you have to do — I said it in the preface after all. But knowing all the *why* behind a statement lets you *understand the statement*, and make your own judgment on novel situations. That's why it's not just important to construct a model, but to *understand* it too! And this isn't just about socialisation.
 
 
 
@@ -100,7 +98,7 @@ W
 &emsp;&emsp;&emsp;&emsp; &emsp;  E  
 &emsp;&emsp;&emsp;&emsp; &emsp;  &emsp; E
 
-## The Socialisation Logs 🌲🪓
+## The Socialisation Logs 🌲🪓 📝
 
 <small> Starring: Anti's Thoughts </small>  
 
@@ -110,7 +108,7 @@ Again, there is no secret. **Socialisation ability is a skill**. It is learnable
 
 **Most people are okay with being conversed with**. Let me ask you a question: How many people do you think are receptive to having a conversation with a stranger, just out and about? 20%? 50%? Guess.
 
-In my experience, I'd say at least 85% of the strangers I've cold-started a conversation with were fine with it and even enjoyed it (I've talked to over 50 strangers at least at university that one semester). In the beginning, I counted talking to someone at a water bubbler as an interaction[^8] — it is! And I made them laugh too. Over time, I stopped counting these types of talks because they were too easy. I had [overcome](https://www.youtube.com/watch?v=ctMExkfxQLA) them, and wanted more. Start at your level, and do a bit more.  
+In my experience, I'd say at least 85% of the strangers I've cold-started a conversation with were fine with it and even enjoyed it (and I've talked to over 50 strangers at least at university that one semester). In the beginning, I counted talking to someone at a water bubbler as an interaction[^8] — it is! And I made them laugh too. Over time, I stopped counting these types of talks because they were too easy. I had [overcome](https://www.youtube.com/watch?v=ctMExkfxQLA) them, and wanted more. Start at your level, and do a bit more.  
 
 ![Image Description](/assets/obsidianposts/oprah_talk.png)  
 <div class="caption"> Look… I couldn't figure out better words for this, and I need an image every so often or else the wall of text will literally kill your attention span, like it does mine. Seriously. Look at good blog posts, articles, etc. There is variety in the media format at such a rate that it prevents "attention depression", for lack of better terms. </div>
@@ -133,13 +131,12 @@ If someone doesn't want to be talked to, it'll be obvious. The conversation will
 
 One thing to understand: **You must respect the other person**. You are the initiator which means, don't be a dick[^11]. This is especially so in the case of cold-start conversations. In general, consider and expect a very short interaction, and frame it as positive. Anything else is a bonus! 
 
-**Give them an out**, or multiple over the course of the conversation. I cannot stress this enough. *Especially if you're a guy talking to a girl.* Maybe I stress it too much because I personally don't like intruding on others when they don't want it. Frankly, I do better when I know the person wants to talk to me, so this also helps me know that I'm not bothering them because it becomes *their choice* to stay in the conversation. This is especially important if you are cold-talking to a stranger, at a random location and not a shared venue like a classroom or an event. Think bus stops, train stations, uni courts, etc. Or just in general. We are here to talk. not to make people uncomfortable. if you pick up uncomfy vibes, excuse yourself from it. Before you start actually talking, I prefer asking them outright if they're **fine with a conversation right now *or if they're currently busy doing something*** (adding this second part "technically" does not add information — they could say they're busy even if I just say "Are you fine with talking right now?", but it takes time for the brain to think of a way to "get out", and offering them the "or are you busy" gives them an out that *you offered*, so they know it is a 'safe' option that won't harbour potential aggressiveness. Certain people have to deal with a bunch of shit in general and it's simple to make their life easier w.r.t your convo).
+**Give them an out**, or multiple over the course of the conversation. I cannot stress this enough. *Especially if you're a guy talking to a girl.* Maybe I stress it too much because I personally don't like intruding on others when they don't want it. Frankly, I do better when I know the person wants to talk to me, so this also helps me know that I'm not bothering them because it becomes *their choice* to stay in the conversation. This is especially important if you are cold-talking to a stranger, at a random location and not a shared venue like a classroom or an event. Think bus stops, train stations, uni courts, etc. Or just in general. We are here to talk, not to make people uncomfortable. If you pick up uncomfy vibes, excuse yourself from it. Before you start actually talking, I prefer asking them outright if they're **fine with a conversation right now *or if they're currently busy doing something*** (adding this second part "technically" does not add information — they could say they're busy even if I just say "Are you fine with talking right now?", but it takes time for the brain to think of a way to "get out", and offering them the "or are you busy" gives them an out that *you offered*, so they know it is a 'safe' option that won't harbour potential aggressiveness. Certain people have to deal with a bunch of shit in general and it's simple to make their life easier w.r.t your convo).
 
 Of course, you might not be so explicit and *socially artistic* with your words as to literally ask someone if they're chill to talk, but the idea is there. *Give them an out — ask if they're busy or if you're interrupting them etc*. And do it multiple times if you want. Or, preset a 'deadline' time for the convo — I.e. mention early into the convo you have to leave soon, or, if a train arrives, simply say bye and go to a different carriage. That's all you need. I've done this "or are you busy" thing and had quite nice conversations with it — it doesn't ruin the quality of the conversation you can have. One was at a train station, drawing something on a sketchpad. I asked what it was and if I could sit down[^12], or if they're busy. They accepted and seemed happy to talk about it. We ended up talking on the train for about ~25-30 minutes! Fun! Exchanged contacts, and have since never talked. And that's perfectly fine — what a positive experience that was!
 
 #### A Case Study On Respect 🔍🔬
 
-> 💡 **Tip:** Don't be like the second one!
 
 As an example I'll put out one of the few convos that I felt like this person was just not up to chat, and a bad example where some people softlocked me into a 40 minute conversation with them… 
 
@@ -155,19 +152,21 @@ If there wasn't a bus there, I would have just looked at my watch, said "Oh shit
 
 **However**. To find the only person sitting by themselves on a massive grass field[^13] (was waiting on a friend to get their food), sit down next to them and start asking questions and talking about your religion and beliefs FOR 40 MINUTES WHILE THE PERSON IN QUESTION IS CLEARLY EXHIBITING NON-ENTHUSIASTIC BODY LANGUAGE is, in my opinion, a bit fucking much. There were two of them as well. The way they framed the beginning question left me no easy exit cards (all they had to do was add an "or are you busy"!!!), and at that point, since **conversations are a time constrained problem with limited thought time per reply**, I said sure. Poor Anti. I should mention, the reason one needs to add an 'exit card' or known-departure-time is so that the initiatee can avoid potential conflict. My friend came eventually, but they didn't stop and since she engaged with them in it, it was. Yeah. Ah. I never got to finish my Subway on time for that 2pm class.
 
+> 💡 **Pro Tip:** Don't be like this!
+
 Here are the discord logs of me complaining about such activities:  
 ![Image Description](/assets/obsidianposts/ambush_log1.png)  
 From someone else, in a different year:  
 ![Image Description](/assets/obsidianposts/ambush_log2.png)
 
- Effectively this happened because of they provided no "or are you busy" get out of jail free card. To be more honest, this really happened *because their intent was to trap you in a long conversation*. Ugh. Now, I know that simply walking away is the best option. Or outright saying no. Or saying I'm a devil worshipper. Remember. This 40 minute hell happened when I was still pretty socially anxious. I straight up took a disability badge after this which meant that clubs etc that did this STOP DOING THAT TO YOU OR ELSE THEY GET IN TROUBLE.[^14] Don't ambush! 
+ Effectively this happened because of they provided no "or are you busy" get out of jail free card. To be more honest, this really happened *because their intent was to trap you in a long conversation* (which is why despite them surely being able to read body language, they stayed). Ugh. Now, I know that simply walking away is the best option. Or outright saying no. Or saying I'm a devil worshipper. Remember. This 40 minute hell happened when I was still pretty socially anxious. I straight up took a disability badge after this which meant that clubs etc that did this STOP DOING THAT TO YOU OR ELSE THEY GET IN TROUBLE.[^14] Don't ambush! 
 
 ### Conversation Planning
 
 ![Image Description](/assets/obsidianposts/they_dont_know.png)  
 <div class="caption">(It's not doomed) </div>
 
-**How much planning should I do? Personally, a tiny amount — enough to start a conversation & an exit plan**. Once upon a time when I was less confident, less experienced, and most definitely a child, I heavily planned out conversations and made many flowcharts of needless complexity. Ultimately this isn't that useful — because the deeper in the tree you go, the more uncertain it is. To begin with, how can you even assume you have such a good model of someone's replying to begin with? Understand that mapping out conversations past a few steps takes a diminishing return curve — there is a combinatorial explosion of possible conversations, so best not to be too rigid. To have a conversation is to improvise, to *listen* and apply yourself to it. Don't worry, it sounds daunting but with enough practice you'll get the hang of it.  
+**How much planning should I do? Personally, a tiny amount — enough to start a conversation**. Once upon a time when I was less confident, less experienced, and most definitely a child, I heavily planned out conversations and made many flowcharts of needless complexity. Ultimately this isn't that useful — because the deeper in the tree you go, the more uncertain it is. To begin with, how can you even assume you have such a good model of someone's replying to begin with? Understand that mapping out conversations past a few steps takes a diminishing return curve — there is a combinatorial explosion of possible conversations so it's best not to be too rigid. To have a conversation is to improvise, to *listen* and apply yourself to it. Don't worry, it sounds daunting but with enough practice you'll get the hang of it.  
 
 That being said, **I definitely plan!** I'd say it's a fine idea to, if you want, plan out the first question or two or whatever your initial interest in this person is, or why you're talking to them. Basically, plan to the degree that you are now in a conversation with this person, and then hand the reins to your improvisation self. This is basically a hello/context cue, name exchange, initial question/statement. Tada. *Now you're talking!* And if you want, plan how you'd exit. There's only so many ways you can enter/leave a convo, so once you figure out what works for you, you can just repeat it easily without spending extra energy to plan exits anymore. Of course, if it's easier to go in blind for you, then do that!
 
@@ -187,8 +186,8 @@ Fine, fine. I've given the shorthand above a few times (so don't say I was stall
 
 Just like you wrap the whole state of the world to get IO in functional programming, the whole world is at your disposal with context cues to be used — the sky is very pretty today, the bus is always late, it's so cold. Are the birds always that loud? From these, there are so many branches of possible conversations that can occur. So really, there is always an "excuse" to talk to someone (that wants to be talked to). You get better at spotting these over time. 
 
-3. They'll respond, and this is all good. And it doesn't even MATTER if they know the context cue — they can reply with "Oh, I'm doing a different class". Doesn't matter, you've just found yourself in conversation with someone! Usually (for me) **there's a small lull in the convo most of the time here**, unless you ran into an extroverted person. This is when you can introduce yourself, or outright say something like "Ah, I'm kinda bored so I'm just looking for someone to talk with if that's fine with you. If you're busy I can just like, walk away so dw about it". *Notice the exit I gave?* Now, I don't think most people do this level of explicitness, but I also don't care. I'm me and this is how I like to do conversations sometimes — you are likely different, and that is A-okay! Funnily enough I've never had anyone tell me they're busy.[^17] (Now I go for the introduction more often since I'm more confident in my speaking & evaluation of conversation state; this was just the "umm idk what to do so I just say this as boilerplate"). They'll introduce themselves too, and tada!
-4. **And now you just talk! Converse!** Woohoo. Learn about them, this curious conscious entity right in front of you. That's how I like viewing it.
+- . They'll respond, and this is all good. And it doesn't even MATTER if they know the context cue — they can reply with "Oh, I'm doing a different class". Doesn't matter, you've just found yourself in conversation with someone! Usually (for me) **there's a small lull in the convo most of the time here**, unless you ran into an extroverted person. This is when you can introduce yourself, or outright say something like "Ah, I'm kinda bored so I'm just looking for someone to talk with if that's fine with you. If you're busy I can just like, walk away so dw about it". *Notice the exit I gave?* Now, I don't think most people do this level of explicitness, but I also don't care. I'm me and this is how I like to do conversations sometimes — you are likely different, and that is A-okay! Funnily enough I've never had anyone tell me they're busy.[^17] (Now I go for the introduction more often since I'm more confident in my speaking & evaluation of conversation state; this was just the "umm idk what to do so I just say this as boilerplate"). They'll introduce themselves too, and tada!
+- . **And now you just talk! Converse!** Woohoo. Learn about them, this curious conscious entity right in front of you. That's how I like viewing it.
 
 Four steps, and really it can be as simple as two:
 
@@ -236,20 +235,6 @@ To recap, since intentionally trying to be more social[^22] I've:
 
 Again, I have to state my surprise when I found out most people actually like having conversations and engaging in one! But that's a summary of all the observation, notes, and main thoughts I have of socialisation[^25]. So get out there and start talking, it's free xp!
 
-### TODOS
-
-- [ ] .. wake up 9?
-- [ ] Reread
-- [ ] add captions to images like how karpathy does it (check his biohack markdown
-- [ ] Beta readers? I want to release this sat though
-- [x] Add more images / varied visuals
-
-//
-- [ ] Change github username
-- [ ] Update remotes for username
-- [ ] change the converter.py code to account for 
-	- [ ] YAML properties now (add "post-name") which is different to title. post name is what the blog will be called as post-name.md (and thus the url will be date/post-name, instead of the whole fucking blog title which could be massive.) — see [karpathy](https://github.com/karpathy/karpathy.github.io/blob/master/_posts/2022-03-14-lecun1989.markdown)
-	- [x] auto copy images to the correct folders.
 
 ------
 
