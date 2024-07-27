@@ -3,7 +3,7 @@ layout: post
 title: An Incomprehensive Guide to Consciousness
 date: 2023-04-19
 modified_date: 2023-11-26
-publish: true
+publish: false
 tags: ['consciousness', 'thoughts', 'universe', 'life']
 excerpt: 
 ---
