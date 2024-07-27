@@ -7,7 +7,7 @@ publish: true
 tags: ['consciousness', 'life', 'information', 'turingcomplete', 'thoughts']
 mathjax: true
 comments: true 
-excerpt: A small post detailing my view on consciousness and computability. Meant to be in a larger post, but it became a bit too unwieldy and I felt like it.
+excerpt: A small post detailing my view on consciousness and computability. Meant to be in a larger post, but it became a bit too unwieldy and I felt like it. There is a much larger, more (in)comprehensive view of consciousness coming out... soon?
 ---
 
 
