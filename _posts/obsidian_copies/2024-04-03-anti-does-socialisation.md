@@ -13,7 +13,7 @@ modified_date: 2024-07-27
 
 
 
-*<h2> Table of Contents </h2>*
+## Table of Contents
 
 * Table of Contents (this text is replaced with the table of contents)  
 {:toc}
@@ -45,6 +45,7 @@ Like Kurzgesagt!
 Also, *it's just nice to have friends and a social circle too*. People who you can talk to when things get tough, classmates you can share ideas about hard assignment problems with, or genuine friends who are with you at your ups, downs, and everything in between. Friends do not happen in a vacuum.
 
 If you want to **improve** your ability to talk to humans, it's good to find a reason you want to do this. Why do you actually want to talk to more people? In my case, it's actually been a long time coming — I am quite interested in people, how they've lived their lives, their motives, goals, aspirations. I like biographies, y'know! And I find it interesting how two people the same age in the same location can have led such different lives, and yet still meet in that point of spacetime. Is that not cool?  
+
 It's a genuine interest in how someone else has lived life, because I feel like that lets me inspect my life and see how I've done, if there's any changes I might want to make, etc. And it's fun! But overcoming the cliff that is *starting* a conversation was always in the way.
 
 ### Who am I - Details about the author
@@ -136,7 +137,6 @@ One thing to understand: **You must respect the other person**. You are the init
 Of course, you might not be so explicit and *socially artistic* with your words as to literally ask someone if they're chill to talk, but the idea is there. *Give them an out — ask if they're busy or if you're interrupting them etc*. And do it multiple times if you want. Or, preset a 'deadline' time for the convo — I.e. mention early into the convo you have to leave soon, or, if a train arrives, simply say bye and go to a different carriage. That's all you need. I've done this "or are you busy" thing and had quite nice conversations with it — it doesn't ruin the quality of the conversation you can have. One was at a train station, drawing something on a sketchpad. I asked what it was and if I could sit down[^12], or if they're busy. They accepted and seemed happy to talk about it. We ended up talking on the train for about ~25-30 minutes! Fun! Exchanged contacts, and have since never talked. And that's perfectly fine — what a positive experience that was!
 
 #### A Case Study On Respect 🔍🔬
-
 
 As an example I'll put out one of the few convos that I felt like this person was just not up to chat, and a bad example where some people softlocked me into a 40 minute conversation with them… 
 
