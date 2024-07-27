@@ -2,7 +2,7 @@
 {{ post.content | number_of_words | minus: 250 }}
 {% endcapture %}
 {% unless words contains '-' %}
-— {{ words | plus: 250 | divided_by: 180 | append: ' minute read' }}
+— {{ words | plus: 250 | divided_by: 250 | append: ' minute read' }}
 {% endunless %}
 
 <!-- the minus 250 etc is a barrier -- how many words should this post be >= to bother adding a reading count to it? -->

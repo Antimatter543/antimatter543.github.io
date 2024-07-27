@@ -162,12 +162,25 @@ ul.horizontal-list {
 }
 
 #markdown-toc{
-	border: 1px solid #000;
+	border: 1px solid #3b3838;
     padding: 1.5em;
     list-style: decimal;
     display: inline-block;
 }
 
+#markdown-toc ul {
+    margin: 0.2em 0; /* Adjust this value to control the spacing */
+    list-style: decimal;
+    // padding: 0;
+
+}
+
+// #markdown-toc {
+//     border: 1px solid #aaa;
+//     padding: 1.5em;
+//     list-style: decimal;
+//     display: inline-block;
+// }
 
 .reversefootnote {
 	font-family:  sans-serif;
@@ -178,6 +191,7 @@ ul.horizontal-list {
     margin-left: auto;
     margin-right: auto;
     width: $img-width;
+    border: 1px solid #999;
 }
 
 // Actual content inside the post 
@@ -201,6 +215,22 @@ ul, ol, dl, figure,
     ul, ol {
         padding-left: 20px
     }
+}
+
+blockquote {
+    color: rgba(110, 75, 8, 0.616);
+    border-left: 4px solid rgb(156, 91, 6);
+
+}
+
+.caption {
+    color: #555;
+    font-size: 14px;
+    text-align: center;
+}
+
+p:has(> img:only-child) {
+    margin-bottom: 0; /* This targets <p> elements that have only an <img> as a child */
 }
 
 // .post-content {
