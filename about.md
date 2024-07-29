@@ -7,6 +7,15 @@ permalink: /about/
 <!-- 🚧 WIP!! 🚧 Of course it's WIP, past Anti... It's always WIP> That's life. Life is a work in progress. <3 We don't need that sign postage anymore-->
 
 <!-- what the hell ctrl+q on my vscode line wraps the paragraph I'm on -->
+
+
+{% assign target_date = '2036-11-25' | date: '%s' %}
+{% assign current_date = 'now' | date: '%s' %}
+{% assign seconds_diff = target_date | minus: current_date %}
+{% assign days_till_deadline = seconds_diff | divided_by: 86400 | plus: 1 %}
+
+<center> {{ days_till_deadline }} </center>
+
 I'm a *human*, and I think universal function approximators are pretty cool! I'm
 a game theory enjoyer: **computation is based.**
 

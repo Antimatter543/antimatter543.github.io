@@ -10,6 +10,10 @@ title: Home
 ---
 ## Hey! 👋
 
-Welcome to my new website! Should be finalising some minor changes for now: should be done by the 20th February.
+{% assign target_date = '2036-11-25' | date: '%s' %}
+{% assign current_date = 'now' | date: '%s' %}
+{% assign seconds_diff = target_date | minus: current_date %}
+{% assign days_till_deadline = seconds_diff | divided_by: 86400 | plus: 1 %}
 
-No Disqus!
+Welcome to my new website! I talk about projects I've done, thoughts I've had and data I've collected.  {{ days_till_deadline }}.
+
