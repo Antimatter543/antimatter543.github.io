@@ -1,18 +1,34 @@
-
 project_entries:
   - title: Karpathy's NN Lectures
     url: https://github.com/Antimatter543/karpathy-NN-lectures
     desc: This is an example project, configured in _data/home.yml
+    image: /assets/projects/flaskweather.png
 
-  - title: Project 2
+  - title: Flask Weather 
+    url: /
+    desc: Used BOM API and SHA-256 authenticated login security to display weather data.
+    image: /assets/projects/flaskweather.png
+    icons:
+      - swift.svg
+
+  - title: Project 4
     url: /
     desc: Projects are shown in card layout
+    image: /assets/projects/flaskweather.png
+
+  - title: Project3
+    url: /
+    desc: Projects are shown in card layout
+    image: /assets/projects/flaskweather.png
+
 
   # - title: Project 3
   #   url: overview-post
   #   desc: You can control visibility from _config.yml file
+  #   image: /assets/images/project3.png
 
   # - title: Project 4
   #   url: overview-post
   #   desc: This project uses highlight markup, configured in _data/home.yml
   #   highlight: WIP
+  #   image: /assets/images/project4.png

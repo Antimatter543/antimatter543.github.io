@@ -1,28 +1,24 @@
-<ul class="horizontal-list">
-	{% for item in include.collection %}
+<div class="projects-container">
+    <ul class="horizontal-list">
+      {% for item in site.data.home.project_entries %}
+        <li class="card">
+          <a href="{{ item.url }}">
+            <div class="card-image" style="background-image: url('{{ item.image }}');">
+              <div class="card-overlay">
+                <div class="card-title">{{ item.title }}</div>
+                {% if item.desc %}
+                  <div class="card-text">{{ item.desc }}</div>
+                {% endif %}
+                <div class="card-icons">
+                  {% for icon in item.icons %}
+                    <img src="/assets/projects/icons/{{ icon }}" class="card-icon" alt="{{ item.title }} icon">
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
   
-	  <li class="card">
-		<a href="{{ item.url }}">
-		  <span class="header">
-			{{ item.title }}
-  
-			{% if item.highlight %}
-			  <mark>{{ item.highlight }}</mark>
-			{% endif %}
-  
-		  </span>
-  
-		  <hr />
-  
-		  {% if item.desc != false %}
-		  <p class="body">
-			{{ item.desc }}
-		  </p>
-		  {% endif %}
-		</a>
-	  </li>
-  
-	{% endfor %}
-  </ul>
-
-<!-- Thanks to the moonwalk jekyll site for this!!  -->

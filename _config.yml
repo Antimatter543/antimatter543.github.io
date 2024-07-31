@@ -3,7 +3,7 @@ author:
   name: Anti's Site of Wonderous...ness?
   # email: your-email@domain.com
 permalink: :year/:month/:day/:title #/:title/
-description:  Anti's website. I'm not sure what else to put here.
+description:  Anti's website. ©
 show_excerpts: true
 comments: # comments on by default
   utterances: true
