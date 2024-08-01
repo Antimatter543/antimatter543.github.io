@@ -14,7 +14,7 @@ permalink: /about/
 {% assign seconds_diff = target_date | minus: current_date %}
 {% assign days_till_deadline = seconds_diff | divided_by: 86400 | plus: 1 %}
 
-<center> {{ days_till_deadline }} </center>
+<center> <span id="countdown"></span> </center>
 
 I'm a *human*, and I think universal function approximators are pretty cool! I'm
 a game theory enjoyer: **computation is based.**
@@ -70,3 +70,34 @@ I.e hopefully improve one's model of the world in a fun way.
 Side note: I highly recommend being exposed to at least some discrete maths in your lifetime -- sets, boolean logic, implies, basic proofs. It gives you an understanding of precision, and lets you understand how important definitions are. If you have different definitions, then, you can't undermine someone else's statements.
 
 [^1]: Which is pretty obvious and not at all a unique trait, but sometimes you must go in a weird spiral to come to obvious conclusions yourself.
+
+
+
+<!-- Script for countdown timer, that's it. -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Set the date we're counting down to
+        const countDownDate = new Date("2036-11-25T00:00:00").getTime();
+
+        // Update the countdown every 1 second
+        const countdownfunction = setInterval(function() {
+            // Get today's date and time
+            const now = new Date().getTime();
+            
+            // Find the distance between now and the count down date
+            const distance = countDownDate - now;
+            
+            // Time calculations for days
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            
+            // Display the result in the element with id="countdown"
+            document.getElementById("countdown").innerHTML = days;
+            
+            // If the countdown is finished, write some text
+            if (distance < 0) {
+                clearInterval(countdownfunction);
+                document.getElementById("countdown").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    });
+</script>
