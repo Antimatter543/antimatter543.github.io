@@ -30,12 +30,21 @@ project_entries:
 
   - title: Dataplanet
     url: https://antimatter543.github.io/Dataplanet/
-    desc: 
+    desc: A 3D data visualisation project that displays datasets and live APIs about sustainability goals onto our planet.
     image: /assets/projects/dataplanet.png
     icons:
       - nodejs
       - html
-      - github 
+      - github
+
+  - title: Multi-Threaded Password Cracker
+    url: 
+    desc: Multi-threaded password cracker over a TCP/IP server, written on a remote ssh environmment.
+    image: /assets/projects/cracker.png
+    icons:
+    - terminal
+    - C
+
   # - title: Project3
   #   url: /
   #   desc: Projects are shown in card layout
