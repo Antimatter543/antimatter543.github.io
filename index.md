@@ -15,5 +15,34 @@ title: Home
 {% assign seconds_diff = target_date | minus: current_date %}
 {% assign days_till_deadline = seconds_diff | divided_by: 86400 | plus: 1 %}
 
-Welcome to my new website! I talk about projects I've done, thoughts I've had and data I've collected.  {{ days_till_deadline }}.
+Welcome to my new website! I talk about projects I've done, thoughts I've had and data I've collected.   <span id="countdown"></span>
+
+<!-- Script for countdown timer, that's it. -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Set the date we're counting down to
+        const countDownDate = new Date("2036-11-25T00:00:00").getTime();
+
+        // Update the countdown every 1 second
+        const countdownfunction = setInterval(function() {
+            // Get today's date and time
+            const now = new Date().getTime();
+            
+            // Find the distance between now and the count down date
+            const distance = countDownDate - now;
+            
+            // Time calculations for days
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            
+            // Display the result in the element with id="countdown"
+            document.getElementById("countdown").innerHTML = days;
+            
+            // If the countdown is finished, write some text
+            if (distance < 0) {
+                clearInterval(countdownfunction);
+                document.getElementById("countdown").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    });
+</script>
 

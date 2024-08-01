@@ -1,34 +1,42 @@
 project_entries:
   - title: Karpathy's NN Lectures
     url: https://github.com/Antimatter543/karpathy-NN-lectures
-    desc: This is an example project, configured in _data/home.yml
-    image: /assets/projects/flaskweather.png
+    desc: Neural Networks From Scratch - Starting from bigram up to GPT. Better than any uni ML course I've done.
+    image: /assets/projects/karpathy.png
+    icons:
+      - python
+      - numpy
+      - pytorch
+      - jupyter 
 
-  - title: Flask Weather 
+
+  - title: Flask Weather Visualisation
     url: /
-    desc: Used BOM API and SHA-256 authenticated login security to display weather data.
+    desc: Authenticated login + display weather data from an API on a protected page.
     image: /assets/projects/flaskweather.png
     icons:
-      - swift.svg
+      - flask
+      - sqlite
+      - html
+      - python
 
-  - title: Project 4
+  - title: AI Sports 2021  
     url: /
-    desc: Projects are shown in card layout
-    image: /assets/projects/flaskweather.png
+    desc: Creating competitive AI agents in a bomberman-like environment.
+    image: /assets/coderone/game.gif
+    icons:
+    - python
+    - docker
 
-  - title: Project3
-    url: /
-    desc: Projects are shown in card layout
-    image: /assets/projects/flaskweather.png
-
-
-  # - title: Project 3
-  #   url: overview-post
-  #   desc: You can control visibility from _config.yml file
-  #   image: /assets/images/project3.png
-
-  # - title: Project 4
-  #   url: overview-post
-  #   desc: This project uses highlight markup, configured in _data/home.yml
-  #   highlight: WIP
-  #   image: /assets/images/project4.png
+  - title: Dataplanet
+    url: https://antimatter543.github.io/Dataplanet/
+    desc: 
+    image: /assets/projects/dataplanet.png
+    icons:
+      - nodejs
+      - html
+      - github 
+  # - title: Project3
+  #   url: /
+  #   desc: Projects are shown in card layout
+  #   image: /assets/projects/flaskweather.png
