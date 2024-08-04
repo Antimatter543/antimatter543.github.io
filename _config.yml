@@ -37,6 +37,7 @@ header_pages:
   - archive.md
   - about.md
   - projects.md
+  - timeline.md
   - 404.html
 
 collections:

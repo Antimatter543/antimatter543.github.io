@@ -1,0 +1,22 @@
+---
+layout: default
+---
+<article class="timeline">
+
+  <header class="post-header">
+	  <!-- Title yay! -->
+		  {%- if page.title -%}
+		  <h1 class="page-heading">{{ page.title }}</h1>
+		  <span class='page-divider'> 
+			  <span class='one'></span>
+			  <span class='two'></span>
+		  </span>
+		  {%- endif -%}
+  </header>
+
+		
+  <div class="timeline">
+    {{ content }}
+  </div>
+
+</article>
