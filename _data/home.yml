@@ -45,6 +45,13 @@ project_entries:
     - terminal
     - C
 
+  - title: LLM Discord Bot
+    url: https://github.com/Antimatter543/discord-gf-bot
+    desc: Get experience with discord bots, and experiment with jailbreaking of GPT4.
+    image: /assets/projects/discordbot.png
+    icons:
+      - python
+      - openai
   # - title: Project3
   #   url: /
   #   desc: Projects are shown in card layout

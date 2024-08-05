@@ -2,7 +2,7 @@
 title:  "The Woes of Writing Posts"
 layout: post
 publish: true
-excerpt: Posts take time to write :( However, sometimes they don't!
+excerpt: A small insight on how I sometimes write posts... It's not very chronological!!
 ---
 
 - meant to be a funny blog kinda in general, self reflective
@@ -29,3 +29,5 @@ I wrote all that in one go (with some minor tweaks). I'm going to publish it any
 
 Extras: 
 I have a habit of always jumping around from idea to idea, i.e following the trail. Unfortunately, a lot of the times I don't really keep a pointer as to where I leap from and wholeheartedly put all my energy into figuring out/exploring the idea. This means, once I'm finished with a trail, I'm kinda like "wait, where did I come from again? What was I doing?".
+
+Added 5/08/24: Anyways, I finally figured out I likely have ADHD. That explains... quite a bit. The tism by itself didn't cover enough.
