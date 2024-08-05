@@ -11,7 +11,7 @@ project_entries:
 
 
   - title: Flask Weather Visualisation
-    url: /
+    url: https://antimatter543.github.io/2021/08/07/flask-weather-exchange
     desc: Authenticated login + display weather data from an API on a protected page.
     image: /assets/projects/flaskweather.png
     icons:
