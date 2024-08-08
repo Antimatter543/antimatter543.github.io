@@ -34,9 +34,8 @@ layout: default
 			<span class="post-meta">{{ post.date | date: date_format }}
 			{% include read_times.html %} 
 			</span>
-			<h3>
-			<a class="post-link" href="{{ post.url | relative_url }}" 
-				{% if post.tags[1] == 'gold'%} style="color: rgb(184, 175, 48); font-weight: 450;" {%endif%}>
+			<h3> 
+			<a class="post-link" href="{{ post.url | relative_url }}" {% if post.tags[1] == 'gold'%} class="purple-gradient" {%endif%}>
 				{{ post.title | escape }}
 			</a>
 			</h3>

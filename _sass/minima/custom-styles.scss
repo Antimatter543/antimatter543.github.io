@@ -20,13 +20,19 @@
 	margin-bottom: 10px;
 }
 
+.purple-gradient {
+    background: linear-gradient(45deg, #6a11cb 0%, #2575fc 100%);
+    // -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 450;
+}
 
 // This causes a build error for gh pages but works fine locally, no idea why.
 // .site-footer {
 // 	box-shadow: 0 0 0.6em rgb(33 34 40 / 4%) inset;
 // }
 
-    .timeline-wrapper {
+.timeline-wrapper {
     * {
         box-sizing: border-box;
     }
