@@ -35,8 +35,7 @@ layout: default
 			{% include read_times.html %} 
 			</span>
 			<h3>
-			<a class="post-link" href="{{ post.url | relative_url }}" 
-				{% if post.tags[1] == 'gold'%} style="color: rgb(184, 175, 48); font-weight: 450;" {%endif%}>
+                <a class="post-link {% if post.tags[1] == 'gold' %}purple-gradient{% endif %}" href="{{ post.url | relative_url }}">
 				{{ post.title | escape }}
 			</a>
 			</h3>

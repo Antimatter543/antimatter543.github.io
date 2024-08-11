@@ -20,6 +20,17 @@
 	margin-bottom: 10px;
 }
 
+.purple-gradient {
+    background: linear-gradient(45deg, #8A2BE2 0%, #e7d912 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 450;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    line-height: 1.2; /* Adjust this value as needed */
+}
+
+
+
 
 // This causes a build error for gh pages but works fine locally, no idea why.
 // .site-footer {

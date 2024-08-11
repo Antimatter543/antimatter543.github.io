@@ -6,7 +6,7 @@ excerpt: A guide on how to socialise with people, with rough data and thoughts. 
 date: 2024-04-03
 publish: True
 draft: False
-tags: ['normal']
+tags: [normal, gold]
 date created: Sunday, April 14th 2024, 5:11 pm
 modified_date: 2024-07-27
 ---
