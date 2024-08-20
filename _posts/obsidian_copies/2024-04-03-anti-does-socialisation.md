@@ -6,11 +6,10 @@ excerpt: A guide on how to socialise with people, with rough data and thoughts. 
 date: 2024-04-03
 publish: True
 draft: False
-tags: [normal, gold]
+tags: ['normal', 'gold']
 date created: Sunday, April 14th 2024, 5:11 pm
-modified_date: 2024-07-27
+modified_date: 2024-08-21
 ---
-
 
 
 ## Table of Contents
@@ -20,7 +19,7 @@ modified_date: 2024-07-27
 
 ### Preface
 
-This is a mix of advice, data, hypotheses, and whatever else I want. Like the crushes post, but more. I'll give you rough data about my findings, along with my guestimates to certain distributions (like how many people are willing to converse, etc…). If you are to take one piece of advice: *Socialising is a learnable skill, and the best way to learn it is to just do it. Make mistakes. You'll learn.* I am writing this whilst thinking of what my younger self would want.[^1] Take what you may from the post, and enjoy (and check the footnotes if you want; I am quite the yapper).  
+This is a mix of advice, data, hypotheses, and whatever else I want. Like the crushes post, but more. I'll give you rough data about my findings, along with my guestimates to certain distributions (like how many people are willing to converse, etc…). If you are to take one piece of advice: *Socialising is a learnable skill, and the best way to learn it is to just do it. Make mistakes. You'll learn.* I am writing this whilst thinking of what my younger self would want.[^1] Take what you may from the post, and enjoy (and check the footnotes if you want; I am quite the yapper).  IMO, I have matured and this writing style is more honest to my true self.
 
 > I have forsaken being perfectionistic with these posts — it is a lie that leads to inaction.
 
@@ -203,7 +202,8 @@ As an example, during my very first week back, we had a 2 hour tutorial and I wa
 
 **But Anti, what if I mess up somewhere?** Don't worry! If it's a small mistake, I've noticed that live conversations have a really cool property:
 - **They are self-healing.** You can't really mess them up like text convos so long as you are willing to keep putting energy into the conversation (unless you do something really stupid). If you say something and a potential miscommunication happens, you can just… speak more. And laugh a bit. And it gets resolved.  
-Roll with the mistakes, learn from them when you make them. In the conversation above I'm pretty sure there were moments I wasn't sure what to say, but I just vibed it out. And it was still a very favourable talk! It's seriously perplexing how that works but 🤷‍♀️. 
+
+And regardless: Roll with the mistakes, learn from them when you make them. In the conversation above I'm pretty sure there were moments I wasn't sure what to say, but I just vibed it out. And it was still a very favourable talk! It's seriously perplexing how that works but 🤷‍♀️. In the beginning, I definitely made larger mistakes that caused awkward conversation pauses, or just had awkward interactions (admittedly not that many as the embarrassment after is a *great motivator* to get better, but sometimes you guess the vibe wrong and it just gets strange). That's okay, especially as a beginner! Any mistake that does not completely derail your life is one that you use to improve yourself, and hopefully not make that mistake again. You cannot really expect to drastically improve at something without a few minor fallbacks along the way. And at this point, I often times feel as if I can navigate social dynamics smoothly, and in a way *I want to*, following what I wish to do instead of some pre-designed cookie-cutter template. 
 
 <details>
 <summary> <b> An optional (pessimistic) chapter on subtext 😔</b> </summary>
