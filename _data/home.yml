@@ -1,6 +1,6 @@
 project_entries:
   - title:  CodeDuel
-    url: https://github.com/Antimatter543/karpathy-NN-lectures
+    url: https://github.com/Antimatter543/CodeClash
     desc: Full project hosted with AWS EC2 about duelling friends in leetcode, and sabotaging them!
     image: /assets/projects/codeduel.png
     icons:
