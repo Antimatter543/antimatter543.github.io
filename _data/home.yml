@@ -1,5 +1,18 @@
 project_entries:
-  - title: Karpathy's NN Lectures
+  - title:  CodeDuel
+    url: https://github.com/Antimatter543/karpathy-NN-lectures
+    desc: Full project hosted with AWS EC2 about duelling friends in leetcode, and sabotaging them!
+    image: /assets/projects/codeduel.png
+    icons:
+      - python
+      - aws
+      - docker
+      - flask 
+      - vite
+
+
+
+  - title: Karpathy's NN Lectures - MLPs, Wavenet, GPT
     url: https://github.com/Antimatter543/karpathy-NN-lectures
     desc: Neural Networks From Scratch - Starting from bigram up to GPT. Better than any uni ML course I've done.
     image: /assets/projects/karpathy.png
