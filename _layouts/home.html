@@ -14,7 +14,7 @@ layout: default
 
   {{ content }}
 
-
+  {% include projects_scroll.html %}
   {% if site.paginate %}
     {% assign posts = paginator.posts %}
   {% else %}
