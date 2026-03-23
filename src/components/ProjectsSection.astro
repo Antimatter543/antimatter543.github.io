@@ -5,16 +5,22 @@ import ProjectCarousel from './ProjectCarousel.astro';
 <section id="projects" class="projects-section">
   <div class="container">
     <h2 class="section-title">Featured Projects</h2>
+    <div class="header-accent"></div>
     <ProjectCarousel />
     <div class="view-all-projects">
-      <a href="/projects" class="btn btn-large">View All Projects</a>
+      <a href="/projects" class="btn-view-all">
+        View All Projects
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
     </div>
   </div>
 </section>
 
 <style>
   .projects-section {
-    padding: 4rem 0;
+    padding: 6rem 0;
     background-color: var(--color-bg);
   }
 
@@ -26,44 +32,60 @@ import ProjectCarousel from './ProjectCarousel.astro';
 
   .section-title {
     text-align: center;
-    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .header-accent {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    margin: 0 auto 3rem;
+    border-radius: 2px;
   }
 
   .view-all-projects {
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 2.5rem;
   }
 
-  .btn {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    font-size: 0.9rem;
+  .btn-view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 2rem;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
     font-weight: 500;
     text-decoration: none;
     cursor: pointer;
-    transition: all 0.2s ease;
-    background-color: var(--color-bg-card);
-    color: var(--color-text);
-    border: 1px solid var(--color-bg-card);
-  }
-
-  .btn:hover {
-    background-color: var(--color-bg-alt);
-    border-color: var(--color-primary);
-  }
-
-  .btn-large {
-    padding: 0.75rem 2rem;
-    font-size: 1.1rem;
-    background-color: var(--color-bg-card);
+    transition: all 0.35s cubic-bezier(0.19, 1, 0.22, 1);
+    background: rgba(100, 255, 218, 0.08);
     color: var(--primary-color);
-    border-color: var(--color-bg-card);
+    border: 1px solid rgba(100, 255, 218, 0.2);
   }
 
-  .btn-large:hover {
-    background-color: var(--primary-color);
+  [data-theme="light"] .btn-view-all {
+    background: rgba(8, 145, 178, 0.08);
+    border-color: rgba(8, 145, 178, 0.2);
+  }
+
+  .btn-view-all:hover {
+    background: var(--primary-color);
     color: var(--color-bg);
     border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--glow-primary);
+    gap: 0.75rem;
+  }
+
+  .btn-view-all svg {
+    transition: transform 0.3s ease;
+  }
+
+  .btn-view-all:hover svg {
+    transform: translateX(2px);
   }
 </style>

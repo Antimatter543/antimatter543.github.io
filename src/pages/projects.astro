@@ -12,50 +12,71 @@ const technologies = await getAllTechnologies();
 ---
 
 <Layout title="Projects | Antiraedus" description="Browse all of my projects and portfolio work">
-  <main class="projects-page">
+  <div class="projects-page">
     <div class="container">
-      <h1>My Projects</h1>
-      
+      <div class="page-header">
+        <h1 class="page-title">Projects</h1>
+        <p class="page-intro">Things I've built, explored, and shipped.</p>
+        <div class="header-accent"></div>
+      </div>
+
       <div class="projects-filters">
         <div class="filter-group">
           <label for="category-filter">Category</label>
-          <select id="category-filter" class="filter-select">
-            <option value="all">All Categories</option>
-            {categories.map((category) => (
-              <option value={category.toLowerCase()}>{category}</option>
-            ))}
-          </select>
+          <div class="select-wrapper">
+            <select id="category-filter" class="filter-select">
+              <option value="all">All Categories</option>
+              {categories.map((category) => (
+                <option value={category.toLowerCase()}>{category}</option>
+              ))}
+            </select>
+            <svg class="select-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </div>
         </div>
-        
+
         <div class="filter-group">
           <label for="tech-filter">Technology</label>
-          <select id="tech-filter" class="filter-select">
-            <option value="all">All Technologies</option>
-            {technologies.map((tech) => (
-              <option value={tech.toLowerCase()}>{tech}</option>
-            ))}
-          </select>
+          <div class="select-wrapper">
+            <select id="tech-filter" class="filter-select">
+              <option value="all">All Technologies</option>
+              {technologies.map((tech) => (
+                <option value={tech.toLowerCase()}>{tech}</option>
+              ))}
+            </select>
+            <svg class="select-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </div>
         </div>
-        
+
         <div class="filter-group">
           <label for="status-filter">Status</label>
-          <select id="status-filter" class="filter-select">
-            <option value="all">All Statuses</option>
-            <option value="completed">Completed</option>
-            <option value="in-progress">In Progress</option>
-            <option value="planned">Planned</option>
-          </select>
+          <div class="select-wrapper">
+            <select id="status-filter" class="filter-select">
+              <option value="all">All Statuses</option>
+              <option value="completed">Completed</option>
+              <option value="in-progress">In Progress</option>
+              <option value="planned">Planned</option>
+            </select>
+            <svg class="select-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </div>
         </div>
       </div>
 
       <div class="projects-grid" id="projects-grid">
         {allProjects.map((project) => (
-          <div 
-            class="project-card" 
-            data-category={project.data.category.toLowerCase()} 
-            data-techs={project.data.technologies.map(t => t.toLowerCase()).join(' ')} 
+          <div
+            class="project-card"
+            data-category={project.data.category.toLowerCase()}
+            data-techs={project.data.technologies.map(t => t.toLowerCase()).join(' ')}
             data-status={project.data.status}
-          >            <div class="project-image">
+          >
+            <div class="card-glow"></div>
+            <div class="project-image">
               <a href={project.data.hasWriteup ? `/projects/${project.slug}` : (project.data.externalUrl || project.data.liveUrl || project.data.githubUrl || '#')} class="image-link" target={project.data.hasWriteup ? '_self' : '_blank'} rel={project.data.hasWriteup ? '' : 'noopener noreferrer'}>
                 <img src={project.data.image} alt={project.data.imageAlt} />
                 <div class="read-more-overlay">
@@ -68,114 +89,223 @@ const technologies = await getAllTechnologies();
             </div>
             <div class="project-content">
               <h2><a href={project.data.hasWriteup ? `/projects/${project.slug}` : (project.data.externalUrl || project.data.liveUrl || project.data.githubUrl || '#')} class="title-link" target={project.data.hasWriteup ? '_self' : '_blank'} rel={project.data.hasWriteup ? '' : 'noopener noreferrer'}>{project.data.title}</a></h2>
-              <p>{project.data.description}</p>
+              <p class="project-description">{project.data.description}</p>
               <div class="project-tags">
                 {project.data.technologies.map((tech) => (
-                  <span class="tag">{tech}</span>
+                  <span class="tag-pill tag-pill-sm">{tech}</span>
                 ))}
               </div>
               <div class="project-category">
                 <span class="category-label">{project.data.category}</span>
-              </div>              <div class="project-links">
+              </div>
+              <div class="project-links">
                 <a href={project.data.hasWriteup ? `/projects/${project.slug}` : (project.data.externalUrl || project.data.liveUrl || project.data.githubUrl || '#')} class="btn btn-primary" target={project.data.hasWriteup ? '_self' : '_blank'} rel={project.data.hasWriteup ? '' : 'noopener noreferrer'}>
                   {project.data.hasWriteup ? 'Read More' : 'View Project'}
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
                 </a>
                 {project.data.liveUrl && project.data.hasWriteup && (
-                  <a href={project.data.liveUrl} target="_blank" rel="noopener noreferrer" class="btn">
+                  <a href={project.data.liveUrl} target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
                     View Live
                   </a>
                 )}
                 {project.data.githubUrl && project.data.hasWriteup && (
-                  <a href={project.data.githubUrl} target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                  <a href={project.data.githubUrl} target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
                     Source Code
                   </a>
                 )}
               </div>
             </div>
+            <div class="card-hover-line"></div>
           </div>
         ))}
       </div>
     </div>
-  </main>
+  </div>
 </Layout>
 
 <style>
+  /* ---- Page Container ---- */
   .projects-page {
-    padding: 4rem 0;
-  }
-
-  .container {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 6rem auto 4rem;
     padding: 0 2rem;
   }
 
-  h1 {
-    margin-bottom: 2rem;
+  /* ---- Header ---- */
+  .page-header {
     text-align: center;
+    margin-bottom: 3rem;
+    padding-top: 2rem;
   }
 
+  .page-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--color-heading);
+    letter-spacing: -0.02em;
+  }
+
+  .page-intro {
+    font-size: 1.2rem;
+    color: var(--color-text-alt);
+    margin-bottom: 1.5rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .header-accent {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    margin: 0 auto;
+    border-radius: 2px;
+  }
+
+  /* ---- Filters ---- */
   .projects-filters {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
     margin-bottom: 3rem;
-    background-color: var(--color-bg-alt);
-    padding: 1.5rem;
-    border-radius: 8px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 1.5rem 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--glass-shadow);
   }
 
   .filter-group {
     display: flex;
     flex-direction: column;
-    min-width: 220px;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 180px;
   }
 
   .filter-group label {
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    color: var(--color-text);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-dim);
+  }
+
+  .select-wrapper {
+    position: relative;
   }
 
   .filter-select {
-    padding: 0.75rem 1rem;
-    border-radius: 4px;
-    border: 1px solid var(--color-border);
-    background-color: var(--color-bg);
+    width: 100%;
+    padding: 0.65rem 2.5rem 0.65rem 1rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--glass-border);
+    background: rgba(0, 0, 0, 0.2);
     color: var(--color-text);
-    font-size: 1rem;
+    font-size: 0.9rem;
+    font-family: inherit;
     cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  [data-theme="light"] .filter-select {
+    background: rgba(255, 255, 255, 0.5);
   }
 
   .filter-select:focus {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.1);
   }
 
+  [data-theme="light"] .filter-select:focus {
+    box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.1);
+  }
+
+  .filter-select option {
+    background: var(--color-bg);
+    color: var(--color-text);
+  }
+
+  .select-chevron {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--color-text-dim);
+  }
+
+  /* ---- Projects Grid ---- */
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
   }
 
+  /* ---- Project Card ---- */
   .project-card {
-    border-radius: 8px;
+    position: relative;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-color: var(--color-bg-alt);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: var(--glass-shadow);
+    transition: transform 0.35s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.35s cubic-bezier(0.19, 1, 0.22, 1);
     display: flex;
     flex-direction: column;
     height: 100%;
   }
 
   .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+    box-shadow: var(--card-hover-shadow);
   }
 
+  .card-glow {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), var(--secondary-color), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 2;
+  }
+
+  .project-card:hover .card-glow {
+    opacity: 1;
+  }
+
+  .card-hover-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .project-card:hover .card-hover-line {
+    transform: scaleX(1);
+  }
+
+  /* ---- Card Image ---- */
   .project-image {
-    height: 220px;
+    height: 200px;
     position: relative;
   }
 
@@ -183,127 +313,11 @@ const technologies = await getAllTechnologies();
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
   }
 
-  .status-badge {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    padding: 0.3rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    z-index: 2;
-  }
-
-  .status-completed {
-    background-color: #10b981;
-    color: white;
-  }
-
-  .status-in-progress {
-    background-color: #f59e0b;
-    color: white;
-  }
-
-  .status-planned {
-    background-color: #6366f1;
-    color: white;
-  }
-
-
-
-  .project-content {
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-  }
-
-  .project-content h2 {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-  }
-
-  .project-content p {
-    color: var(--color-text-alt);
-    margin-bottom: 1.5rem;
-  }
-
-  .project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .tag {
-    background-color: var(--color-bg);
-    color: var(--color-primary);
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-  }
-
-  .project-category {
-    margin-bottom: 1.25rem;
-  }
-
-  .category-label {
-    display: inline-block;
-    font-size: 0.9rem;
-    color: var(--color-text-alt);
-  }
-
-  .project-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: auto;
-  }
-
-  .btn {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-
-  .btn-primary {
-    background-color: var(--color-bg-card);
-    color: var(--primary-color);
-    border: 1px solid var(--color-bg-card);
-  }
-
-  .btn-primary:hover {
-    background-color: var(--primary-color);
-    color: var(--color-bg);
-    border-color: var(--primary-color);
-  }
-
-  .btn-outline {
-    border: 1px solid var(--color-primary);
-    color: var(--color-primary);
-  }
-
-  .btn-outline:hover {
-    background-color: var(--color-primary);
-    color: white;
-  }
-
-  .btn-secondary {
-    background-color: var(--color-secondary);
-    color: white;
-  }
-
-  .btn-secondary:hover {
-    opacity: 0.9;
+  .project-card:hover .project-image img {
+    transform: scale(1.05);
   }
 
   .image-link {
@@ -319,23 +333,26 @@ const technologies = await getAllTechnologies();
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(10, 10, 26, 0.75);
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.35s cubic-bezier(0.19, 1, 0.22, 1);
+    backdrop-filter: blur(2px);
   }
 
   .read-more-overlay span {
-    padding: 8px 16px;
-    border: 1px solid white;
-    font-weight: 400;
-    font-size: 0.8rem;
-    transform: translateY(20px);
-    transition: transform 0.3s ease;
-    opacity: 0.9;
+    padding: 0.5rem 1.25rem;
+    border: 1px solid rgba(100, 255, 218, 0.4);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    font-size: 0.85rem;
+    transform: translateY(12px);
+    transition: transform 0.35s cubic-bezier(0.19, 1, 0.22, 1);
+    color: var(--primary-color);
+    letter-spacing: 0.03em;
   }
 
   .image-link:hover .read-more-overlay {
@@ -346,24 +363,230 @@ const technologies = await getAllTechnologies();
     transform: translateY(0);
   }
 
-  .title-link {
-    color: inherit;
-    text-decoration: none;
-    transition: color 0.3s ease;
+  /* ---- Status Badges ---- */
+  .status-badge {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    z-index: 2;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
 
-  .title-link:hover {
-    color: var(--color-primary);
+  .status-completed {
+    background: rgba(16, 185, 129, 0.2);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.3);
   }
-  
+
+  .status-in-progress {
+    background: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+  }
+
+  .status-planned {
+    background: rgba(99, 102, 241, 0.2);
+    color: #a5b4fc;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+  }
+
+  [data-theme="light"] .status-completed {
+    background: rgba(16, 185, 129, 0.12);
+    color: #059669;
+    border-color: rgba(16, 185, 129, 0.25);
+  }
+
+  [data-theme="light"] .status-in-progress {
+    background: rgba(245, 158, 11, 0.12);
+    color: #d97706;
+    border-color: rgba(245, 158, 11, 0.25);
+  }
+
+  [data-theme="light"] .status-planned {
+    background: rgba(99, 102, 241, 0.12);
+    color: #4f46e5;
+    border-color: rgba(99, 102, 241, 0.25);
+  }
+
+  /* ---- Card Content ---- */
+  .project-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 0.5rem;
+  }
+
+  .project-content h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+  }
+
+  .title-link {
+    color: var(--color-heading);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .project-card:hover .title-link {
+    color: var(--primary-color);
+  }
+
+  .project-description {
+    color: var(--color-text-alt);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* ---- Tag Pills (matching blog) ---- */
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .tag-pill {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    background: rgba(100, 255, 218, 0.08);
+    border: 1px solid rgba(100, 255, 218, 0.15);
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  [data-theme="light"] .tag-pill {
+    background: rgba(8, 145, 178, 0.08);
+    border-color: rgba(8, 145, 178, 0.15);
+  }
+
+  .tag-pill-sm {
+    padding: 0.15rem 0.6rem;
+    font-size: 0.7rem;
+  }
+
+  /* ---- Category ---- */
+  .project-category {
+    margin-top: 0.25rem;
+  }
+
+  .category-label {
+    display: inline-block;
+    font-size: 0.8rem;
+    color: var(--color-text-dim);
+    font-weight: 500;
+  }
+
+  /* ---- Buttons ---- */
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: auto;
+    padding-top: 0.75rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    border: 1px solid transparent;
+  }
+
+  .btn-primary {
+    background: rgba(100, 255, 218, 0.1);
+    color: var(--primary-color);
+    border-color: rgba(100, 255, 218, 0.2);
+  }
+
+  .btn-primary:hover {
+    background: var(--primary-color);
+    color: var(--color-bg);
+    border-color: var(--primary-color);
+    box-shadow: var(--glow-primary);
+  }
+
+  [data-theme="light"] .btn-primary {
+    background: rgba(8, 145, 178, 0.08);
+    border-color: rgba(8, 145, 178, 0.2);
+  }
+
+  [data-theme="light"] .btn-primary:hover {
+    background: var(--primary-color);
+    color: #ffffff;
+    border-color: var(--primary-color);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--color-text-alt);
+    border-color: var(--glass-border);
+  }
+
+  .btn-ghost:hover {
+    color: var(--color-heading);
+    border-color: var(--color-text-dim);
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  /* ---- Responsive ---- */
   @media (max-width: 768px) {
-    .container {
+    .projects-page {
       padding: 0 1rem;
+      margin-top: 5rem;
     }
-    
+
+    .page-title {
+      font-size: 2.5rem;
+    }
+
+    .page-header {
+      margin-bottom: 2rem;
+    }
+
     .projects-filters {
       flex-direction: column;
       gap: 1rem;
+      padding: 1.25rem;
+    }
+
+    .filter-group {
+      min-width: auto;
+    }
+
+    .projects-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 </style>
@@ -374,26 +597,26 @@ const technologies = await getAllTechnologies();
   const categoryFilter = document.getElementById('category-filter');
   const techFilter = document.getElementById('tech-filter');
   const statusFilter = document.getElementById('status-filter');
-  
+
   function filterProjects() {
     if (!projectsGrid || !categoryFilter || !techFilter || !statusFilter) return;
-    
+
     const selectedCategory = (categoryFilter as HTMLSelectElement).value;
     const selectedTech = (techFilter as HTMLSelectElement).value;
     const selectedStatus = (statusFilter as HTMLSelectElement).value;
-    
+
     const projects = projectsGrid.querySelectorAll('.project-card');
-    
+
     projects.forEach((project) => {
       const element = project as HTMLElement;
       const projectCategory = element.dataset.category || '';
       const projectTechs = element.dataset.techs || '';
       const projectStatus = element.dataset.status || '';
-      
+
       const matchesCategory = selectedCategory === 'all' || projectCategory === selectedCategory;
       const matchesTech = selectedTech === 'all' || projectTechs.includes(selectedTech);
       const matchesStatus = selectedStatus === 'all' || projectStatus === selectedStatus;
-      
+
       if (matchesCategory && matchesTech && matchesStatus) {
         element.style.display = 'block';
       } else {
@@ -401,7 +624,7 @@ const technologies = await getAllTechnologies();
       }
     });
   }
-  
+
   // Add event listeners
   categoryFilter?.addEventListener('change', filterProjects);
   techFilter?.addEventListener('change', filterProjects);

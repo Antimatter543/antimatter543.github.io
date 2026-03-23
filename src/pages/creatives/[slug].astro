@@ -8,9 +8,9 @@ export async function getStaticPaths() {
     // Filter out draft posts in production
     return process.env.NODE_ENV === 'production' ? !data.draft : true;
   });
-  
+
   return creativeEntries.map(entry => ({
-    params: { slug: entry.slug }, 
+    params: { slug: entry.slug },
     props: { entry },
   }));
 }
@@ -25,14 +25,6 @@ const formattedDate = new Intl.DateTimeFormat('en-US', {
   month: 'long',
   day: 'numeric'
 }).format(entry.data.pubDate);
-
-// Category styling
-const categoryColors = {
-  poem: 'linear-gradient(135deg, #ff6b6b, #ee5a52)',
-  story: 'linear-gradient(135deg, #4ecdc4, #44a08d)',
-  quote: 'linear-gradient(135deg, #45b7d1, #2196f3)',
-  thought: 'linear-gradient(135deg, #96ceb4, #54a0ff)'
-};
 ---
 
 <Layout title={`${entry.data.title} | Creatives | Antiraedus`} description={entry.data.description}>
@@ -40,12 +32,15 @@ const categoryColors = {
     <article>
       <div class="container">
         <div class="creative-header">
-          <div class="back-link">
-            <a href="/creatives">← Back to Creatives</a>
-          </div>
-          
+          <a href="/creatives" class="back-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back to Creatives
+          </a>
+
           <div class="creative-meta">
-            <span class="creative-category" style={`background: ${categoryColors[entry.data.category]}`}>
+            <span class={`creative-category cat-${entry.data.category}`}>
               {entry.data.category}
             </span>
             <span class="publish-date">
@@ -54,18 +49,18 @@ const categoryColors = {
               </time>
             </span>
           </div>
-          
+
           <h1>{entry.data.title}</h1>
           <p class="creative-description">{entry.data.description}</p>
         </div>
-        
+
         <div class="creative-content">
           <Content />
         </div>
-        
+
         {entry.data.tags && entry.data.tags.length > 0 && (
-          <div class="creative-tags">
-            <h3>Tags:</h3>
+          <div class="creative-tags-footer">
+            <div class="tags-divider"></div>
             <div class="tag-list">
               {entry.data.tags.map((tag: string) => (
                 <span class="tag">#{tag}</span>
@@ -73,11 +68,21 @@ const categoryColors = {
             </div>
           </div>
         )}
-        
+
         <div class="creative-footer">
           <div class="navigation-links">
-            <a href="/creatives" class="nav-link">← All Creatives</a>
-            <a href="/#contact" class="nav-link">Get in Touch →</a>
+            <a href="/creatives" class="btn btn-back">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+              </svg>
+              All Creatives
+            </a>
+            <a href="/#contact" class="btn btn-ghost">
+              Get in Touch
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
           </div>
         </div>
       </div>
@@ -86,194 +91,368 @@ const categoryColors = {
 </Layout>
 
 <style>
+  /* ---- Layout ---- */
   .creative-post {
-    padding: 2rem 0;
-    margin-top: 6rem;
-    min-height: calc(100vh - 6rem);
+    padding: 4rem 0;
   }
-  
+
   .container {
     max-width: 800px;
     margin: 0 auto;
     padding: 0 2rem;
   }
-  
+
+  /* ---- Back Link ---- */
   .back-link {
-    margin-bottom: 2rem;
-  }
-  
-  .back-link a {
-    color: var(--primary-color);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    color: var(--color-text-dim);
     text-decoration: none;
-    font-size: 0.9rem;
-    transition: color 0.3s ease;
+    margin-bottom: 2rem;
+    transition: color 0.2s ease, gap 0.2s ease;
   }
-  
-  .back-link a:hover {
-    opacity: 0.8;
+
+  .back-link:hover {
+    color: var(--primary-color);
+    gap: 0.6rem;
   }
-  
+
+  /* ---- Header ---- */
   .creative-header {
     margin-bottom: 3rem;
-    text-align: center;
   }
-  
+
   .creative-meta {
     display: flex;
-    justify-content: center;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     flex-wrap: wrap;
   }
-  
+
   .creative-category {
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
+    padding: 0.3rem 0.85rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.05em;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
-  
+
+  .cat-poem {
+    background: rgba(255, 107, 107, 0.15);
+    color: #ff8a8a;
+    border: 1px solid rgba(255, 107, 107, 0.25);
+  }
+
+  .cat-story {
+    background: rgba(78, 205, 196, 0.15);
+    color: #6ee7de;
+    border: 1px solid rgba(78, 205, 196, 0.25);
+  }
+
+  .cat-quote {
+    background: rgba(69, 183, 209, 0.15);
+    color: #7dd3e8;
+    border: 1px solid rgba(69, 183, 209, 0.25);
+  }
+
+  .cat-thought {
+    background: rgba(150, 206, 180, 0.15);
+    color: #a8dfc4;
+    border: 1px solid rgba(150, 206, 180, 0.25);
+  }
+
+  [data-theme="light"] .cat-poem {
+    background: rgba(255, 107, 107, 0.1);
+    color: #dc2626;
+    border-color: rgba(255, 107, 107, 0.2);
+  }
+
+  [data-theme="light"] .cat-story {
+    background: rgba(78, 205, 196, 0.1);
+    color: #0d9488;
+    border-color: rgba(78, 205, 196, 0.2);
+  }
+
+  [data-theme="light"] .cat-quote {
+    background: rgba(69, 183, 209, 0.1);
+    color: #0284c7;
+    border-color: rgba(69, 183, 209, 0.2);
+  }
+
+  [data-theme="light"] .cat-thought {
+    background: rgba(150, 206, 180, 0.1);
+    color: #059669;
+    border-color: rgba(150, 206, 180, 0.2);
+  }
+
   .publish-date {
     color: var(--color-text-dim);
     font-size: 0.9rem;
   }
-  
+
   .creative-header h1 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     margin-bottom: 1rem;
     color: var(--color-heading);
-    line-height: 1.2;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    font-weight: 700;
   }
-  
+
   .creative-description {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     color: var(--color-text-alt);
-    line-height: 1.6;
+    line-height: 1.7;
     max-width: 600px;
-    margin: 0 auto;
   }
-  
+
+  /* ---- Content (matches blog typography) ---- */
   .creative-content {
     line-height: 1.8;
     font-size: 1.1rem;
     color: var(--color-text);
     margin-bottom: 3rem;
   }
-  
-  .creative-content h2 {
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
+
+  .creative-content :global(h1),
+  .creative-content :global(h2),
+  .creative-content :global(h3),
+  .creative-content :global(h4) {
     color: var(--color-heading);
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    line-height: 1.3;
   }
-  
-  .creative-content p {
+
+  .creative-content :global(h2) {
+    font-size: 2rem;
+    font-weight: 700;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .creative-content :global(h3) {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .creative-content :global(p) {
     margin-bottom: 1.5rem;
   }
-  
-  .creative-content blockquote {
-    border-left: 4px solid var(--primary-color);
-    padding-left: 1.5rem;
+
+  .creative-content :global(blockquote) {
+    position: relative;
+    border-left: 3px solid var(--primary-color);
     margin: 2rem 0;
+    padding: 1.25rem 1.5rem;
+    background: linear-gradient(135deg, rgba(100, 255, 218, 0.04), rgba(168, 85, 247, 0.02));
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
     font-style: italic;
-    color: var(--color-text-alt);
-    background: var(--color-bg-alt);
-    padding: 1.5rem;
-    border-radius: 0 8px 8px 0;
   }
-  
-  .creative-content pre {
-    border-radius: 8px;
-    margin: 2rem 0;
-    overflow-x: auto;
+
+  [data-theme="light"] .creative-content :global(blockquote) {
+    background: linear-gradient(135deg, rgba(8, 145, 178, 0.04), rgba(124, 58, 237, 0.02));
   }
-  
-  .creative-content code {
-    background: var(--color-bg-alt);
-    padding: 0.2rem 0.4rem;
+
+  .creative-content :global(blockquote)::before {
+    content: "\201C";
+    position: absolute;
+    top: -0.3rem;
+    left: 0.75rem;
+    font-size: 3rem;
+    color: var(--primary-color);
+    opacity: 0.2;
+    font-family: Georgia, serif;
+    line-height: 1;
+  }
+
+  .creative-content :global(code) {
+    background-color: var(--color-bg-alt);
+    padding: 0.2em 0.4em;
     border-radius: 4px;
     font-size: 0.9em;
-    color: var(--color-text);
+    color: var(--primary-color);
   }
-  
-  .creative-content pre code {
+
+  .creative-content :global(pre) {
+    background-color: var(--color-bg-alt) !important;
+    border-radius: var(--radius-md);
+    margin: 2rem 0;
+    padding: 1.5rem;
+    overflow-x: auto;
+    border: 1px solid var(--color-border);
+  }
+
+  .creative-content :global(pre code) {
     background: none;
     padding: 0;
+    color: inherit;
   }
-  
-  .creative-tags {
+
+  .creative-content :global(img) {
+    max-width: 100%;
+    border-radius: var(--radius-md);
+    margin: 2rem auto;
+    display: block;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .creative-content :global(a) {
+    color: var(--primary-color);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s ease;
+  }
+
+  .creative-content :global(a:hover) {
+    border-bottom-color: var(--primary-color);
+  }
+
+  .creative-content :global(hr) {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+    margin: 3rem 0;
+  }
+
+  /* ---- Tags Footer ---- */
+  .creative-tags-footer {
     margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--color-border);
-    text-align: center;
   }
-  
-  .creative-tags h3 {
-    margin-bottom: 1rem;
-    color: var(--color-heading);
+
+  .tags-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+    margin-bottom: 1.5rem;
   }
-  
+
   .tag-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    justify-content: center;
+    gap: 0.75rem;
   }
-  
+
   .tag {
     display: inline-block;
-    padding: 0.4rem 0.8rem;
-    background: var(--primary-color);
-    color: white;
-    border-radius: 20px;
-    font-size: 0.85rem;
+    padding: 0.4rem 1rem;
+    background: rgba(100, 255, 218, 0.06);
+    border: 1px solid rgba(100, 255, 218, 0.12);
+    border-radius: 100px;
+    color: var(--primary-color);
+    font-size: 0.9rem;
     font-weight: 500;
+    transition: all 0.2s ease;
   }
-  
+
+  [data-theme="light"] .tag {
+    background: rgba(8, 145, 178, 0.06);
+    border-color: rgba(8, 145, 178, 0.12);
+  }
+
+  .tag:hover {
+    background: var(--primary-color);
+    color: var(--color-bg);
+    border-color: var(--primary-color);
+    transform: translateY(-1px);
+  }
+
+  /* ---- Footer Navigation ---- */
   .creative-footer {
-    margin-top: 4rem;
+    margin-top: 3rem;
     padding-top: 2rem;
     border-top: 1px solid var(--color-border);
   }
-  
+
   .navigation-links {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
   }
-  
-  .nav-link {
-    color: var(--primary-color);
-    text-decoration: none;
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-md);
     font-weight: 500;
-    transition: opacity 0.3s ease;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    border: 1px solid transparent;
   }
-  
-  .nav-link:hover {
-    opacity: 0.8;
+
+  .btn-back {
+    background: var(--glass-bg);
+    color: var(--color-text);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
-  
+
+  .btn-back:hover {
+    background: var(--primary-color);
+    color: #ffffff;
+    border-color: var(--primary-color);
+    transform: translateY(-1px);
+    box-shadow: var(--glow-primary);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--color-text-alt);
+    border-color: var(--glass-border);
+  }
+
+  .btn-ghost:hover {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-1px);
+  }
+
+  /* ---- Responsive ---- */
   @media (max-width: 768px) {
     .creative-header h1 {
       font-size: 2rem;
     }
-    
+
     .creative-meta {
       flex-direction: column;
+      align-items: flex-start;
       gap: 0.5rem;
     }
-    
+
     .navigation-links {
       flex-direction: column;
-      gap: 1rem;
-      text-align: center;
     }
-    
+
+    .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
     .container {
       padding: 0 1rem;
+    }
+
+    .creative-content {
+      font-size: 1rem;
+    }
+
+    .creative-content :global(h2) {
+      font-size: 1.5rem;
+    }
+
+    .creative-content :global(blockquote) {
+      padding: 1rem;
+      margin: 1.5rem 0;
     }
   }
 </style>

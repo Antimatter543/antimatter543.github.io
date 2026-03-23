@@ -10,6 +10,7 @@ const featuredProjects = await getFeaturedProjects();
     {featuredProjects.concat(featuredProjects).map((project, index) => (
       <div class="carousel-item" key={`${project.slug}-${index}`}>
         <div class="project-card">
+          <div class="card-glow"></div>
           <div class="project-image">
             <a href={project.data.hasWriteup ? `/projects/${project.slug}` : (project.data.externalUrl || project.data.liveUrl || project.data.githubUrl || '#')} class="image-link" target={project.data.hasWriteup ? '_self' : '_blank'} rel={project.data.hasWriteup ? '' : 'noopener noreferrer'}>
               <img src={project.data.image} alt={project.data.imageAlt} />
@@ -25,18 +26,22 @@ const featuredProjects = await getFeaturedProjects();
             </p>
             <div class="project-tags">
               {project.data.technologies.slice(0, 3).map((tech) => (
-                <span>{tech}</span>
+                <span class="tag-pill">{tech}</span>
               ))}
             </div>
             <div class="project-links">
               <a href={project.data.hasWriteup ? `/projects/${project.slug}` : (project.data.externalUrl || project.data.liveUrl || project.data.githubUrl || '#')} class="btn btn-primary" target={project.data.hasWriteup ? '_self' : '_blank'} rel={project.data.hasWriteup ? '' : 'noopener noreferrer'}>
                 {project.data.hasWriteup ? 'Read More' : 'View Project'}
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
               </a>
               {project.data.liveUrl && project.data.hasWriteup && (
-                <a href={project.data.liveUrl} target="_blank" rel="noopener noreferrer" class="btn">View Live</a>
+                <a href={project.data.liveUrl} target="_blank" rel="noopener noreferrer" class="btn btn-ghost">View Live</a>
               )}
             </div>
           </div>
+          <div class="card-hover-line"></div>
         </div>
       </div>
     ))}
@@ -58,25 +63,63 @@ const featuredProjects = await getFeaturedProjects();
 
   .carousel-item {
     flex: 0 0 350px;
-    margin-right: 2rem;
+    margin-right: 1.5rem;
   }
 
+  /* ---- Card ---- */
   .project-card {
-    border-radius: 8px;
+    position: relative;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-color: var(--color-bg-alt);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: var(--glass-shadow);
+    transition: transform 0.35s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.35s cubic-bezier(0.19, 1, 0.22, 1);
     height: 100%;
     display: flex;
     flex-direction: column;
   }
 
   .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+    box-shadow: var(--card-hover-shadow);
   }
 
+  .card-glow {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), var(--secondary-color), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 2;
+  }
+
+  .project-card:hover .card-glow {
+    opacity: 1;
+  }
+
+  .card-hover-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .project-card:hover .card-hover-line {
+    transform: scaleX(1);
+  }
+
+  /* ---- Image ---- */
   .project-image {
     height: 200px;
     position: relative;
@@ -86,107 +129,11 @@ const featuredProjects = await getFeaturedProjects();
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
   }
 
-  .status-badge {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    padding: 0.3rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    z-index: 2;
-  }
-
-  .status-completed {
-    background-color: #10b981;
-    color: white;
-  }
-
-  .status-in-progress {
-    background-color: #f59e0b;
-    color: white;
-  }
-
-  .status-planned {
-    background-color: #6366f1;
-    color: white;
-  }
-
-
-  .project-content {
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-  }
-
-  .project-content h3 {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    font-size: 1.25rem;
-  }
-
-  .project-content p {
-    color: var(--color-text-alt);
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
-    line-height: 1.4;
-  }
-
-  .project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .project-tags span {
-    background-color: var(--color-bg);
-    color: var(--color-primary);
-    padding: 0.25rem 0.5rem;
-    border-radius: 20px;
-    font-size: 0.7rem;
-  }
-
-  .project-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: auto;
-  }
-
-  .btn {
-    display: inline-block;
-    padding: 0.4rem 0.8rem;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    background-color: var(--color-bg-card);
-    color: var(--color-text);
-    border: 1px solid var(--color-bg-card);
-  }
-
-  .btn:hover {
-    background-color: var(--color-bg-alt);
-    border-color: var(--color-primary);
-  }
-
-  .btn-primary {
-    background-color: var(--color-bg-card);
-    color: var(--primary-color);
-    border-color: var(--color-bg-card);
-  }
-
-  .btn-primary:hover {
-    background-color: var(--primary-color);
-    color: var(--color-bg);
-    border-color: var(--primary-color);
+  .project-card:hover .project-image img {
+    transform: scale(1.05);
   }
 
   .image-link {
@@ -202,23 +149,26 @@ const featuredProjects = await getFeaturedProjects();
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(10, 10, 26, 0.75);
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.35s cubic-bezier(0.19, 1, 0.22, 1);
+    backdrop-filter: blur(2px);
   }
 
   .read-more-overlay span {
-    padding: 6px 12px;
-    border: 1px solid white;
-    font-weight: 400;
-    font-size: 0.7rem;
-    transform: translateY(20px);
-    transition: transform 0.3s ease;
-    opacity: 0.9;
+    padding: 0.4rem 1rem;
+    border: 1px solid rgba(100, 255, 218, 0.4);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    font-size: 0.75rem;
+    transform: translateY(12px);
+    transition: transform 0.35s cubic-bezier(0.19, 1, 0.22, 1);
+    color: var(--primary-color);
+    letter-spacing: 0.03em;
   }
 
   .image-link:hover .read-more-overlay {
@@ -229,16 +179,125 @@ const featuredProjects = await getFeaturedProjects();
     transform: translateY(0);
   }
 
+  /* ---- Content ---- */
+  .project-content {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 0.5rem;
+  }
+
+  .project-content h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+  }
+
   .title-link {
-    color: inherit;
+    color: var(--color-heading);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.2s ease;
   }
 
-  .title-link:hover {
-    color: var(--color-primary);
+  .project-card:hover .title-link {
+    color: var(--primary-color);
   }
 
+  .project-description {
+    color: var(--color-text-alt);
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* ---- Tags ---- */
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+
+  .tag-pill {
+    display: inline-block;
+    padding: 0.15rem 0.6rem;
+    border-radius: 100px;
+    font-size: 0.68rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    background: rgba(100, 255, 218, 0.08);
+    border: 1px solid rgba(100, 255, 218, 0.15);
+  }
+
+  [data-theme="light"] .tag-pill {
+    background: rgba(8, 145, 178, 0.08);
+    border-color: rgba(8, 145, 178, 0.15);
+  }
+
+  /* ---- Buttons ---- */
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 0.5rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.78rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    border: 1px solid transparent;
+  }
+
+  .btn-primary {
+    background: rgba(100, 255, 218, 0.1);
+    color: var(--primary-color);
+    border-color: rgba(100, 255, 218, 0.2);
+  }
+
+  .btn-primary:hover {
+    background: var(--primary-color);
+    color: var(--color-bg);
+    border-color: var(--primary-color);
+    box-shadow: var(--glow-primary);
+  }
+
+  [data-theme="light"] .btn-primary {
+    background: rgba(8, 145, 178, 0.08);
+    border-color: rgba(8, 145, 178, 0.2);
+  }
+
+  [data-theme="light"] .btn-primary:hover {
+    background: var(--primary-color);
+    color: #ffffff;
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--color-text-alt);
+    border-color: var(--glass-border);
+  }
+
+  .btn-ghost:hover {
+    color: var(--color-heading);
+    border-color: var(--color-text-dim);
+  }
+
+  /* ---- Animation ---- */
   @keyframes scroll-right-to-left {
     0% {
       transform: translateX(0);
@@ -248,7 +307,6 @@ const featuredProjects = await getFeaturedProjects();
     }
   }
 
-  /* Pause animation when paused class is applied */
   .carousel-track.paused {
     animation-play-state: paused;
   }
@@ -257,7 +315,7 @@ const featuredProjects = await getFeaturedProjects();
     .carousel-item {
       flex: 0 0 280px;
     }
-    
+
     .carousel-track {
       animation-duration: 40s;
     }
@@ -269,12 +327,12 @@ const featuredProjects = await getFeaturedProjects();
     const carouselContainer = document.querySelector('.carousel-container');
     const carouselTrack = document.querySelector('.carousel-track');
     const projectCards = document.querySelectorAll('.project-card');
-    
+
     if (!carouselContainer || !carouselTrack) return;
-    
+
     let isScrolling = false;
     let scrollTimeout;
-    
+
     // Simple hover pause functionality
     projectCards.forEach(card => {
       card.addEventListener('mouseenter', () => {
@@ -282,39 +340,39 @@ const featuredProjects = await getFeaturedProjects();
           carouselTrack.classList.add('paused');
         }
       });
-      
+
       card.addEventListener('mouseleave', () => {
         if (!isScrolling) {
           carouselTrack.classList.remove('paused');
         }
       });
     });
-    
+
     // Scroll functionality
     carouselContainer.addEventListener('wheel', (e) => {
       e.preventDefault();
-      
+
       // Pause the animation during scrolling
       isScrolling = true;
       carouselTrack.classList.add('paused');
-      
+
       // Get current transform value
       const style = window.getComputedStyle(carouselTrack);
       const matrix = new DOMMatrix(style.transform);
       const currentTranslateX = matrix.m41;
-      
+
       // Calculate new position based on scroll direction
-      const scrollSpeed = 3; // Adjust this to change scroll sensitivity
-      const deltaX = e.deltaY > 0 ? -50 * scrollSpeed : 50 * scrollSpeed; // Scroll down = move left, scroll up = move right
+      const scrollSpeed = 3;
+      const deltaX = e.deltaY > 0 ? -50 * scrollSpeed : 50 * scrollSpeed;
       const newTranslateX = currentTranslateX + deltaX;
-      
+
       // Apply the new transform
       carouselTrack.style.animation = 'none';
       carouselTrack.style.transform = `translateX(${newTranslateX}px)`;
-      
+
       // Clear existing timeout
       clearTimeout(scrollTimeout);
-      
+
       // Resume animation after scrolling stops
       scrollTimeout = setTimeout(() => {
         isScrolling = false;

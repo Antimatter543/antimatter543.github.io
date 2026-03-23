@@ -21,9 +21,12 @@ const creativesGrouped = categories.reduce((acc, category) => {
 
 <Layout title="Creatives | Antiraedus" description="Poems, stories, quotes, and thoughts">
   <div class="creatives-container">
-    <h1 class="creatives-title">Creatives</h1>
-    <p class="creatives-intro">A collection of less strucutred, and more liberal thoughts. Perhaps the seeds of ideas?</p>
-    
+    <div class="page-header">
+      <h1 class="page-title">Creatives</h1>
+      <p class="page-intro">A collection of less structured, and more liberal thoughts. Perhaps the seeds of ideas?</p>
+      <div class="header-accent"></div>
+    </div>
+
     <div class="category-tabs">
       <button class="tab-button active" data-category="all">All</button>
       <button class="tab-button" data-category="poem">Poems</button>
@@ -34,208 +37,369 @@ const creativesGrouped = categories.reduce((acc, category) => {
 
     <div class="creatives-grid" id="creatives-grid">
       {sortedCreatives.map(creative => (
-        <article class="creative-card" data-category={creative.data.category}>
-          <div class="creative-content">
-            <div class="creative-meta">
-              <span class="creative-category">{creative.data.category}</span>
-              <span class="creative-date">{creative.data.pubDate.toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric'
-              })}</span>
-            </div>
-            <h2 class="creative-title">
-              <a href={`/creatives/${creative.slug}`}>{creative.data.title}</a>
-            </h2>
-            <p class="creative-excerpt">{creative.data.description}</p>
-            {creative.data.tags && creative.data.tags.length > 0 && (
-              <div class="creative-tags">
-                {creative.data.tags.map((tag: string) => (
-                  <span class="creative-tag">{tag}</span>
-                ))}
+        <a href={`/creatives/${creative.slug}`} class="card-link">
+          <article class="creative-card" data-category={creative.data.category}>
+            <div class="card-glow"></div>
+            <div class="creative-content">
+              <div class="creative-meta">
+                <span class={`creative-category cat-${creative.data.category}`}>{creative.data.category}</span>
+                <span class="creative-date">{creative.data.pubDate.toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric'
+                })}</span>
               </div>
-            )}
-            <a href={`/creatives/${creative.slug}`} class="read-more">Read more →</a>
-          </div>
-        </article>
+              <h2 class="creative-title">{creative.data.title}</h2>
+              <p class="creative-excerpt">{creative.data.description}</p>
+              {creative.data.tags && creative.data.tags.length > 0 && (
+                <div class="creative-tags">
+                  {creative.data.tags.map((tag: string) => (
+                    <span class="tag-pill tag-pill-sm">{tag}</span>
+                  ))}
+                </div>
+              )}
+              <span class="read-more">
+                Read more
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </span>
+            </div>
+            <div class="card-hover-line"></div>
+          </article>
+        </a>
       ))}
     </div>
   </div>
 </Layout>
 
 <style>
+  /* ---- Container ---- */
   .creatives-container {
     max-width: 1200px;
-    margin: 8rem auto 4rem;
+    margin: 6rem auto 4rem;
     padding: 0 2rem;
   }
-  
-  .creatives-title {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    color: var(--color-heading);
-  }
-  
-  .creatives-intro {
-    font-size: 1.2rem;
-    color: var(--color-text-alt);
+
+  /* ---- Header ---- */
+  .page-header {
+    text-align: center;
     margin-bottom: 3rem;
+    padding-top: 2rem;
   }
 
+  .page-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--color-heading);
+    letter-spacing: -0.02em;
+  }
+
+  .page-intro {
+    font-size: 1.2rem;
+    color: var(--color-text-alt);
+    margin-bottom: 1.5rem;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  .header-accent {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    margin: 0 auto;
+    border-radius: 2px;
+  }
+
+  /* ---- Category Tabs ---- */
   .category-tabs {
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
     flex-wrap: wrap;
+    justify-content: center;
   }
 
   .tab-button {
-    padding: 0.5rem 1rem;
-    border: 2px solid var(--color-border);
-    background: var(--color-bg);
-    border-radius: 20px;
+    padding: 0.35rem 1rem;
+    border: 1px solid rgba(100, 255, 218, 0.15);
+    background: rgba(100, 255, 218, 0.05);
+    border-radius: 100px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.9rem;
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    font-size: 0.85rem;
+    font-weight: 500;
+    font-family: inherit;
     color: var(--color-text-alt);
+  }
+
+  [data-theme="light"] .tab-button {
+    border-color: rgba(8, 145, 178, 0.15);
+    background: rgba(8, 145, 178, 0.05);
   }
 
   .tab-button:hover {
     border-color: var(--primary-color);
-    color: var(--color-heading);
+    color: var(--primary-color);
+    background: rgba(100, 255, 218, 0.1);
+    transform: translateY(-1px);
+  }
+
+  [data-theme="light"] .tab-button:hover {
+    background: rgba(8, 145, 178, 0.1);
   }
 
   .tab-button.active {
     background: var(--primary-color);
     border-color: var(--primary-color);
-    color: white;
+    color: var(--color-bg);
+    box-shadow: var(--glow-primary);
   }
-  
+
+  /* ---- Grid ---- */
   .creatives-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 2rem;
-    justify-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
   }
-  
+
+  .card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  /* ---- Card ---- */
   .creative-card {
-    border-radius: 8px;
+    position: relative;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-color: var(--color-bg-card);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: var(--glass-shadow);
+    transition: transform 0.35s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.35s cubic-bezier(0.19, 1, 0.22, 1);
     height: 100%;
     display: flex;
     flex-direction: column;
-    border: 1px solid var(--color-border);
   }
-  
+
   .creative-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-4px);
+    box-shadow: var(--card-hover-shadow);
   }
-  
-  [data-theme="light"] .creative-card {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+
+  .card-glow {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), var(--secondary-color), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 2;
   }
-  
-  [data-theme="light"] .creative-card:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+
+  .creative-card:hover .card-glow {
+    opacity: 1;
   }
-  
+
+  .card-hover-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .creative-card:hover .card-hover-line {
+    transform: scaleX(1);
+  }
+
+  /* ---- Card Content ---- */
   .creative-content {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    gap: 0.5rem;
   }
 
   .creative-meta {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
   }
 
   .creative-category {
-    background: linear-gradient(135deg, #64ffda, #4ecdc4);
-    color: white;
-    padding: 0.25rem 0.75rem;
-    border-radius: 15px;
-    font-size: 0.75rem;
-    font-weight: 500;
+    padding: 0.2rem 0.65rem;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.05em;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
-  
+
+  .cat-poem {
+    background: rgba(255, 107, 107, 0.15);
+    color: #ff8a8a;
+    border: 1px solid rgba(255, 107, 107, 0.25);
+  }
+
+  .cat-story {
+    background: rgba(78, 205, 196, 0.15);
+    color: #6ee7de;
+    border: 1px solid rgba(78, 205, 196, 0.25);
+  }
+
+  .cat-quote {
+    background: rgba(69, 183, 209, 0.15);
+    color: #7dd3e8;
+    border: 1px solid rgba(69, 183, 209, 0.25);
+  }
+
+  .cat-thought {
+    background: rgba(150, 206, 180, 0.15);
+    color: #a8dfc4;
+    border: 1px solid rgba(150, 206, 180, 0.25);
+  }
+
+  [data-theme="light"] .cat-poem {
+    background: rgba(255, 107, 107, 0.1);
+    color: #dc2626;
+    border-color: rgba(255, 107, 107, 0.2);
+  }
+
+  [data-theme="light"] .cat-story {
+    background: rgba(78, 205, 196, 0.1);
+    color: #0d9488;
+    border-color: rgba(78, 205, 196, 0.2);
+  }
+
+  [data-theme="light"] .cat-quote {
+    background: rgba(69, 183, 209, 0.1);
+    color: #0284c7;
+    border-color: rgba(69, 183, 209, 0.2);
+  }
+
+  [data-theme="light"] .cat-thought {
+    background: rgba(150, 206, 180, 0.1);
+    color: #059669;
+    border-color: rgba(150, 206, 180, 0.2);
+  }
+
   .creative-date {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: var(--color-text-dim);
   }
-  
+
   .creative-title {
-    font-size: 1.5rem;
-    margin-bottom: 0.75rem;
-    line-height: 1.3;
-  }
-  
-  .creative-title a {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.35;
     color: var(--color-heading);
-    text-decoration: none;
-    transition: color 0.3s ease;
+    letter-spacing: -0.01em;
+    transition: color 0.2s ease;
   }
-  
-  .creative-title a:hover {
+
+  .creative-card:hover .creative-title {
     color: var(--primary-color);
   }
-  
+
   .creative-excerpt {
-    color: var(--color-text);
-    margin-bottom: 1rem;
+    color: var(--color-text-alt);
+    margin: 0;
     line-height: 1.6;
+    font-size: 0.9rem;
     flex-grow: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
-  
+
   .creative-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
+    gap: 0.35rem;
   }
-  
-  .creative-tag {
-    background-color: var(--color-bg-alt);
-    padding: 0.25rem 0.75rem;
-    border-radius: 15px;
-    font-size: 0.75rem;
-    color: var(--color-text-alt);
-    border: 1px solid var(--color-border);
-  }
-  
-  .read-more {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: transform 0.3s ease;
+
+  .tag-pill {
     display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    background: rgba(100, 255, 218, 0.08);
+    border: 1px solid rgba(100, 255, 218, 0.15);
   }
-  
-  .read-more:hover {
-    transform: translateX(5px);
+
+  [data-theme="light"] .tag-pill {
+    background: rgba(8, 145, 178, 0.08);
+    border-color: rgba(8, 145, 178, 0.15);
   }
-  
+
+  .tag-pill-sm {
+    padding: 0.15rem 0.6rem;
+    font-size: 0.7rem;
+  }
+
+  .read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-top: auto;
+    padding-top: 0.5rem;
+    transition: gap 0.3s ease;
+  }
+
+  .creative-card:hover .read-more {
+    gap: 0.65rem;
+  }
+
+  /* ---- Responsive ---- */
   @media (max-width: 768px) {
+    .creatives-container {
+      padding: 0 1rem;
+      margin-top: 5rem;
+    }
+
     .creatives-grid {
       grid-template-columns: 1fr;
+      gap: 1rem;
     }
-    
-    .creatives-title {
+
+    .page-title {
       font-size: 2.5rem;
     }
 
+    .page-header {
+      margin-bottom: 2rem;
+    }
+
     .category-tabs {
-      justify-content: center;
+      gap: 0.4rem;
+    }
+
+    .tab-button {
+      font-size: 0.8rem;
+      padding: 0.3rem 0.85rem;
     }
   }
 </style>
@@ -248,17 +412,19 @@ const creativesGrouped = categories.reduce((acc, category) => {
   tabButtons.forEach(button => {
     button.addEventListener('click', () => {
       const category = button.getAttribute('data-category');
-      
+
       // Update active button
       tabButtons.forEach(btn => btn.classList.remove('active'));
       button.classList.add('active');
-      
-      // Filter cards
+
+      // Filter cards — target the parent .card-link wrapper
       creativeCards.forEach(card => {
+        const wrapper = card.closest('.card-link') as HTMLElement;
+        if (!wrapper) return;
         if (category === 'all' || card.getAttribute('data-category') === category) {
-          card.style.display = 'flex';
+          wrapper.style.display = 'block';
         } else {
-          card.style.display = 'none';
+          wrapper.style.display = 'none';
         }
       });
     });
