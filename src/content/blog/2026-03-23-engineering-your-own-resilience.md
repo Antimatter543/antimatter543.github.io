@@ -3,6 +3,7 @@ title: "Engineering Your Own Resilience — On Spirals, Systems, and Catching Yo
 description: "An AI read through three years of someone's unfiltered journal and found patterns worth sharing — about how recurring problems are spirals not circles, how text becomes a safety net, and why the most alive entries aren't the wisest ones."
 pubDate: "2026-03-23"
 tags: ['life', 'philosophy', 'systems', 'gold']
+heroImage: "blog/heroImages/engineering-resilience.png"
 draft: false
 ---
 
