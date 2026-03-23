@@ -42,17 +42,30 @@
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(10, 10, 26, 0.9);
-    backdrop-filter: blur(10px);
+    background-color: rgba(10, 10, 26, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     z-index: 100;
     padding: 1rem 0;
-    transition: background-color 0.3s ease;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
-  
+
+  .navbar.scrolled {
+    background-color: rgba(10, 10, 26, 0.95);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 1px rgba(100, 255, 218, 0.1);
+    border-bottom-color: rgba(100, 255, 218, 0.06);
+  }
+
   [data-theme="light"] .navbar {
-    background-color: rgba(255, 255, 255, 0.95);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  [data-theme="light"] .navbar.scrolled {
+    background-color: rgba(255, 255, 255, 0.97);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    border-bottom-color: rgba(0, 0, 0, 0.08);
   }
   
   .container {
@@ -256,6 +269,18 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    // Navbar scroll shadow
+    const navbar = document.querySelector('.navbar');
+    function updateNavbarScroll() {
+      if (window.scrollY > 20) {
+        navbar?.classList.add('scrolled');
+      } else {
+        navbar?.classList.remove('scrolled');
+      }
+    }
+    window.addEventListener('scroll', updateNavbarScroll, { passive: true });
+    updateNavbarScroll();
+
     // Mobile menu functionality
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
@@ -308,15 +333,23 @@
     function toggleTheme() {
       const currentTheme = html.getAttribute('data-theme');
       const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      
+
+      // Enable transition class for smooth theme switch
+      html.setAttribute('data-theme-transitioning', '');
+
       if (newTheme === 'light') {
         html.setAttribute('data-theme', 'light');
       } else {
         html.removeAttribute('data-theme');
       }
-      
+
       // Save to localStorage
       localStorage.setItem('theme', newTheme);
+
+      // Remove transition class after animation completes
+      setTimeout(() => {
+        html.removeAttribute('data-theme-transitioning');
+      }, 350);
     }
     
     // Add click event listener
