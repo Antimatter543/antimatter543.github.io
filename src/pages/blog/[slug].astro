@@ -257,22 +257,13 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
   }
 
   @media (min-width: 1280px) {
-    .post-layout:has(.toc-sidebar) {
-      grid-template-columns: minmax(0, 800px) 220px;
-      justify-content: center;
-      gap: 3rem;
-    }
-
-    .post-layout:has(.toc-sidebar) .post-main {
-      margin: 0;
-      max-width: 800px;
-      grid-column: 1;
-    }
-
     .toc-sidebar {
       display: block;
-      grid-column: 2;
-      position: relative;
+      position: absolute;
+      right: 2rem;
+      top: 0;
+      bottom: 0;
+      width: 200px;
       opacity: 0;
       transform: translateY(10px);
       transition: opacity 0.3s ease, transform 0.3s ease;
@@ -806,9 +797,4 @@ const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
     }
   }
 
-  @media (min-width: 769px) and (max-width: 1279px) {
-    .post-main {
-      max-width: 800px;
-    }
-  }
 </style>
