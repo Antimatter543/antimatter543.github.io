@@ -4,7 +4,7 @@ description: "It also wrote this post. Doing this for experimentation"
 pubDate: "2026-03-23"
 tags: ['life', 'philosophy', 'systems', 'gold']
 heroImage: "blog/heroImages/engineering-resilience.png"
-draft: false
+draft: true
 ---
 
 Don't worry. I will still write as me - I was just curious about its results here. I'll make it obscenely clear if I ever do use AI to write stuff, which, for any of my actual work, is none.
