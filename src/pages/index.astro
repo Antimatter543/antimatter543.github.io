@@ -3,12 +3,36 @@ import Layout from '../layouts/Layout.astro';
 import HeroSection from '../components/HeroSection.astro';
 import AboutSection from '../components/AboutSection.astro';
 import ProjectsSection from '../components/ProjectsSection.astro';
+import WritingSection from '../components/WritingSection.astro';
 import ContactSection from '../components/ContactSection.astro';
+import StructuredData from '../components/StructuredData.astro';
+
+const siteUrl = Astro.site?.toString() ?? 'https://antimatter543.github.io/';
+const profileImage = new URL('/profile-top.jpg', siteUrl).toString();
+
+const structuredData = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'Person',
+			name: 'Antiraedus',
+			url: siteUrl,
+			image: profileImage,
+		},
+		{
+			'@type': 'WebSite',
+			name: 'Antiraedus',
+			url: siteUrl,
+		},
+	],
+};
 ---
 
 <Layout title="Antiraedus | Portfolio" description="Personal portfolio website showcasing projects and blog content">
+	<StructuredData data={structuredData} />
 	<HeroSection />
 	<AboutSection />
 	<ProjectsSection />
+	<WritingSection />
 	<ContactSection />
 </Layout>

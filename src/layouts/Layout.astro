@@ -5,12 +5,26 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  publishedTime?: string;
+  tags?: string[];
 }
 
-const { 
-  title = "Antiraedus | Portfolio", 
-  description = "Personal portfolio website featuring projects, blogs, and more." 
+const {
+  title = "Antiraedus | Portfolio",
+  description = "Personal portfolio website featuring projects, blogs, and more.",
+  image = "/profile-top.jpg",
+  type = "website",
+  publishedTime,
+  tags = [],
 } = Astro.props;
+
+// Absolute canonical URL for this page
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// Resolve the OG/Twitter image to an absolute URL against the site origin
+const imageURL = new URL(image, Astro.site).toString();
 ---
 
 <!doctype html>
@@ -21,6 +35,34 @@ const {
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
+		<meta name="author" content="Antiraedus" />
+
+		<!-- Canonical -->
+		<link rel="canonical" href={canonicalURL} />
+
+		<!-- Open Graph -->
+		<meta property="og:type" content={type} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:site_name" content="Antiraedus" />
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:image" content={imageURL} />
+		<meta property="og:image:alt" content={title} />
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={imageURL} />
+
+		{type === 'article' && publishedTime && (
+			<meta property="article:published_time" content={publishedTime} />
+		)}
+		{type === 'article' && tags.map((tag) => (
+			<meta property="article:tag" content={tag} />
+		))}
+
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">

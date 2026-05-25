@@ -32,7 +32,7 @@ const endDate = entry.data.endDate ? formatProjectDate(entry.data.endDate) : 'Pr
 const duration = getProjectDuration(entry.data.startDate, entry.data.endDate);
 ---
 
-<Layout title={`${entry.data.title} | Projects | Antiraedus`} description={entry.data.description}>
+<Layout title={`${entry.data.title} | Projects | Antiraedus`} description={entry.data.description} image={entry.data.image}>
   <main class="project-detail">
     <article>
       <div class="container">
