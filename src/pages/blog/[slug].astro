@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Comments from '../../components/Comments.astro';
+import StructuredData from '../../components/StructuredData.astro';
 
 // Generate static paths for all blog posts
 export async function getStaticPaths() {
@@ -34,9 +35,45 @@ const readingTime = Math.max(1, Math.ceil(words / wordsPerMinute));
 
 // Filter headings for sidebar TOC (h2 and h3 only)
 const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
+
+// SEO: default OG image when the post has no hero image
+const defaultImage = '/profile-top.jpg';
+const ogImage = entry.data.heroImage ?? defaultImage;
+
+// Canonical URL for this post (used in JSON-LD)
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+const absoluteImage = new URL(ogImage, Astro.site).toString();
+
+// JSON-LD BlogPosting structured data
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: entry.data.title,
+  description: entry.data.description,
+  datePublished: entry.data.pubDate.toISOString(),
+  dateModified: (entry.data.updatedDate ?? entry.data.pubDate).toISOString(),
+  author: {
+    '@type': 'Person',
+    name: 'Antiraedus',
+  },
+  ...(entry.data.heroImage ? { image: absoluteImage } : {}),
+  url: canonicalURL,
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': canonicalURL,
+  },
+};
 ---
 
-<Layout title={`${entry.data.title} | Blog | Antiraedus`} description={entry.data.description}>
+<Layout
+  title={`${entry.data.title} | Blog | Antiraedus`}
+  description={entry.data.description}
+  image={ogImage}
+  type="article"
+  publishedTime={entry.data.pubDate.toISOString()}
+  tags={entry.data.tags}
+>
+  <StructuredData data={structuredData} />
   <!-- Reading Progress Bar -->
   <div class="progress-bar-container">
     <div class="progress-bar" id="reading-progress"></div>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://antimatter543.github.io/sitemap-index.xml

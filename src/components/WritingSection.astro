@@ -1,0 +1,489 @@
+---
+import { getCollection } from 'astro:content';
+
+// Get all blog posts, filter out drafts
+const posts = await getCollection('blog', ({ data }) => {
+  return !data.draft;
+});
+
+// Sort posts by publication date (newest first)
+const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Calculate reading time from word count
+function getReadingTime(body: string): number {
+  const wordsPerMinute = 200;
+  const words = body.trim().split(/\s+/).length;
+  return Math.max(1, Math.ceil(words / wordsPerMinute));
+}
+
+// Featured (latest) + up to 3 in the grid
+const [featuredPost, ...remainingPosts] = sortedPosts;
+const gridPosts = remainingPosts.slice(0, 3);
+---
+
+{featuredPost && (
+  <section id="writing" class="writing-section">
+    <div class="container">
+      <h2 class="section-title">Latest Writing</h2>
+      <div class="header-accent"></div>
+
+      {/* Featured Post — Latest */}
+      <a href={`/blog/${featuredPost.slug}`} class="featured-card-link">
+        <article class="featured-card">
+          <div class="featured-glow"></div>
+          {featuredPost.data.heroImage && (
+            <div class="featured-image-wrap">
+              <img src={featuredPost.data.heroImage} alt={featuredPost.data.title} />
+            </div>
+          )}
+          <div class="featured-content">
+            <div class="featured-label">Latest Post</div>
+            <h3 class="featured-title">{featuredPost.data.title}</h3>
+            <div class="featured-meta">
+              <time datetime={featuredPost.data.pubDate.toISOString()}>
+                {featuredPost.data.pubDate.toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </time>
+              <span class="meta-separator">&middot;</span>
+              <span>{getReadingTime(featuredPost.body)} min read</span>
+            </div>
+            <p class="featured-excerpt">{featuredPost.data.description}</p>
+            <div class="featured-tags">
+              {featuredPost.data.tags && featuredPost.data.tags.map((tag: string) => (
+                <span class="tag-pill">{tag}</span>
+              ))}
+            </div>
+            <span class="read-more-btn">
+              Read Article
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </span>
+          </div>
+        </article>
+      </a>
+
+      {/* Post Grid */}
+      {gridPosts.length > 0 && (
+        <div class="posts-grid">
+          {gridPosts.map((post) => (
+            <a href={`/blog/${post.slug}`} class="card-link">
+              <article class="post-card">
+                <div class="card-body">
+                  <div class="card-meta">
+                    <time datetime={post.data.pubDate.toISOString()}>
+                      {post.data.pubDate.toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric'
+                      })}
+                    </time>
+                    <span class="meta-separator">&middot;</span>
+                    <span>{getReadingTime(post.body)} min read</span>
+                  </div>
+                  <h3 class="card-title">{post.data.title}</h3>
+                  <p class="card-excerpt">{post.data.description}</p>
+                  <div class="card-tags">
+                    {post.data.tags && post.data.tags.map((tag: string) => (
+                      <span class="tag-pill tag-pill-sm">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+                <div class="card-hover-line"></div>
+              </article>
+            </a>
+          ))}
+        </div>
+      )}
+
+      <div class="view-all-writing">
+        <a href="/blog" class="btn-view-all">
+          Read the blog
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .writing-section {
+    padding: 6rem 0;
+    background-color: var(--color-bg);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .header-accent {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    margin: 0 auto 3rem;
+    border-radius: 2px;
+  }
+
+  /* ---- Featured Post ---- */
+  .featured-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    margin-bottom: 2rem;
+  }
+
+  .featured-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: var(--glass-shadow);
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    min-height: 320px;
+  }
+
+  /* When no image, featured card is single column */
+  .featured-card:not(:has(.featured-image-wrap)) {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--card-hover-shadow);
+  }
+
+  .featured-glow {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), var(--secondary-color), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .featured-card:hover .featured-glow {
+    opacity: 1;
+  }
+
+  .featured-image-wrap {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .featured-image-wrap img {
+    max-width: 100%;
+    max-height: 320px;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .featured-card:hover .featured-image-wrap img {
+    transform: scale(1.03);
+  }
+
+  .featured-content {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .featured-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--primary-color);
+  }
+
+  .featured-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--color-heading);
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .featured-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--color-text-dim);
+  }
+
+  .meta-separator {
+    opacity: 0.5;
+  }
+
+  .featured-excerpt {
+    font-size: 1rem;
+    color: var(--color-text-alt);
+    line-height: 1.7;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .featured-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .read-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-top: 0.5rem;
+    transition: gap 0.3s ease;
+  }
+
+  .featured-card:hover .read-more-btn {
+    gap: 0.75rem;
+  }
+
+  /* ---- Tag Pills ---- */
+  .tag-pill {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    background: rgba(100, 255, 218, 0.08);
+    border: 1px solid rgba(100, 255, 218, 0.15);
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  [data-theme="light"] .tag-pill {
+    background: rgba(8, 145, 178, 0.08);
+    border-color: rgba(8, 145, 178, 0.15);
+  }
+
+  .tag-pill-sm {
+    padding: 0.15rem 0.6rem;
+    font-size: 0.7rem;
+  }
+
+  /* ---- Post Grid ---- */
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .post-card {
+    position: relative;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: var(--glass-shadow);
+    transition: transform 0.35s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.35s cubic-bezier(0.19, 1, 0.22, 1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .post-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--card-hover-shadow);
+  }
+
+  .card-hover-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .post-card:hover .card-hover-line {
+    transform: scaleX(1);
+  }
+
+  .card-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    flex: 1;
+  }
+
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    color: var(--color-text-dim);
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--color-heading);
+    margin: 0;
+    letter-spacing: -0.01em;
+    transition: color 0.2s ease;
+  }
+
+  .post-card:hover .card-title {
+    color: var(--primary-color);
+  }
+
+  .card-excerpt {
+    font-size: 0.9rem;
+    color: var(--color-text-alt);
+    line-height: 1.6;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: auto;
+    padding-top: 0.5rem;
+  }
+
+  /* ---- View All Button ---- */
+  .view-all-writing {
+    text-align: center;
+    margin-top: 2.5rem;
+  }
+
+  .btn-view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 2rem;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.19, 1, 0.22, 1);
+    background: rgba(100, 255, 218, 0.08);
+    color: var(--primary-color);
+    border: 1px solid rgba(100, 255, 218, 0.2);
+  }
+
+  [data-theme="light"] .btn-view-all {
+    background: rgba(8, 145, 178, 0.08);
+    border-color: rgba(8, 145, 178, 0.2);
+  }
+
+  .btn-view-all:hover {
+    background: var(--primary-color);
+    color: var(--color-bg);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--glow-primary);
+    gap: 0.75rem;
+  }
+
+  .btn-view-all svg {
+    transition: transform 0.3s ease;
+  }
+
+  .btn-view-all:hover svg {
+    transform: translateX(2px);
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 768px) {
+    .writing-section {
+      padding: 4rem 0;
+    }
+
+    .container {
+      padding: 0 1rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .featured-card {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .featured-image-wrap {
+      height: 220px;
+      padding: 1.5rem;
+    }
+
+    .featured-content {
+      padding: 1.5rem;
+    }
+
+    .featured-title {
+      font-size: 1.4rem;
+    }
+
+    .posts-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .posts-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
