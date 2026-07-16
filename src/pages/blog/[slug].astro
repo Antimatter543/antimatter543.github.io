@@ -302,22 +302,21 @@ const structuredData = {
       max-width: 1180px;
     }
 
+    /* Both items share row 1 so the aside stretches to the full article
+       height — giving the sticky TOC nav room to stay pinned while the
+       reader scrolls through the whole post (the previous bug: the aside
+       was only as tall as the TOC itself, so it scrolled away at the top). */
     .post-layout:has(.toc-sidebar) .post-main {
       grid-column: 1;
+      grid-row: 1;
       min-width: 0;
     }
 
     .toc-sidebar {
       display: block;
       grid-column: 2;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-
-    .toc-sidebar.visible {
-      opacity: 1;
-      transform: translateY(0);
+      grid-row: 1;
+      align-self: stretch;
     }
 
     .toc-nav {
