@@ -1,26 +1,30 @@
 ---
-title: "Soulsync – Mood Tracker"
-description: "A minimalist, data-driven mood tracking app that transforms your emotional awareness with powerful visualizations and activity impact analysis."
-image: "/images/projects/soulsync.webp"
-imageAlt: "Soulsync mood tracker app screenshots"
-technologies: ["Expo", "React Native", "SQLite", "Android"]
+title: "SoulSync – Mood Tracker"
+description: "A privacy-first, open-source mood tracker. 10-point mood scale, rigorous activity-impact correlations, plain-language insights, and health-data (heart rate / HRV) correlation — all 100% on-device. No account, no cloud, no tracking."
+image: "/images/projects/soulsync-feature.png"
+imageAlt: "SoulSync mood tracker — a private mood tracker, your data never leaves your phone"
+technologies: ["Expo SDK 56", "React Native", "TypeScript", "SQLite", "GitHub Actions", "Android"]
 hasWriteup: false
-externalUrl: "https://play.google.com/store/apps/details?id=com.raeduslabs.soulsync"
+externalUrl: "https://play.google.com/store/apps/details?id=com.raeduslabs.soulsyncapp"
+liveUrl: "https://play.google.com/store/apps/details?id=com.raeduslabs.soulsyncapp"
+githubUrl: "https://github.com/Antimatter543/mood-tracker"
 featured: true
 status: "completed"
 startDate: "2025-03-24"
 category: "Mobile App"
 ---
 
-**Soulsync** is a minimalist, data-driven mood tracking app designed to help you understand what truly impacts your wellbeing.  
-Log your mood, track activities, and view detailed analytics that uncover emotional trends.
+**SoulSync** is a privacy-first mood tracker built with React Native and Expo — now **fully open source (GPL-3.0)** and rebuilt from the ground up. Log your mood, attach activities, notes and photos, and let the app surface honest, plain-language patterns from *your own* data. Everything stays on your device: no accounts, no cloud, no tracking.
+
+📖 Read the deep-dive on how it's built: [Inside SoulSync — Architecture & the Free CI Release Pipeline](/blog/soulsync-architecture-and-cicd)
 
 ## Features
-- 📊 **Quick Mood Logging** – Capture your feelings in seconds
-- 📈 **Activity Impact Analysis** – See which activities boost or lower your mood
-- 📒 **Journal Notes** – Add context to your emotions
-- 🎨 **Custom Activities** – Create and organize with custom icons
-- 🌙 **Dark & Light Themes** – Distraction-free experience
-- 🔒 **Privacy First** – All data stays on your device
+- 📊 **10-point mood scale** – High/low precision modes, backdate entries, daily reminders
+- 📈 **Rigorous statistics** – With/without activity correlation, day-of-week patterns, month-over-month comparison, heatmaps
+- ❤️ **Health-data correlation** – Correlate mood against heart rate, resting HR and HRV with real Pearson *r*, *p*-value and sample size
+- 🧠 **Insights tab** – Plain-language patterns discovered from your own history
+- 🎨 **5 themes** – Dark, Light, Cherry Blossom, Midnight Blue, Forest
+- 🔒 **100% local** – SQLite on-device; JSON import/export for full data portability
+- 🛠️ **Open source** – 603 passing tests, TypeScript strict, free automated APK/AAB release pipeline
 
-Perfect for building emotional awareness, understanding mood patterns, and making data-backed wellbeing decisions.
+Built for anyone who wants real emotional self-awareness without handing their most private data to a company.
