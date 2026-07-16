@@ -5,6 +5,7 @@ pubDate: "2026-07-16"
 tags: ['projects', 'engineering', 'open-source', 'react-native', 'ci-cd']
 heroImage: "/images/projects/soulsync-feature.png"
 draft: false
+hideFromLatest: true
 ---
 
 I rebuilt [**SoulSync**](https://play.google.com/store/apps/details?id=com.raeduslabs.soulsyncapp) from the ground up and made it **fully open source** ([GPL-3.0, on GitHub](https://github.com/Antimatter543/mood-tracker)). It's a privacy-first mood tracker: you log how you feel, attach activities and notes, and it hands back honest, plain-language patterns from *your own* data. Nothing ever leaves your phone — no account, no cloud, no analytics.

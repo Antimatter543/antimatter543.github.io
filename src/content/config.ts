@@ -14,6 +14,7 @@ const projectsCollection = defineCollection({
     externalUrl: z.string().url().optional(),
     liveUrl: z.string().url().optional(),
     githubUrl: z.string().url().optional(),
+    blogUrl: z.string().optional(),
     featured: z.boolean().default(false),
     status: z.enum(['completed', 'in-progress', 'planned']),
     startDate: z.string().transform((str) => new Date(str)),
@@ -33,6 +34,7 @@ const blogCollection = defineCollection({
     heroImage: z.string().optional(),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
+    hideFromLatest: z.boolean().default(false),
   }),
 });
 

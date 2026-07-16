@@ -1,9 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 
-// Get all blog posts, filter out drafts
+// Get all blog posts, filter out drafts and any explicitly hidden from this section
 const posts = await getCollection('blog', ({ data }) => {
-  return !data.draft;
+  return !data.draft && !data.hideFromLatest;
 });
 
 // Sort posts by publication date (newest first)

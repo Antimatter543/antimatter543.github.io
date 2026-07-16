@@ -294,13 +294,22 @@ const structuredData = {
   }
 
   @media (min-width: 1280px) {
+    /* Only widen to two columns when a TOC actually exists, so TOC-less
+       posts keep their centered single-column layout. */
+    .post-layout:has(.toc-sidebar) {
+      grid-template-columns: minmax(0, 1fr) 200px;
+      column-gap: 3rem;
+      max-width: 1180px;
+    }
+
+    .post-layout:has(.toc-sidebar) .post-main {
+      grid-column: 1;
+      min-width: 0;
+    }
+
     .toc-sidebar {
       display: block;
-      position: absolute;
-      right: 2rem;
-      top: 0;
-      bottom: 0;
-      width: 200px;
+      grid-column: 2;
       opacity: 0;
       transform: translateY(10px);
       transition: opacity 0.3s ease, transform 0.3s ease;

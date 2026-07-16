@@ -8,6 +8,7 @@ hasWriteup: false
 externalUrl: "https://play.google.com/store/apps/details?id=com.raeduslabs.soulsyncapp"
 liveUrl: "https://play.google.com/store/apps/details?id=com.raeduslabs.soulsyncapp"
 githubUrl: "https://github.com/Antimatter543/mood-tracker"
+blogUrl: "/blog/soulsync-architecture-and-cicd"
 featured: true
 status: "completed"
 startDate: "2025-03-24"
