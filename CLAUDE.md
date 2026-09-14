@@ -25,14 +25,15 @@ The site uses Astro's content collections system for structured content:
 - **Content Schema** (`src/content/config.ts`): Zod schemas defining the structure and validation for both collections
 
 ### Page Structure
-- `src/pages/index.astro`: Main homepage with hero, about, projects, and contact sections
+- `src/pages/index.astro`: Main homepage (hero, apps, latest writing, about, projects, contact)
 - `src/pages/blog.astro`: Blog listing page
 - `src/pages/projects.astro`: Projects showcase page
 - `src/pages/blog/[slug].astro`: Dynamic blog post pages
 - `src/pages/projects/[slug].astro`: Dynamic project detail pages
 
 ### Components
-- `src/components/`: Reusable Astro components for sections (Hero, About, Projects, Contact, Navbar, Footer)
+- `src/components/`: Reusable Astro components for sections (Hero, Apps, Writing, About, Projects, Contact, Navbar, Footer)
+  - `AppsSection.astro`: Homepage showcase for the shipped Android apps (Nudge, SoulSync). Card copy (tagline, badges, the "why" quote) is defined in the component's frontmatter, while images and links are pulled from the projects collection via `getEntry` so they stay single-sourced with the project pages.
 - `src/layouts/`: Base layouts including main Layout.astro with global styles and metadata
   - `src/layouts/BlogPost.astro`: Legacy blog post layout (not currently used)
 
