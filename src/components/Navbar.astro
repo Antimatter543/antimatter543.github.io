@@ -16,7 +16,6 @@
     </button>
     <div class="nav-links">
       <a href="/#home">Home</a>
-      <a href="/#apps">Apps</a>
       <a href="/#about">About</a>
       <a href="/#projects">Projects</a>
       <a href="/blog">Blog</a>
@@ -58,12 +57,12 @@
     border-bottom-color: rgba(100, 255, 218, 0.06);
   }
 
-  [data-theme="light"] .navbar {
+  :global([data-theme="light"]) .navbar {
     background-color: rgba(255, 255, 255, 0.9);
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   }
 
-  [data-theme="light"] .navbar.scrolled {
+  :global([data-theme="light"]) .navbar.scrolled {
     background-color: rgba(255, 255, 255, 0.97);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
     border-bottom-color: rgba(0, 0, 0, 0.08);
@@ -98,11 +97,11 @@
     transition: all 0.3s ease;
   }
   
-  [data-theme="light"] .logo a {
+  :global([data-theme="light"]) .logo a {
     color: var(--color-heading);
   }
   
-  [data-theme="light"] .profile-pic {
+  :global([data-theme="light"]) .profile-pic {
     border-color: rgba(0, 0, 0, 0.2);
   }
   
@@ -119,7 +118,7 @@
     transition: color 0.3s ease;
   }
   
-  [data-theme="light"] .nav-links a {
+  :global([data-theme="light"]) .nav-links a {
     color: var(--color-text);
   }
   
@@ -142,7 +141,7 @@
     color: #ffffff;
   }
   
-  [data-theme="light"] .theme-toggle {
+  :global([data-theme="light"]) .theme-toggle {
     border-color: rgba(0, 0, 0, 0.2);
     color: var(--color-text);
   }
@@ -178,12 +177,12 @@
   }
   
   /* Light mode - show moon icon */
-  [data-theme="light"] .sun-icon {
+  :global([data-theme="light"]) .sun-icon {
     opacity: 0;
     transform: rotate(-180deg);
   }
   
-  [data-theme="light"] .moon-icon {
+  :global([data-theme="light"]) .moon-icon {
     opacity: 1;
     transform: rotate(0deg);
   }
@@ -206,7 +205,7 @@
     transform-origin: center;
   }
 
-  [data-theme="light"] .hamburger-line {
+  :global([data-theme="light"]) .hamburger-line {
     background-color: var(--color-text);
   }
 
@@ -244,7 +243,7 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    [data-theme="light"] .nav-links {
+    :global([data-theme="light"]) .nav-links {
       background-color: rgba(255, 255, 255, 0.95);
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }

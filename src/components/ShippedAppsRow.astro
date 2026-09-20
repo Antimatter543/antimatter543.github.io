@@ -4,8 +4,10 @@ import { getEntry } from 'astro:content';
 const nudge = await getEntry('projects', 'nudge');
 const soulsync = await getEntry('projects', 'soulsync');
 
-// Presentation copy lives here; links and images stay single-sourced from the
-// projects collection so they never drift out of sync with the project pages.
+// Rendered as the "shipped apps" row inside Featured Projects (two larger
+// cards under the Astraedus showcase). Presentation copy lives here; links and
+// images stay single-sourced from the projects collection so they never drift
+// out of sync with the project pages.
 const apps = [
   {
     entry: nudge,
@@ -32,15 +34,15 @@ const apps = [
 ].filter((app) => app.entry);
 ---
 
-<section id="apps" class="apps-section">
-  <div class="container">
-    <h2 class="section-title">Apps I've Shipped</h2>
-    <div class="header-accent"></div>
-    <p class="section-intro">
+<div id="apps" class="apps-row">
+  <div class="row-header">
+    <span class="row-label">Apps I've Shipped</span>
+    <p class="row-intro">
       Two Android apps, both free and both open source, built because I wanted them to exist and wanted everyone to be able to access this.
     </p>
+  </div>
 
-    <div class="apps-grid">
+  <div class="apps-grid">
       {apps.map((app) => (
         <article class={`app-card accent-${app.accent}`}>
           <div class="app-glow"></div>
@@ -108,43 +110,47 @@ const apps = [
           </div>
         </article>
       ))}
-    </div>
   </div>
-</section>
+</div>
 
 <style>
-  .apps-section {
-    padding: 6rem 0;
-    background-color: var(--color-bg);
+  .apps-row {
+    margin-bottom: 3.5rem;
   }
 
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-
-  .section-title {
+  /* ---- Row header: a quiet label with flanking hairlines ---- */
+  .row-header {
     text-align: center;
-    font-size: 2.5rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin-bottom: 1rem;
+    margin-bottom: 1.75rem;
   }
 
-  .header-accent {
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    margin: 0 auto 1.75rem;
-    border-radius: 2px;
+  .row-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-text-alt);
   }
 
-  .section-intro {
+  .row-label::before,
+  .row-label::after {
+    content: '';
+    width: 48px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-text-dim));
+  }
+
+  .row-label::after {
+    background: linear-gradient(90deg, var(--color-text-dim), transparent);
+  }
+
+  .row-intro {
     max-width: 640px;
-    margin: 0 auto 3rem;
-    text-align: center;
-    font-size: 1.05rem;
+    margin: 0.85rem auto 0;
+    font-size: 1rem;
     line-height: 1.7;
     color: var(--color-text-alt);
   }
@@ -204,7 +210,7 @@ const apps = [
     line-height: 0;
   }
 
-  [data-theme="light"] .app-banner {
+  :global([data-theme="light"]) .app-banner {
     background: rgba(0, 0, 0, 0.04);
   }
 
@@ -265,7 +271,7 @@ const apps = [
     border: 1px solid var(--color-border);
   }
 
-  [data-theme="light"] .badge {
+  :global([data-theme="light"]) .badge {
     background: rgba(0, 0, 0, 0.03);
   }
 
@@ -276,7 +282,7 @@ const apps = [
     font-weight: 600;
   }
 
-  [data-theme="light"] .badge-lead {
+  :global([data-theme="light"]) .badge-lead {
     background: rgba(234, 88, 12, 0.08);
     border-color: rgba(234, 88, 12, 0.25);
   }
@@ -307,7 +313,7 @@ const apps = [
   }
 
   /* Same band needs less opacity to carry on the light card. */
-  [data-theme="light"] .app-why :global(em) {
+  :global([data-theme="light"]) .app-why :global(em) {
     background: linear-gradient(transparent 65%, rgba(234, 88, 12, 0.18) 65%);
   }
 
@@ -367,7 +373,7 @@ const apps = [
     border: 1px solid rgba(100, 255, 218, 0.2);
   }
 
-  [data-theme="light"] .btn-ghost {
+  :global([data-theme="light"]) .btn-ghost {
     background: rgba(8, 145, 178, 0.06);
     border-color: rgba(8, 145, 178, 0.2);
   }
@@ -388,18 +394,6 @@ const apps = [
   }
 
   @media (max-width: 768px) {
-    .apps-section {
-      padding: 4rem 0;
-    }
-
-    .container {
-      padding: 0 1rem;
-    }
-
-    .section-title {
-      font-size: 2rem;
-    }
-
     .app-body {
       padding: 1.35rem;
     }

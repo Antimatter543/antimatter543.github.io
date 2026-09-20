@@ -1,12 +1,23 @@
 ---
+import AstraedusShowcase from './AstraedusShowcase.astro';
+import ShippedAppsRow from './ShippedAppsRow.astro';
 import ProjectGrid from './ProjectGrid.astro';
+
+// Nudge and SoulSync get the larger "shipped apps" cards above the grid, so
+// keep them out of the regular grid to avoid showing them twice.
+const SHOWCASED_SLUGS = ['nudge', 'soulsync'];
 ---
 
 <section id="projects" class="projects-section">
   <div class="container">
     <h2 class="section-title">Featured Projects</h2>
     <div class="header-accent"></div>
-    <ProjectGrid />
+    <AstraedusShowcase />
+    <ShippedAppsRow />
+    <div class="row-header">
+      <span class="row-label">More Projects</span>
+    </div>
+    <ProjectGrid exclude={SHOWCASED_SLUGS} />
     <div class="view-all-projects">
       <a href="/projects" class="btn-view-all">
         View All Projects
@@ -46,6 +57,35 @@ import ProjectGrid from './ProjectGrid.astro';
     border-radius: 2px;
   }
 
+  /* ---- Row label (matches ShippedAppsRow) ---- */
+  .row-header {
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .row-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-text-alt);
+  }
+
+  .row-label::before,
+  .row-label::after {
+    content: '';
+    width: 48px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-text-dim));
+  }
+
+  .row-label::after {
+    background: linear-gradient(90deg, var(--color-text-dim), transparent);
+  }
+
   .view-all-projects {
     text-align: center;
     margin-top: 2.5rem;
@@ -67,7 +107,7 @@ import ProjectGrid from './ProjectGrid.astro';
     border: 1px solid rgba(100, 255, 218, 0.2);
   }
 
-  [data-theme="light"] .btn-view-all {
+  :global([data-theme="light"]) .btn-view-all {
     background: rgba(8, 145, 178, 0.08);
     border-color: rgba(8, 145, 178, 0.2);
   }

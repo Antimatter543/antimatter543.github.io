@@ -1,7 +1,15 @@
 ---
 import { getFeaturedProjects } from '../utils/projects';
 
-const featuredProjects = await getFeaturedProjects();
+interface Props {
+  /** Project slugs to leave out (e.g. ones already shown in a larger card above). */
+  exclude?: string[];
+}
+
+const { exclude = [] } = Astro.props;
+const featuredProjects = (await getFeaturedProjects()).filter(
+  (project) => !exclude.includes(project.slug)
+);
 ---
 
 <div class="project-grid">
@@ -246,7 +254,7 @@ const featuredProjects = await getFeaturedProjects();
     border: 1px solid rgba(100, 255, 218, 0.15);
   }
 
-  [data-theme="light"] .tag-pill {
+  :global([data-theme="light"]) .tag-pill {
     background: rgba(8, 145, 178, 0.08);
     border-color: rgba(8, 145, 178, 0.15);
   }
@@ -286,12 +294,12 @@ const featuredProjects = await getFeaturedProjects();
     box-shadow: var(--glow-primary);
   }
 
-  [data-theme="light"] .btn-primary {
+  :global([data-theme="light"]) .btn-primary {
     background: rgba(8, 145, 178, 0.08);
     border-color: rgba(8, 145, 178, 0.2);
   }
 
-  [data-theme="light"] .btn-primary:hover {
+  :global([data-theme="light"]) .btn-primary:hover {
     background: var(--primary-color);
     color: #ffffff;
   }

@@ -25,7 +25,7 @@ The site uses Astro's content collections system for structured content:
 - **Content Schema** (`src/content/config.ts`): Zod schemas defining the structure and validation for both collections
 
 ### Page Structure
-- `src/pages/index.astro`: Main homepage (hero, apps, latest writing, about, projects, contact)
+- `src/pages/index.astro`: Main homepage, in order: hero -> about -> featured projects (Astraedus showcase row, then the two shipped-apps cards, then the regular grid) -> latest writing -> contact
 - `src/pages/blog.astro`: Blog listing page
 - `src/pages/projects.astro`: Projects showcase page
 - `src/pages/blog/[slug].astro`: Dynamic blog post pages
@@ -33,7 +33,9 @@ The site uses Astro's content collections system for structured content:
 
 ### Components
 - `src/components/`: Reusable Astro components for sections (Hero, Apps, Writing, About, Projects, Contact, Navbar, Footer)
-  - `AppsSection.astro`: Homepage showcase for the shipped Android apps (Nudge, SoulSync). Card copy (tagline, badges, the "why" quote) is defined in the component's frontmatter, while images and links are pulled from the projects collection via `getEntry` so they stay single-sourced with the project pages.
+  - `AstraedusShowcase.astro`: The first, full-width row of Featured Projects: the Astraedus autonomous-agent card linking to github.com/astraedus. The ouroboros (`public/images/astraedus-ouroboros.svg`, vectorised from the GitHub avatar) is painted through a CSS `mask-image`, so the same silhouette is monochrome at rest and an animated fire gradient on hover; rings, embers and the background wash all swap cool -> warm on hover. Tagline is a constant in the frontmatter.
+  - `ShippedAppsRow.astro`: The second row of Featured Projects: two larger cards for the shipped Android apps (Nudge, SoulSync). Card copy (tagline, badges, the "why" quote) is defined in the component's frontmatter, while images and links are pulled from the projects collection via `getEntry` so they stay single-sourced with the project pages. Formerly a standalone `AppsSection`; the `#apps` id is kept on the row for old deep links.
+  - `ProjectGrid.astro` accepts an `exclude` prop (array of slugs); `ProjectsSection` passes `['nudge', 'soulsync']` so the apps are not shown twice.
 - `src/layouts/`: Base layouts including main Layout.astro with global styles and metadata
   - `src/layouts/BlogPost.astro`: Legacy blog post layout (not currently used)
 
@@ -49,6 +51,8 @@ The site uses Astro's content collections system for structured content:
 
 ### Styling
 Global styles are defined in `src/layouts/Layout.astro` with CSS custom properties for theming. The site uses Inter font from Google Fonts.
+
+**Light-theme overrides inside component `<style>` blocks MUST use `:global([data-theme="light"]) .selector`.** A bare `[data-theme="light"] .selector` gets scoped by Astro to `[data-astro-cid-x][data-theme="light"] ...`, and since `<html>` never carries the scope attribute the rule silently never matches (every such rule on the site was dead CSS until 2026-09-21). Verify a new override with `getComputedStyle` in the browser, not by reading the source.
 
 ## Content Management
 
