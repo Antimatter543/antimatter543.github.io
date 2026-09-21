@@ -428,9 +428,10 @@
     const themeToggle = document.getElementById('theme-toggle');
     const html = document.documentElement;
 
-    // Saved choice wins; otherwise LIGHT is the default (Anti, 2026-09-21).
+    // Saved choice wins; otherwise follow the system setting (Anti, 2026-09-22).
     const savedTheme = localStorage.getItem('theme');
-    const defaultTheme = savedTheme || 'light';
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const defaultTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
 
     // Apply the theme
     if (defaultTheme === 'light') {
@@ -466,5 +467,16 @@
     if (themeToggle) {
       themeToggle.addEventListener('click', toggleTheme);
     }
+
+    // Follow system theme changes until the user picks one explicitly
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!localStorage.getItem('theme')) {
+        if (e.matches) {
+          html.removeAttribute('data-theme');
+        } else {
+          html.setAttribute('data-theme', 'light');
+        }
+      }
+    });
   });
 </script>
