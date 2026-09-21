@@ -25,14 +25,17 @@ The site uses Astro's content collections system for structured content:
 - **Content Schema** (`src/content/config.ts`): Zod schemas defining the structure and validation for both collections
 
 ### Page Structure
-- `src/pages/index.astro`: Main homepage, in order: hero -> about -> featured projects (Astraedus showcase row, then the two shipped-apps cards, then the regular grid) -> latest writing -> contact
+- `src/pages/index.astro`: Main homepage, in order: hero (lensed starfield + Anti's line) -> manifesto (the xkcd strip) -> about -> featured projects (Astraedus showcase, then the two shipped-apps panels, then the project rows) -> latest writing -> contact
 - `src/pages/blog.astro`: Blog listing page
 - `src/pages/projects.astro`: Projects showcase page
 - `src/pages/blog/[slug].astro`: Dynamic blog post pages
 - `src/pages/projects/[slug].astro`: Dynamic project detail pages
 
 ### Components
-- `src/components/`: Reusable Astro components for sections (Hero, Apps, Writing, About, Projects, Contact, Navbar, Footer)
+- **Visual system: read `DESIGN.md` first.** The 2026-09-21 "Observatory" revamp: near-black space, starlight-gold accent, Instrument Serif for headings/voice lines, JetBrains Mono for meta, Inter body, flat editorial layout (rows + hairlines, no glass cards, no pills, motion budget spent only on the hero sky and the Astraedus emblem). Tokens live in `Layout.astro`; legacy names (`--primary-color`, `--glass-*`, `--radius-lg/xl`) are mapped onto the new tokens so old code degrades gracefully, but new code should use the new names.
+- `src/components/`: Reusable Astro components for sections (Hero, Manifesto, About, Projects, Writing, Contact, Navbar, Footer)
+  - `HeroSection.astro` + `src/utils/observatory-sky.js`: the first screen. The canvas is a 3-layer parallax starfield with a real point-mass gravitational lens (theta+/theta- images, Einstein ring), an idle Lissajous wander confined to the upper sky, pointer-follow while hovered, occasional meteors, theme-aware colors (parchment star chart in light), a static render under `prefers-reduced-motion`, and it pauses when offscreen. The headline is Anti's own About line.
+  - `ManifestoSection.astro`: the xkcd #137 strip that used to BE the hero, now one beat down with credit.
   - `AstraedusShowcase.astro`: The first, full-width row of Featured Projects: the Astraedus autonomous-agent card linking to github.com/astraedus. The ouroboros (`public/images/astraedus-ouroboros.svg`, vectorised from the GitHub avatar) is painted through a CSS `mask-image`, so the same silhouette is monochrome at rest and an animated fire gradient on hover; rings, embers and the background wash all swap cool -> warm on hover. Tagline is a constant in the frontmatter.
   - `ShippedAppsRow.astro`: The second row of Featured Projects: two larger cards for the shipped Android apps (Nudge, SoulSync). Card copy (tagline, badges, the "why" quote) is defined in the component's frontmatter, while images and links are pulled from the projects collection via `getEntry` so they stay single-sourced with the project pages. Formerly a standalone `AppsSection`; the `#apps` id is kept on the row for old deep links.
   - `ProjectGrid.astro` accepts an `exclude` prop (array of slugs); `ProjectsSection` passes `['nudge', 'soulsync']` so the apps are not shown twice.

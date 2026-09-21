@@ -136,7 +136,7 @@ const creativesGrouped = categories.reduce((acc, category) => {
     color: var(--color-text-alt);
   }
 
-  [data-theme="light"] .tab-button {
+  :global([data-theme="light"]) .tab-button {
     border-color: rgba(8, 145, 178, 0.15);
     background: rgba(8, 145, 178, 0.05);
   }
@@ -148,7 +148,7 @@ const creativesGrouped = categories.reduce((acc, category) => {
     transform: translateY(-1px);
   }
 
-  [data-theme="light"] .tab-button:hover {
+  :global([data-theme="light"]) .tab-button:hover {
     background: rgba(8, 145, 178, 0.1);
   }
 
@@ -275,25 +275,25 @@ const creativesGrouped = categories.reduce((acc, category) => {
     border: 1px solid rgba(150, 206, 180, 0.25);
   }
 
-  [data-theme="light"] .cat-poem {
+  :global([data-theme="light"]) .cat-poem {
     background: rgba(255, 107, 107, 0.1);
     color: #dc2626;
     border-color: rgba(255, 107, 107, 0.2);
   }
 
-  [data-theme="light"] .cat-story {
+  :global([data-theme="light"]) .cat-story {
     background: rgba(78, 205, 196, 0.1);
     color: #0d9488;
     border-color: rgba(78, 205, 196, 0.2);
   }
 
-  [data-theme="light"] .cat-quote {
+  :global([data-theme="light"]) .cat-quote {
     background: rgba(69, 183, 209, 0.1);
     color: #0284c7;
     border-color: rgba(69, 183, 209, 0.2);
   }
 
-  [data-theme="light"] .cat-thought {
+  :global([data-theme="light"]) .cat-thought {
     background: rgba(150, 206, 180, 0.1);
     color: #059669;
     border-color: rgba(150, 206, 180, 0.2);
@@ -347,7 +347,7 @@ const creativesGrouped = categories.reduce((acc, category) => {
     border: 1px solid rgba(100, 255, 218, 0.15);
   }
 
-  [data-theme="light"] .tag-pill {
+  :global([data-theme="light"]) .tag-pill {
     background: rgba(8, 145, 178, 0.08);
     border-color: rgba(8, 145, 178, 0.15);
   }

@@ -4,8 +4,8 @@ import { getEntry } from 'astro:content';
 const nudge = await getEntry('projects', 'nudge');
 const soulsync = await getEntry('projects', 'soulsync');
 
-// Rendered as the "shipped apps" row inside Featured Projects (two larger
-// cards under the Astraedus showcase). Presentation copy lives here; links and
+// Rendered as the "shipped apps" panels inside Featured Projects (two feature
+// panels under the Astraedus showcase). Presentation copy lives here; links and
 // images stay single-sourced from the projects collection so they never drift
 // out of sync with the project pages.
 const apps = [
@@ -15,10 +15,9 @@ const apps = [
     tagline: 'Break the scroll, take back your time.',
     leadBadge: '500+ downloads',
     badges: ['Open source', 'Free forever', 'Zero internet permission'],
-    why: `I built Nudge over a weekend because I hate letting trillion dollar companies have unfettered access to my increasingly-fragmented attention so that I may become a better consumer for their products.</em>`,
+    why: `I built Nudge over a weekend because I hate letting trillion dollar companies have unfettered access to my increasingly-fragmented attention so that I may become a better consumer for their products.`,
     blurb: `Allows hard locks, time locks and "Just wait 10 seconds" locks for apps. Long enough to break the autopilot loop but short enough so your ego doesn't let you uninstall it. It can also kill Reels, Shorts and the TikTok For You feed without blocking the whole app.`,
     ctaLabel: 'Get it on Google Play',
-    accent: 'primary',
   },
   {
     entry: soulsync,
@@ -29,397 +28,249 @@ const apps = [
     why: `I just really like data. You know, nature is apparently my top activity that results in my mood being higher?`,
     blurb: `Log mood, activities, notes and photos, and it surfaces honest patterns from your own history: real correlations with p-values and sample sizes, not vibes. Heart rate and HRV can go in the mix too. Everything lives in local SQLite, with JSON export if you ever want to walk away.`,
     ctaLabel: 'Get it on Google Play',
-    accent: 'secondary',
   },
 ].filter((app) => app.entry);
 ---
 
 <div id="apps" class="apps-row">
-  <div class="row-header">
-    <span class="row-label">Apps I've Shipped</span>
-    <p class="row-intro">
+  <header class="apps-head">
+    <p class="apps-eyebrow">Shipped apps</p>
+    <p class="apps-intro">
       Two Android apps, both free and both open source, built because I wanted them to exist and wanted everyone to be able to access this.
     </p>
-  </div>
+  </header>
 
-  <div class="apps-grid">
-      {apps.map((app) => (
-        <article class={`app-card accent-${app.accent}`}>
-          <div class="app-glow"></div>
+  <div class="apps-panels">
+    {apps.map((app) => (
+      <article class="app-panel">
+        <img
+          class="app-banner"
+          src={app.entry!.data.image}
+          alt={app.entry!.data.imageAlt}
+          loading="eager"
+          decoding="async"
+        />
 
-          <a
-            href={app.entry!.data.liveUrl ?? app.entry!.data.externalUrl}
-            class="app-banner"
-            target="_blank"
-            rel="noopener noreferrer"
-            tabindex="-1"
-            aria-hidden="true"
-          >
-            <img src={app.entry!.data.image} alt={app.entry!.data.imageAlt} loading="lazy" />
-          </a>
+        <div class="app-body">
+          <h3 class="app-name">{app.name}</h3>
+          <p class="app-tagline">{app.tagline}</p>
 
-          <div class="app-body">
-            <div class="app-head">
-              <h3 class="app-name">{app.name}</h3>
-              <p class="app-tagline">{app.tagline}</p>
-            </div>
+          <p class="app-meta">{[app.leadBadge, ...app.badges].join(' · ')}</p>
 
-            <div class="app-badges">
-              <span class="badge badge-lead">{app.leadBadge}</span>
-              {app.badges.map((badge) => (
-                <span class="badge">{badge}</span>
-              ))}
-            </div>
+          <blockquote class="app-why">{app.why}</blockquote>
 
-            <blockquote class="app-why" set:html={app.why}></blockquote>
+          <p class="app-blurb">{app.blurb}</p>
 
-            <p class="app-blurb">{app.blurb}</p>
-
-            <div class="app-actions">
-              {(app.entry!.data.liveUrl ?? app.entry!.data.externalUrl) && (
-                <a
-                  href={app.entry!.data.liveUrl ?? app.entry!.data.externalUrl}
-                  class="btn btn-solid"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M3.6 2.3a1 1 0 0 0-.5.9v17.6a1 1 0 0 0 .5.9l9.3-9.7-9.3-9.7Zm10.7 8.3 2.9-3L5.9 1.5a1 1 0 0 0-.4-.1l8.8 9.2Zm0 2.8L5.5 22.6a1 1 0 0 0 .4-.1l11.3-6.1-2.9-3Zm4.2-1.4 3-1.6c.8-.4.8-1.6 0-2l-3-1.6-3.3 3.3 3.3 3.3Z"/>
-                  </svg>
-                  {app.ctaLabel}
-                </a>
-              )}
-              {app.entry!.data.githubUrl && (
-                <a href={app.entry!.data.githubUrl} class="btn btn-ghost" target="_blank" rel="noopener noreferrer">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.2 1.9 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3Z"/>
-                  </svg>
-                  Source
-                </a>
-              )}
-              {app.entry!.data.blogUrl && (
-                <a href={app.entry!.data.blogUrl} class="btn btn-ghost">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                  </svg>
-                  Write-up
-                </a>
-              )}
-            </div>
+          <div class="app-actions">
+            {(app.entry!.data.liveUrl ?? app.entry!.data.externalUrl) && (
+              <a
+                href={app.entry!.data.liveUrl ?? app.entry!.data.externalUrl}
+                class="app-cta"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M3.6 2.3a1 1 0 0 0-.5.9v17.6a1 1 0 0 0 .5.9l9.3-9.7-9.3-9.7Zm10.7 8.3 2.9-3L5.9 1.5a1 1 0 0 0-.4-.1l8.8 9.2Zm0 2.8L5.5 22.6a1 1 0 0 0 .4-.1l11.3-6.1-2.9-3Zm4.2-1.4 3-1.6c.8-.4.8-1.6 0-2l-3-1.6-3.3 3.3 3.3 3.3Z"/>
+                </svg>
+                {app.ctaLabel}
+              </a>
+            )}
+            {app.entry!.data.githubUrl && (
+              <a href={app.entry!.data.githubUrl} class="arrow-link" target="_blank" rel="noopener noreferrer">
+                Source <span aria-hidden="true">&#8594;</span>
+              </a>
+            )}
+            {app.entry!.data.blogUrl && (
+              <a href={app.entry!.data.blogUrl} class="arrow-link">
+                Write-up <span aria-hidden="true">&#8594;</span>
+              </a>
+            )}
           </div>
-        </article>
-      ))}
+        </div>
+      </article>
+    ))}
   </div>
 </div>
 
 <style>
   .apps-row {
-    margin-bottom: 3.5rem;
+    margin-bottom: clamp(3.5rem, 7vw, 5rem);
   }
 
-  /* ---- Row header: a quiet label with flanking hairlines ---- */
-  .row-header {
-    text-align: center;
+  /* ---- Left-aligned mono eyebrow + intro ---- */
+  .apps-head {
     margin-bottom: 1.75rem;
   }
 
-  .row-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 1rem;
+  .apps-eyebrow {
+    margin: 0;
+    font-family: var(--font-mono);
     font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
+    color: var(--color-text-dim);
+  }
+
+  .apps-intro {
+    max-width: 60ch;
+    margin: 0.75rem 0 0;
     color: var(--color-text-alt);
   }
 
-  .row-label::before,
-  .row-label::after {
-    content: '';
-    width: 48px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--color-text-dim));
-  }
-
-  .row-label::after {
-    background: linear-gradient(90deg, var(--color-text-dim), transparent);
-  }
-
-  .row-intro {
-    max-width: 640px;
-    margin: 0.85rem auto 0;
-    font-size: 1rem;
-    line-height: 1.7;
-    color: var(--color-text-alt);
-  }
-
-  /* ---- Grid ---- */
-  .apps-grid {
+  /* ---- Flat feature panels ---- */
+  .apps-panels {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.75rem;
     align-items: stretch;
   }
 
-  .app-card {
-    position: relative;
+  .app-panel {
     display: flex;
     flex-direction: column;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--radius-xl);
+    background: var(--color-surface);
+    border: 1px solid var(--color-rule);
+    border-radius: var(--radius-md);
     overflow: hidden;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: var(--glass-shadow);
-    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.4s cubic-bezier(0.19, 1, 0.22, 1);
   }
 
-  .app-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--card-hover-shadow);
-  }
-
-  .app-glow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--primary-color), var(--secondary-color), transparent);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    z-index: 2;
-  }
-
-  .accent-secondary .app-glow {
-    background: linear-gradient(90deg, transparent, var(--secondary-color), var(--primary-color), transparent);
-  }
-
-  .app-card:hover .app-glow {
-    opacity: 1;
-  }
-
-  /* ---- Banner ---- */
   .app-banner {
     display: block;
-    overflow: hidden;
-    background: rgba(0, 0, 0, 0.12);
-    line-height: 0;
-  }
-
-  :global([data-theme="light"]) .app-banner {
-    background: rgba(0, 0, 0, 0.04);
-  }
-
-  .app-banner img {
     width: 100%;
     aspect-ratio: 1024 / 500;
     object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    border-bottom: 1px solid var(--color-rule);
   }
 
-  .app-card:hover .app-banner img {
-    transform: scale(1.03);
-  }
-
-  /* ---- Body ---- */
   .app-body {
     padding: 1.75rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.9rem;
     flex: 1;
   }
 
   .app-name {
-    font-size: 1.65rem;
+    margin: 0;
+    font-family: var(--font-display);
     font-weight: 700;
-    letter-spacing: -0.01em;
+    font-size: 1.6rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
     color: var(--color-heading);
-    margin: 0 0 0.3rem;
   }
 
   .app-tagline {
+    margin: -0.55rem 0 0;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--accent);
+  }
+
+  .app-meta {
     margin: 0;
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--primary-color);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    line-height: 1.6;
+    color: var(--color-text-dim);
   }
 
-  .accent-secondary .app-tagline {
-    color: var(--secondary-color);
-  }
-
-  /* ---- Badges ---- */
-  .app-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-
-  .badge {
-    display: inline-block;
-    padding: 0.25rem 0.7rem;
-    border-radius: 100px;
-    font-size: 0.72rem;
-    font-weight: 500;
-    color: var(--color-text-alt);
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid var(--color-border);
-  }
-
-  :global([data-theme="light"]) .badge {
-    background: rgba(0, 0, 0, 0.03);
-  }
-
-  .badge-lead {
-    color: var(--accent-color);
-    background: rgba(245, 158, 11, 0.1);
-    border-color: rgba(245, 158, 11, 0.25);
-    font-weight: 600;
-  }
-
-  :global([data-theme="light"]) .badge-lead {
-    background: rgba(234, 88, 12, 0.08);
-    border-color: rgba(234, 88, 12, 0.25);
-  }
-
-  /* ---- Why quote ---- */
   .app-why {
     margin: 0;
     padding: 0.1rem 0 0.1rem 1rem;
-    border-left: 2px solid var(--primary-color);
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: var(--color-text);
-  }
-
-  .accent-secondary .app-why {
-    border-left-color: var(--secondary-color);
-  }
-
-  .app-why {
+    border-left: 2px solid var(--accent);
+    background: transparent;
+    font-family: var(--font-display);
     font-style: italic;
-  }
-
-  .app-why :global(em) {
-    font-style: normal;
-    font-weight: 600;
-    color: var(--color-heading);
-    background: linear-gradient(transparent 65%, rgba(245, 158, 11, 0.3) 65%);
-  }
-
-  /* Same band needs less opacity to carry on the light card. */
-  :global([data-theme="light"]) .app-why :global(em) {
-    background: linear-gradient(transparent 65%, rgba(234, 88, 12, 0.18) 65%);
+    font-size: 1.1rem;
+    line-height: 1.45;
+    color: var(--color-text);
   }
 
   .app-blurb {
     margin: 0;
-    font-size: 0.92rem;
+    font-size: 0.95rem;
     line-height: 1.7;
     color: var(--color-text-alt);
   }
 
-  /* ---- Actions ---- */
+  /* ---- Actions: one filled store CTA + arrow links ---- */
   .app-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.6rem;
+    align-items: center;
+    gap: 0.75rem 1.5rem;
     margin-top: auto;
     padding-top: 0.5rem;
   }
 
-  .btn {
+  .app-cta {
     display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
+    gap: 0.5rem;
     padding: 0.6rem 1.1rem;
     border-radius: var(--radius-md);
-    font-size: 0.88rem;
+    background: var(--accent);
+    color: var(--color-bg);
+    font-size: 0.9rem;
     font-weight: 500;
     text-decoration: none;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: filter 0.25s ease;
   }
 
-  .btn-solid {
-    background: var(--primary-color);
-    color: var(--color-bg);
-    border: 1px solid var(--primary-color);
+  .app-cta:hover {
+    filter: brightness(1.08);
   }
 
-  .accent-secondary .btn-solid {
-    background: var(--secondary-color);
-    border-color: var(--secondary-color);
-    color: #fff;
+  .arrow-link {
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.25s ease;
   }
 
-  .btn-solid:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--glow-primary);
+  .arrow-link span {
+    display: inline-block;
+    transition: transform 0.25s ease;
   }
 
-  .accent-secondary .btn-solid:hover {
-    box-shadow: var(--glow-secondary);
+  .arrow-link:hover {
+    border-bottom-color: var(--accent);
   }
 
-  .btn-ghost {
-    background: rgba(100, 255, 218, 0.06);
-    color: var(--primary-color);
-    border: 1px solid rgba(100, 255, 218, 0.2);
-  }
-
-  :global([data-theme="light"]) .btn-ghost {
-    background: rgba(8, 145, 178, 0.06);
-    border-color: rgba(8, 145, 178, 0.2);
-  }
-
-  .btn-ghost:hover {
-    background: var(--primary-color);
-    color: var(--color-bg);
-    border-color: var(--primary-color);
-    transform: translateY(-2px);
+  .arrow-link:hover span {
+    transform: translateX(4px);
   }
 
   /* ---- Responsive ---- */
   @media (max-width: 900px) {
-    .apps-grid {
+    .apps-panels {
       grid-template-columns: 1fr;
       gap: 1.5rem;
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 600px) {
     .app-body {
       padding: 1.35rem;
     }
 
     .app-name {
-      font-size: 1.4rem;
-    }
-
-    .btn {
-      flex: 1 1 auto;
-      justify-content: center;
+      font-size: 1.45rem;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .app-card,
-    .app-banner img,
-    .btn {
+    .app-cta,
+    .arrow-link,
+    .arrow-link span {
       transition: none;
     }
 
-    .app-card:hover {
-      transform: none;
-    }
-
-    .app-card:hover .app-banner img {
+    .arrow-link:hover span {
       transform: none;
     }
   }

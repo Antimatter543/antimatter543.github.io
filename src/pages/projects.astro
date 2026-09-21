@@ -215,7 +215,7 @@ const technologies = await getAllTechnologies();
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
   }
 
-  [data-theme="light"] .filter-select {
+  :global([data-theme="light"]) .filter-select {
     background: rgba(255, 255, 255, 0.5);
   }
 
@@ -225,7 +225,7 @@ const technologies = await getAllTechnologies();
     box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.1);
   }
 
-  [data-theme="light"] .filter-select:focus {
+  :global([data-theme="light"]) .filter-select:focus {
     box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.1);
   }
 
@@ -397,19 +397,19 @@ const technologies = await getAllTechnologies();
     border: 1px solid rgba(99, 102, 241, 0.3);
   }
 
-  [data-theme="light"] .status-completed {
+  :global([data-theme="light"]) .status-completed {
     background: rgba(16, 185, 129, 0.12);
     color: #059669;
     border-color: rgba(16, 185, 129, 0.25);
   }
 
-  [data-theme="light"] .status-in-progress {
+  :global([data-theme="light"]) .status-in-progress {
     background: rgba(245, 158, 11, 0.12);
     color: #d97706;
     border-color: rgba(245, 158, 11, 0.25);
   }
 
-  [data-theme="light"] .status-planned {
+  :global([data-theme="light"]) .status-planned {
     background: rgba(99, 102, 241, 0.12);
     color: #4f46e5;
     border-color: rgba(99, 102, 241, 0.25);
@@ -472,7 +472,7 @@ const technologies = await getAllTechnologies();
     transition: background 0.2s ease, border-color 0.2s ease;
   }
 
-  [data-theme="light"] .tag-pill {
+  :global([data-theme="light"]) .tag-pill {
     background: rgba(8, 145, 178, 0.08);
     border-color: rgba(8, 145, 178, 0.15);
   }
@@ -530,12 +530,12 @@ const technologies = await getAllTechnologies();
     box-shadow: var(--glow-primary);
   }
 
-  [data-theme="light"] .btn-primary {
+  :global([data-theme="light"]) .btn-primary {
     background: rgba(8, 145, 178, 0.08);
     border-color: rgba(8, 145, 178, 0.2);
   }
 
-  [data-theme="light"] .btn-primary:hover {
+  :global([data-theme="light"]) .btn-primary:hover {
     background: var(--primary-color);
     color: #ffffff;
     border-color: var(--primary-color);
