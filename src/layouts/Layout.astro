@@ -65,7 +65,7 @@ const imageURL = new URL(image, Astro.site).toString();
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
 		<link rel="alternate" type="application/rss+xml" title="Antiraedus Blog" href="/rss.xml" />
 		<title>{title}</title>
@@ -101,7 +101,7 @@ const imageURL = new URL(image, Astro.site).toString();
 		--accent-2: #9d8cff;
 
 		/* ---- Type ---- */
-		--font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+		--font-display: 'Inter', system-ui, -apple-system, sans-serif;
 		--font-body: 'Inter', system-ui, -apple-system, sans-serif;
 		--font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
@@ -173,9 +173,9 @@ const imageURL = new URL(image, Astro.site).toString();
 	h1, h2, h3, h4, h5, h6 {
 		color: var(--color-heading);
 		font-family: var(--font-display);
-		font-weight: 400;
+		font-weight: 700;
 		letter-spacing: -0.02em;
-		line-height: 1.1;
+		line-height: 1.15;
 		transition: color 0.3s ease;
 	}
 
@@ -202,6 +202,7 @@ const imageURL = new URL(image, Astro.site).toString();
 
 	/* Global link styling */
 	a {
+		color: var(--accent);
 		transition: all 0.2s ease;
 	}
 
