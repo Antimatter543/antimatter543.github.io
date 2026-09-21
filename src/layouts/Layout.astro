@@ -149,6 +149,12 @@ const imageURL = new URL(image, Astro.site).toString();
 		scroll-padding-top: 80px;
 	}
 
+	/* Decorative bleed (the Astraedus wash, the hero sky) may extend past the
+	   viewport horizontally; clip it so nothing ever causes sideways scroll. */
+	html, body {
+		overflow-x: clip;
+	}
+
 	body {
 		font-family: var(--font-body);
 		font-size: 1.05rem;
