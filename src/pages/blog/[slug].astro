@@ -33,6 +33,9 @@ const wordsPerMinute = 200;
 const words = entry.body.trim().split(/\s+/).length;
 const readingTime = Math.max(1, Math.ceil(words / wordsPerMinute));
 
+// One mono meta line: date · read time · tags
+const metaParts = [formattedDate, `${readingTime} min read`, ...(entry.data.tags ?? [])];
+
 // Filter headings for sidebar TOC (h2 and h3 only)
 const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
 
@@ -99,32 +102,22 @@ const structuredData = {
         )}
 
         <div class="post-main">
-          <div class="blog-header">
+          <header class="blog-header">
             <a href="/blog" class="back-link">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M19 12H5M12 19l-7-7 7-7"/>
-              </svg>
-              Back to Blog
+              <span class="arrow" aria-hidden="true">&larr;</span> Back to blog
             </a>
+
+            <p class="post-meta">
+              <time datetime={entry.data.pubDate.toISOString()}>{formattedDate}</time>
+              {metaParts.slice(1).map((part) => (
+                <Fragment><span aria-hidden="true"> · </span>{part}</Fragment>
+              ))}
+            </p>
 
             <h1>{entry.data.title}</h1>
 
-            <div class="blog-meta">
-              <span class="publish-date">
-                <time datetime={entry.data.pubDate.toISOString()}>
-                  {formattedDate}
-                </time>
-              </span>
-              {entry.data.author && <span class="author">by {entry.data.author}</span>}
-              <span class="reading-time">{readingTime} min read</span>
-            </div>
-
-            {entry.data.tags && entry.data.tags.length > 0 && (
-              <div class="header-tags">
-                {entry.data.tags.map((tag: string) => (
-                  <a href={`/blog/tag/${tag}`} class="header-tag">#{tag}</a>
-                ))}
-              </div>
+            {entry.data.description && (
+              <p class="post-lede">{entry.data.description}</p>
             )}
 
             {entry.data.heroImage && (
@@ -132,31 +125,17 @@ const structuredData = {
                 <img src={entry.data.heroImage} alt={entry.data.title} />
               </div>
             )}
-          </div>
+          </header>
 
           <div class="blog-content">
             <Content />
           </div>
 
-          {entry.data.tags && entry.data.tags.length > 0 && (
-            <div class="blog-tags-footer">
-              <div class="tags-divider"></div>
-              <div class="tag-list">
-                {entry.data.tags.map((tag: string) => (
-                  <a href={`/blog/tag/${tag}`} class="tag">#{tag}</a>
-                ))}
-              </div>
-            </div>
-          )}
-
           <Comments />
 
           <div class="blog-navigation">
-            <a href="/blog" class="btn">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M19 12H5M12 19l-7-7 7-7"/>
-              </svg>
-              Back to All Posts
+            <a href="/blog" class="back-link">
+              <span class="arrow" aria-hidden="true">&larr;</span> Back to all posts
             </a>
           </div>
         </div>
@@ -251,7 +230,7 @@ const structuredData = {
     top: 0;
     left: 0;
     width: 100%;
-    height: 3px;
+    height: 2px;
     z-index: 200;
     background: transparent;
   }
@@ -259,22 +238,17 @@ const structuredData = {
   .progress-bar {
     height: 100%;
     width: 0%;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    background: var(--accent);
     transition: width 0.1s linear;
-    box-shadow: 0 0 8px rgba(100, 255, 218, 0.4);
-  }
-
-  [data-theme="light"] .progress-bar {
-    box-shadow: 0 0 8px rgba(8, 145, 178, 0.3);
   }
 
   /* ---- Post Layout ---- */
   .blog-post {
-    padding: 4rem 0 4rem;
+    padding: clamp(6rem, 11vw, 8rem) 0 clamp(4rem, 8vw, 6rem);
   }
 
   .post-layout {
-    max-width: 1200px;
+    max-width: var(--container);
     margin: 0 auto;
     padding: 0 2rem;
     display: grid;
@@ -283,9 +257,10 @@ const structuredData = {
   }
 
   .post-main {
-    max-width: 800px;
+    max-width: var(--measure);
     margin: 0 auto;
     width: 100%;
+    min-width: 0;
   }
 
   /* ---- Sidebar TOC ---- */
@@ -299,17 +274,14 @@ const structuredData = {
     .post-layout:has(.toc-sidebar) {
       grid-template-columns: minmax(0, 1fr) 200px;
       column-gap: 3rem;
-      max-width: 1180px;
     }
 
     /* Both items share row 1 so the aside stretches to the full article
        height — giving the sticky TOC nav room to stay pinned while the
-       reader scrolls through the whole post (the previous bug: the aside
-       was only as tall as the TOC itself, so it scrolled away at the top). */
+       reader scrolls through the whole post. */
     .post-layout:has(.toc-sidebar) .post-main {
       grid-column: 1;
       grid-row: 1;
-      min-width: 0;
     }
 
     .toc-sidebar {
@@ -325,16 +297,16 @@ const structuredData = {
       max-height: calc(100vh - 140px);
       overflow-y: auto;
       scrollbar-width: thin;
-      scrollbar-color: var(--color-border) transparent;
+      scrollbar-color: var(--color-rule) transparent;
     }
 
     .toc-label {
+      font-family: var(--font-mono);
       font-size: 0.7rem;
-      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       color: var(--color-text-dim);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.9rem;
       padding-left: 0.75rem;
     }
 
@@ -342,7 +314,7 @@ const structuredData = {
       list-style: none;
       padding: 0;
       margin: 0;
-      border-left: 1px solid var(--color-border);
+      border-left: 1px solid var(--color-rule);
     }
 
     .toc-item {
@@ -356,13 +328,13 @@ const structuredData = {
     .toc-link {
       display: block;
       padding: 0.35rem 0.75rem;
-      font-size: 0.78rem;
-      line-height: 1.4;
+      font-size: 0.8rem;
+      line-height: 1.45;
       color: var(--color-text-dim);
       text-decoration: none;
       border-left: 2px solid transparent;
       margin-left: -1px;
-      transition: color 0.2s ease, border-color 0.2s ease;
+      transition: color 0.3s ease, border-color 0.3s ease;
     }
 
     .toc-link:hover {
@@ -370,99 +342,68 @@ const structuredData = {
     }
 
     .toc-link.active {
-      color: var(--primary-color);
-      border-left-color: var(--primary-color);
+      color: var(--accent);
+      border-left-color: var(--accent);
     }
   }
 
-  /* ---- Blog Header ---- */
+  /* ---- Arrow back-link ---- */
   .back-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
-    font-size: 0.85rem;
-    color: var(--color-text-dim);
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--accent);
     text-decoration: none;
-    margin-bottom: 2rem;
-    transition: color 0.2s ease, gap 0.2s ease;
+    border-bottom: 1px solid transparent;
   }
 
   .back-link:hover {
-    color: var(--primary-color);
-    gap: 0.6rem;
+    border-bottom-color: var(--accent);
   }
 
+  .back-link .arrow {
+    transition: transform 0.3s ease;
+  }
+
+  .back-link:hover .arrow {
+    transform: translateX(-4px);
+  }
+
+  /* ---- Article header ---- */
   .blog-header {
-    margin-bottom: 3rem;
+    margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+  }
+
+  .post-meta {
+    margin: 2rem 0 0.9rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    color: var(--color-text-dim);
   }
 
   .blog-header h1 {
-    font-size: 2.8rem;
-    margin-bottom: 1rem;
-    color: var(--color-heading);
-    line-height: 1.15;
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    line-height: 1.05;
     letter-spacing: -0.02em;
-    font-weight: 700;
+    color: var(--color-heading);
   }
 
-  .blog-meta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.5rem;
-    margin: 1rem 0;
-    color: var(--color-text-dim);
-    font-size: 0.9rem;
-  }
-
-  .blog-meta > span:not(:last-child)::after {
-    content: "\00b7";
-    margin-left: 0.5rem;
-    opacity: 0.5;
-  }
-
-  .reading-time {
-    color: var(--primary-color);
-    font-weight: 500;
-  }
-
-  .header-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1rem;
-  }
-
-  .header-tag {
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    border-radius: 100px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--primary-color);
-    background: rgba(100, 255, 218, 0.08);
-    border: 1px solid rgba(100, 255, 218, 0.15);
-    text-decoration: none;
-    transition: background 0.2s ease, transform 0.2s ease;
-  }
-
-  .header-tag:hover {
-    background: rgba(100, 255, 218, 0.15);
-    transform: translateY(-1px);
-  }
-
-  [data-theme="light"] .header-tag {
-    background: rgba(8, 145, 178, 0.08);
-    border-color: rgba(8, 145, 178, 0.15);
-  }
-
-  [data-theme="light"] .header-tag:hover {
-    background: rgba(8, 145, 178, 0.15);
+  .post-lede {
+    margin: 1.1rem 0 0;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--color-text-alt);
   }
 
   .featured-image {
-    margin: 2rem 0;
-    border-radius: var(--radius-lg);
+    margin: 2.5rem 0 0;
+    border-radius: var(--radius-sm);
     overflow: hidden;
   }
 
@@ -474,372 +415,244 @@ const structuredData = {
 
   /* ---- Blog Content ---- */
   .blog-content {
-    line-height: 1.8;
+    line-height: 1.75;
     font-size: 1.1rem;
     color: var(--color-text);
   }
 
-  .blog-content :global(h1),
   .blog-content :global(h2),
   .blog-content :global(h3),
   .blog-content :global(h4) {
+    font-family: var(--font-display);
+    font-weight: 400;
     color: var(--color-heading);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
     margin-top: 3rem;
     margin-bottom: 1rem;
-    line-height: 1.3;
   }
 
   .blog-content :global(h2) {
-    font-size: 2rem;
-    font-weight: 700;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--color-border);
+    font-size: 2.1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--color-rule);
   }
 
   .blog-content :global(h3) {
     font-size: 1.5rem;
-    font-weight: 600;
   }
 
   .blog-content :global(h4) {
     font-size: 1.25rem;
-    font-weight: 500;
     color: var(--color-text-alt);
   }
 
   .blog-content :global(p) {
     margin-bottom: 1.5rem;
-    text-align: justify;
   }
 
   .blog-content :global(ul),
   .blog-content :global(ol) {
     margin-bottom: 1.5rem;
-    padding-left: 2rem;
+    padding-left: 1.5rem;
   }
 
   .blog-content :global(li) {
     margin-bottom: 0.5rem;
   }
 
-  /* ---- Enhanced Blockquotes ---- */
+  .blog-content :global(li::marker) {
+    color: var(--color-text-dim);
+  }
+
+  /* ---- Blockquotes: 2px accent rule, display serif italic ---- */
   .blog-content :global(blockquote) {
-    position: relative;
-    border-left: 3px solid var(--primary-color);
     margin: 2rem 0;
-    padding: 1.25rem 1.5rem 1.25rem 1.5rem;
-    background: linear-gradient(135deg, rgba(100, 255, 218, 0.04), rgba(168, 85, 247, 0.02));
-    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    padding: 0.25rem 0 0.25rem 1.5rem;
+    border-left: 2px solid var(--accent);
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    font-family: var(--font-display);
     font-style: italic;
-    box-shadow: inset 0 0 30px rgba(100, 255, 218, 0.02);
+    font-size: 1.35rem;
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+    color: var(--color-heading);
   }
 
-  [data-theme="light"] .blog-content :global(blockquote) {
-    background: linear-gradient(135deg, rgba(8, 145, 178, 0.04), rgba(124, 58, 237, 0.02));
-    box-shadow: inset 0 0 30px rgba(8, 145, 178, 0.02);
+  .blog-content :global(blockquote p) {
+    margin-bottom: 0.75rem;
   }
 
-  .blog-content :global(blockquote)::before {
-    content: "\201C";
-    position: absolute;
-    top: -0.3rem;
-    left: 0.75rem;
-    font-size: 3rem;
-    color: var(--primary-color);
-    opacity: 0.2;
-    font-family: Georgia, serif;
-    line-height: 1;
+  .blog-content :global(blockquote p:last-child) {
+    margin-bottom: 0;
   }
 
+  /* ---- Code ---- */
   .blog-content :global(code) {
+    font-family: var(--font-mono);
     background-color: var(--color-bg-alt);
-    padding: 0.2em 0.4em;
-    border-radius: 4px;
-    font-size: 0.9em;
-    color: var(--primary-color);
+    border: 1px solid var(--color-rule);
+    padding: 0.12em 0.4em;
+    border-radius: var(--radius-sm);
+    font-size: 0.85em;
+    color: var(--color-heading);
   }
 
   .blog-content :global(pre) {
     background-color: var(--color-bg-alt) !important;
-    border-radius: var(--radius-md);
+    border: 1px solid var(--color-rule);
+    border-radius: var(--radius-sm);
     margin: 2rem 0;
-    padding: 1.5rem;
+    padding: 1.25rem 1.4rem;
     overflow-x: auto;
-    border: 1px solid var(--color-border);
+    font-size: 0.9rem;
+    line-height: 1.6;
   }
 
   .blog-content :global(pre code) {
     background: none;
+    border: none;
     padding: 0;
+    font-size: inherit;
     color: inherit;
   }
 
+  /* ---- Media ---- */
   .blog-content :global(img) {
     max-width: 100%;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-sm);
     margin: 2rem auto;
     display: block;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: none;
   }
 
   .blog-content :global(iframe) {
     display: block;
     margin: 2rem auto;
     max-width: 100%;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-sm);
+  }
+
+  .blog-content :global(table) {
+    width: 100%;
+    display: block;
+    overflow-x: auto;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 0.95rem;
+  }
+
+  .blog-content :global(th),
+  .blog-content :global(td) {
+    border-bottom: 1px solid var(--color-rule);
+    padding: 0.6rem 0.9rem;
+    text-align: left;
+  }
+
+  .blog-content :global(th) {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-dim);
+    font-weight: 400;
+  }
+
+  /* KaTeX display math can be wider than the measure */
+  .blog-content :global(.katex-display) {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.25rem 0;
   }
 
   .blog-content :global(a) {
-    color: var(--primary-color);
+    color: var(--accent);
     text-decoration: none;
     border-bottom: 1px solid transparent;
-    transition: all 0.2s ease;
+    transition: border-color 0.3s ease;
   }
 
   .blog-content :global(a:hover) {
-    border-bottom-color: var(--primary-color);
+    border-bottom-color: var(--accent);
   }
 
   .blog-content :global(hr) {
     border: none;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+    background: var(--color-rule);
     margin: 3rem 0;
   }
 
-  /* ---- Inline TOC styling (for posts that have TOC in content) ---- */
-  .blog-content :global(h1:is([id*="content"], [id*="toc"]) + ul),
+  /* ---- Inline contents list (posts that ship their own TOC) ---- */
   .blog-content :global(h2:is([id*="content"], [id*="toc"]) + ul),
   .blog-content :global(h3:is([id*="content"], [id*="toc"]) + ul) {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-left: 3px solid var(--primary-color);
-    padding: 1.5rem;
+    border-left: 2px solid var(--color-rule);
+    padding: 0.25rem 0 0.25rem 1.25rem;
     margin: 1.5rem 0;
-    border-radius: var(--radius-md);
-    position: relative;
-    list-style: none !important;
-    padding-left: 0 !important;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-
-  .blog-content :global(ul:has(li > a[href^="#"]):first-child),
-  .blog-content :global(h1 + ul:has(li > a[href^="#"])),
-  .blog-content :global(h2 + ul:has(li > a[href^="#"])),
-  .blog-content :global(h3 + ul:has(li > a[href^="#"])) {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-left: 3px solid var(--primary-color);
-    padding: 1.5rem;
-    margin: 1.5rem 0;
-    border-radius: var(--radius-md);
-    position: relative;
-    list-style: none !important;
-    padding-left: 0 !important;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-
-  .blog-content :global(ul:has(li > a[href^="#"]):first-child::before),
-  .blog-content :global(h1 + ul:has(li > a[href^="#"])::before),
-  .blog-content :global(h2 + ul:has(li > a[href^="#"])::before),
-  .blog-content :global(h3 + ul:has(li > a[href^="#"])::before) {
-    content: "Contents";
-    display: block;
-    font-weight: 600;
-    color: var(--color-heading);
-    margin-bottom: 1rem;
-    font-size: 0.85rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-
-  .blog-content :global(h1:is([id*="content"], [id*="toc"]) + ul::before),
-  .blog-content :global(h2:is([id*="content"], [id*="toc"]) + ul::before),
-  .blog-content :global(h3:is([id*="content"], [id*="toc"]) + ul::before) {
-    content: "Contents";
-    display: block;
-    font-weight: 600;
-    color: var(--color-heading);
-    margin-bottom: 1rem;
-    font-size: 0.85rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-
-  .blog-content :global(h1:is([id*="content"], [id*="toc"]) + ul li),
-  .blog-content :global(h2:is([id*="content"], [id*="toc"]) + ul li),
-  .blog-content :global(h3:is([id*="content"], [id*="toc"]) + ul li) {
-    margin-bottom: 0.75rem;
-    padding-left: 1.5rem;
-    position: relative;
     list-style: none;
   }
 
-  .blog-content :global(h1:is([id*="content"], [id*="toc"]) + ul li::before),
-  .blog-content :global(h2:is([id*="content"], [id*="toc"]) + ul li::before),
-  .blog-content :global(h3:is([id*="content"], [id*="toc"]) + ul li::before) {
-    content: "\25B8";
-    position: absolute;
-    left: 0;
-    color: var(--primary-color);
-    font-weight: normal;
-    transition: transform 0.2s ease;
+  .blog-content :global(h2:is([id*="content"], [id*="toc"]) + ul li),
+  .blog-content :global(h3:is([id*="content"], [id*="toc"]) + ul li) {
+    list-style: none;
+    margin-bottom: 0.4rem;
   }
 
-  .blog-content :global(h1:is([id*="content"], [id*="toc"]) + ul li:hover::before),
-  .blog-content :global(h2:is([id*="content"], [id*="toc"]) + ul li:hover::before),
-  .blog-content :global(h3:is([id*="content"], [id*="toc"]) + ul li:hover::before) {
-    transform: translateX(4px);
-  }
-
-  .blog-content :global(h1:is([id*="content"], [id*="toc"]) + ul a),
   .blog-content :global(h2:is([id*="content"], [id*="toc"]) + ul a),
   .blog-content :global(h3:is([id*="content"], [id*="toc"]) + ul a) {
     color: var(--color-text);
-    text-decoration: none;
-    font-weight: 400;
-    border-bottom: none;
-    transition: all 0.2s ease;
-    display: inline-block;
   }
 
-  .blog-content :global(h1:is([id*="content"], [id*="toc"]) + ul a:hover),
   .blog-content :global(h2:is([id*="content"], [id*="toc"]) + ul a:hover),
   .blog-content :global(h3:is([id*="content"], [id*="toc"]) + ul a:hover) {
-    color: var(--primary-color);
-    transform: translateX(2px);
-  }
-
-  .blog-content :global(h1:is([id*="content"], [id*="toc"]) + ul ul),
-  .blog-content :global(h2:is([id*="content"], [id*="toc"]) + ul ul),
-  .blog-content :global(h3:is([id*="content"], [id*="toc"]) + ul ul) {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-    padding-left: 1rem;
-    border-left: 2px solid var(--color-border);
-    list-style: none;
-  }
-
-  .blog-content :global(h1:is([id*="content"], [id*="toc"]) + ul ul li::before),
-  .blog-content :global(h2:is([id*="content"], [id*="toc"]) + ul ul li::before),
-  .blog-content :global(h3:is([id*="content"], [id*="toc"]) + ul ul li::before) {
-    content: "\2022";
-    color: var(--color-text-dim);
-    font-size: 0.8rem;
-  }
-
-  /* ---- Tags Footer ---- */
-  .blog-tags-footer {
-    margin-top: 3rem;
-  }
-
-  .tags-divider {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--color-border), transparent);
-    margin-bottom: 1.5rem;
-  }
-
-  .tag-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-  }
-
-  .tag {
-    display: inline-block;
-    padding: 0.4rem 1rem;
-    background: rgba(100, 255, 218, 0.06);
-    border: 1px solid rgba(100, 255, 218, 0.12);
-    border-radius: 100px;
-    color: var(--primary-color);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: all 0.2s ease;
-  }
-
-  [data-theme="light"] .tag {
-    background: rgba(8, 145, 178, 0.06);
-    border-color: rgba(8, 145, 178, 0.12);
-  }
-
-  .tag:hover {
-    background: var(--primary-color);
-    color: var(--color-bg);
-    border-color: var(--primary-color);
-    transform: translateY(-1px);
+    color: var(--accent);
   }
 
   /* ---- Navigation ---- */
   .blog-navigation {
     margin-top: 3rem;
     padding-top: 2rem;
-    border-top: 1px solid var(--color-border);
-    text-align: center;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background: var(--glass-bg);
-    color: var(--color-text);
-    text-decoration: none;
-    border-radius: var(--radius-md);
-    font-weight: 500;
-    transition: all 0.2s ease;
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-  }
-
-  .btn:hover {
-    background: var(--primary-color);
-    color: #ffffff;
-    border-color: var(--primary-color);
-    transform: translateY(-1px);
-    box-shadow: var(--glow-primary);
+    border-top: 1px solid var(--color-rule);
   }
 
   /* ---- Responsive ---- */
   @media (max-width: 768px) {
     .post-layout {
-      padding: 0 1rem;
-    }
-
-    .blog-header h1 {
-      font-size: 2rem;
+      padding: 0 1.25rem;
     }
 
     .blog-content {
-      font-size: 1rem;
+      font-size: 1.02rem;
     }
 
     .blog-content :global(h2) {
-      font-size: 1.5rem;
+      font-size: 1.7rem;
     }
 
     .blog-content :global(h3) {
-      font-size: 1.3rem;
+      font-size: 1.35rem;
     }
 
     .blog-content :global(blockquote) {
+      font-size: 1.15rem;
+      padding-left: 1.1rem;
+    }
+
+    .blog-content :global(pre) {
       padding: 1rem;
-      margin: 1.5rem 0;
-    }
-
-    .blog-meta {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.3rem;
-    }
-
-    .blog-meta > span::after {
-      display: none;
+      font-size: 0.82rem;
     }
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .back-link .arrow {
+      transition: none;
+    }
+
+    .back-link:hover .arrow {
+      transform: none;
+    }
+  }
 </style>
