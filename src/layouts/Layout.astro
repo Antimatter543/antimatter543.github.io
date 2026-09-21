@@ -65,7 +65,7 @@ const imageURL = new URL(image, Astro.site).toString();
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
 		<link rel="alternate" type="application/rss+xml" title="Antiraedus Blog" href="/rss.xml" />
 		<title>{title}</title>
@@ -83,65 +83,69 @@ const imageURL = new URL(image, Astro.site).toString();
 </html>
 
 <style is:global>
-		:root {
-		/* ---- Observatory palette (dark is the base; see DESIGN.md) ---- */
-		--color-bg: #07070f;
-		--color-bg-alt: #0b0b17;
-		--color-surface: #10101d;
-		--color-bg-card: var(--color-surface);
-		--color-heading: #f2f0ff;
-		--color-text: #b9b7c9;
-		--color-text-alt: #8c8a9e;
-		--color-text-dim: #5f5d70;
-		--color-rule: rgba(255, 255, 255, 0.1);
-		--color-border: var(--color-rule);
+	:root {
+		/* Primary space theme colors */
+		--primary-color: #64ffda;
+		--secondary-color: #a855f7;
+		--accent-color: #f59e0b;
 
-		--accent: #f2c27b;
-		--accent-soft: rgba(242, 194, 123, 0.12);
-		--accent-2: #9d8cff;
+		/* Dark theme colors */
+		--color-bg: #0a0a1a;
+		--color-bg-alt: #1a1a2e;
+		--color-bg-card: #16213e;
+		--color-text: #a8b2d1;
+		--color-text-alt: #8892b0;
+		--color-text-dim: #64748b;
+		--color-heading: #e2e8f0;
+		--color-border: #2a2a3e;
 
-		/* ---- Type ---- */
-		--font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
-		--font-body: 'Inter', system-ui, -apple-system, sans-serif;
-		--font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+		/* Glassmorphism & depth */
+		--glass-bg: rgba(26, 26, 46, 0.6);
+		--glass-border: rgba(100, 255, 218, 0.08);
+		--glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+		--card-hover-shadow: 0 16px 48px rgba(100, 255, 218, 0.08), 0 8px 24px rgba(0, 0, 0, 0.4);
+		--glow-primary: 0 0 20px rgba(100, 255, 218, 0.15);
+		--glow-secondary: 0 0 20px rgba(168, 85, 247, 0.15);
 
-		/* ---- Layout ---- */
-		--container: 1120px;
-		--measure: 68ch;
-		--radius-sm: 4px;
-		--radius-md: 8px;
-		--radius-lg: 8px;   /* legacy name, clamped: no more pillowy cards */
-		--radius-xl: 8px;   /* legacy name, clamped */
+		/* Consistent spacing & radius */
+		--radius-sm: 8px;
+		--radius-md: 12px;
+		--radius-lg: 16px;
+		--radius-xl: 24px;
 
-		/* ---- Legacy names, mapped so untouched components keep working ---- */
-		--primary-color: var(--accent);
-		--secondary-color: var(--accent-2);
-		--accent-color: var(--accent);
-		--glass-bg: var(--color-surface);
-		--glass-border: var(--color-rule);
-		--glass-shadow: none;
-		--card-hover-shadow: none;
-		--glow-primary: none;
-		--glow-secondary: none;
+		/* Compatibility with existing code */
 		--bg-color: var(--color-bg);
 		--text-color: var(--color-text);
 		--heading-color: var(--color-heading);
 	}
 
-	/* Light theme: parchment + ink + rust. */
+	/* Light theme */
 	[data-theme="light"] {
-		--color-bg: #f4efe6;
-		--color-bg-alt: #ece6d9;
-		--color-surface: #faf7f1;
-		--color-heading: #17140f;
-		--color-text: #3a3632;
-		--color-text-alt: #6b665f;
-		--color-text-dim: #9a948a;
-		--color-rule: rgba(23, 20, 15, 0.12);
+		--primary-color: #0891b2;
+		--secondary-color: #7c3aed;
+		--accent-color: #ea580c;
 
-		--accent: #b4531f;
-		--accent-soft: rgba(180, 83, 31, 0.1);
-		--accent-2: #5b4bb5;
+		--color-bg: #f7f2ec;
+		--color-bg-alt: #f8fafc;
+		--color-bg-card: #f1f5f9;
+		--color-text: #1e293b;
+		--color-text-alt: #475569;
+		--color-text-dim: #64748b;
+		--color-heading: #0f172a;
+		--color-border: #e2e8f0;
+
+		/* Glassmorphism & depth (light) */
+		--glass-bg: rgba(255, 255, 255, 0.7);
+		--glass-border: rgba(8, 145, 178, 0.1);
+		--glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+		--card-hover-shadow: 0 16px 48px rgba(8, 145, 178, 0.1), 0 8px 24px rgba(0, 0, 0, 0.08);
+		--glow-primary: 0 0 20px rgba(8, 145, 178, 0.1);
+		--glow-secondary: 0 0 20px rgba(124, 58, 237, 0.1);
+
+		/* Compatibility */
+		--bg-color: var(--color-bg);
+		--text-color: var(--color-text);
+		--heading-color: var(--color-heading);
 	}
 
 	html {
@@ -149,17 +153,8 @@ const imageURL = new URL(image, Astro.site).toString();
 		scroll-padding-top: 80px;
 	}
 
-	/* Decorative bleed (the Astraedus wash, the hero sky) may extend past the
-	   viewport horizontally; clip it so nothing ever causes sideways scroll. */
-	html, body {
-		overflow-x: clip;
-	}
-
 	body {
-		font-family: var(--font-body);
-		font-size: 1.05rem;
-		line-height: 1.7;
-		-webkit-font-smoothing: antialiased;
+		font-family: 'Inter', sans-serif;
 		margin: 0;
 		padding: 0;
 		min-height: 100vh;
@@ -172,16 +167,7 @@ const imageURL = new URL(image, Astro.site).toString();
 
 	h1, h2, h3, h4, h5, h6 {
 		color: var(--color-heading);
-		font-family: var(--font-display);
-		font-weight: 400;
-		letter-spacing: -0.02em;
-		line-height: 1.1;
 		transition: color 0.3s ease;
-	}
-
-	::selection {
-		background: var(--accent);
-		color: var(--color-bg);
 	}
 
 	main {
