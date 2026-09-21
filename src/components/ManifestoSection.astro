@@ -1,0 +1,119 @@
+---
+// The xkcd strip Anti has kept at the top of his site since day one, reframed
+// as a manifesto panel rather than the hero itself.
+---
+
+<section id="manifesto" class="manifesto">
+  <div class="container">
+    <header class="sec-head">
+      <span class="sec-index">00</span>
+      <h2 class="sec-title">The manifesto</h2>
+      <p class="sec-lede">Not mine, but it says it better than I could. Everything below is an attempt to live up to the last three panels.</p>
+    </header>
+    <figure class="strip">
+      <img src="/images/dreams.png" alt="xkcd 137, 'Dreams': a comic about refusing to water down your life for the sake of a hypothetical future employer." width="550" height="757" loading="lazy" />
+      <figcaption>
+        <span class="mono">xkcd #137</span>
+        <a class="arrow-link" href="https://xkcd.com/137/" target="_blank" rel="noopener noreferrer">Dreams, by Randall Munroe <span>→</span></a>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .manifesto {
+    padding: clamp(4rem, 8vw, 6.5rem) 0 clamp(5rem, 10vw, 8rem);
+    background: var(--color-bg-alt);
+    border-top: 1px solid var(--color-rule);
+  }
+
+  .container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .sec-head {
+    display: grid;
+    grid-template-columns: 3.5rem 1fr;
+    gap: 0 1rem;
+    align-items: baseline;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .sec-index {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--color-text-dim);
+    letter-spacing: 0.08em;
+  }
+
+  .sec-title {
+    grid-column: 2;
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--color-heading);
+  }
+
+  .sec-lede {
+    grid-column: 2;
+    margin: 0.75rem 0 0;
+    max-width: 60ch;
+    color: var(--color-text-alt);
+  }
+
+  .strip {
+    margin: 0 auto;
+    max-width: 560px;
+  }
+
+  .strip img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-rule);
+    background: #fff;
+  }
+
+  .strip figcaption {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .mono {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: var(--color-text-dim);
+  }
+
+  .arrow-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.25s ease;
+  }
+
+  .arrow-link span {
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+
+  .arrow-link:hover { border-bottom-color: var(--accent); }
+  .arrow-link:hover span { transform: translateX(4px); }
+
+  @media (max-width: 600px) {
+    .sec-head { grid-template-columns: 2.5rem 1fr; }
+  }
+</style>

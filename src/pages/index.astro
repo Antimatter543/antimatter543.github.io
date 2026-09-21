@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import HeroSection from '../components/HeroSection.astro';
+import ManifestoSection from '../components/ManifestoSection.astro';
 import AboutSection from '../components/AboutSection.astro';
 import ProjectsSection from '../components/ProjectsSection.astro';
 import WritingSection from '../components/WritingSection.astro';
@@ -31,6 +32,7 @@ const structuredData = {
 <Layout title="Antiraedus | Portfolio" description="Personal portfolio website showcasing projects and blog content">
 	<StructuredData data={structuredData} />
 	<HeroSection />
+	<ManifestoSection />
 	<AboutSection />
 	<ProjectsSection />
 	<WritingSection />
