@@ -4,7 +4,10 @@
 <nav class="navbar">
   <div class="container">
     <div class="logo">
-      <a href="/">Antiraedus</a>
+      <a href="/" aria-label="Antiraedus, home">
+        <span class="avatar"><img src="/profile-top.jpg" alt="" width="36" height="36" /></span>
+        <span class="wordmark">Antiraedus</span>
+      </a>
     </div>
     <button class="mobile-menu-toggle" aria-label="Toggle menu">
       <span class="hamburger-line"></span>
@@ -64,6 +67,9 @@
   }
 
   .logo a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 1.35rem;
@@ -73,8 +79,63 @@
     transition: color 0.3s ease;
   }
 
-  .logo a:hover {
+  .logo a:hover .wordmark {
     color: var(--accent);
+  }
+
+  /* Avatar: quiet ring at rest; on hover it tilts, grows, and the ring lights up
+     with a slow orbiting arc (same language as the Astraedus emblem). */
+  .avatar {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    flex: none;
+    isolation: isolate;
+  }
+
+  .avatar::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, transparent 0deg, transparent 230deg, var(--accent) 320deg, transparent 360deg);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: -1;
+  }
+
+  .avatar img {
+    display: block;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 0 1px var(--color-rule);
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.35s ease;
+  }
+
+  .logo a:hover .avatar::before {
+    opacity: 1;
+    animation: avatarOrbit 2.4s linear infinite;
+  }
+
+  .logo a:hover .avatar img {
+    transform: rotate(-10deg) scale(1.12);
+    box-shadow: 0 0 0 1px var(--accent), 0 0 18px rgba(242, 194, 123, 0.45);
+  }
+
+  :global([data-theme="light"]) .logo a:hover .avatar img {
+    box-shadow: 0 0 0 1px var(--accent), 0 0 14px rgba(180, 83, 31, 0.35);
+  }
+
+  @keyframes avatarOrbit {
+    to { transform: rotate(360deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo a:hover .avatar::before { animation: none; }
+    .avatar img { transition: none; }
   }
 
   .nav-links {
@@ -367,10 +428,9 @@
     const themeToggle = document.getElementById('theme-toggle');
     const html = document.documentElement;
 
-    // Check for saved theme or default to dark
+    // Saved choice wins; otherwise LIGHT is the default (Anti, 2026-09-21).
     const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const defaultTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+    const defaultTheme = savedTheme || 'light';
 
     // Apply the theme
     if (defaultTheme === 'light') {
@@ -406,16 +466,5 @@
     if (themeToggle) {
       themeToggle.addEventListener('click', toggleTheme);
     }
-
-    // Listen for system theme changes
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      if (!localStorage.getItem('theme')) {
-        if (e.matches) {
-          html.removeAttribute('data-theme');
-        } else {
-          html.setAttribute('data-theme', 'light');
-        }
-      }
-    });
   });
 </script>

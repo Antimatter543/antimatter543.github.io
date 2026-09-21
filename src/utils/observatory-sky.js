@@ -39,7 +39,7 @@ export class ObservatorySky {
     const light = document.documentElement.getAttribute('data-theme') === 'light';
     this.theme = {
       light,
-      bg: cs.getPropertyValue('--color-bg').trim() || (light ? '#f4efe6' : '#07070f'),
+      bg: cs.getPropertyValue('--color-bg').trim() || (light ? '#f4efe6' : '#0a0a1a'),
       star: light ? '23, 20, 15' : '242, 240, 255',
       accent: cs.getPropertyValue('--accent').trim() || (light ? '#b4531f' : '#f2c27b'),
       accentRgb: light ? '180, 83, 31' : '242, 194, 123',

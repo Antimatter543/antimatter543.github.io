@@ -30,10 +30,10 @@ warm, a little poetic. NOT "developer template", NOT SaaS.
   the editorial section header below.
 
 ## Tokens (all in `src/layouts/Layout.astro`)
-Colors (dark is the base; `<html>` has NO attribute in dark mode, light sets
+Colors (LIGHT is the default theme since 2026-09-21 (Anti's call); dark is still the CSS base; `<html>` has NO attribute in dark mode, light sets
 `data-theme="light"`):
-- `--color-bg` #07070f  page. `--color-bg-alt` #0b0b17 alternate band.
-  `--color-surface` #10101d raised panel (use SPARINGLY -- feature panels only).
+- `--color-bg` #0a0a1a  page. `--color-bg-alt` #161630 alternate band (Anti: the near-black was too dark, 2026-09-21).
+  `--color-surface` #141432 raised panel (use SPARINGLY -- feature panels only).
 - `--color-heading` #f2f0ff, `--color-text` #b9b7c9, `--color-text-alt` #8c8a9e,
   `--color-text-dim` #5f5d70.
 - `--color-rule` hairline dividers: rgba(255,255,255,.1). `--color-border` same.
