@@ -75,16 +75,16 @@ const [featuredPost, ...remainingPosts] = sortedPosts;
                 })}
               </time>
             </span>
-            <span class="row-title">{post.data.title}</span>
-            <span class="row-desc">{post.data.description}</span>
-            <span class="row-tail">
+            <span class="row-lead">
+              <span class="row-title">{post.data.title}</span>
               <span class="row-tags">
                 {post.data.tags && post.data.tags.length > 0
                   ? post.data.tags.join(' · ')
                   : `${getReadingTime(post.body)} min`}
               </span>
-              <span class="row-arrow" aria-hidden="true">&rarr;</span>
             </span>
+            <span class="row-desc">{post.data.description}</span>
+            <span class="row-arrow" aria-hidden="true">&rarr;</span>
           </a>
         ))}
       </div>
@@ -243,7 +243,7 @@ const [featuredPost, ...remainingPosts] = sortedPosts;
   /* ---- Row list ---- */
   .row {
     display: grid;
-    grid-template-columns: 8rem minmax(0, 1fr) minmax(0, 1.3fr) auto;
+    grid-template-columns: 8rem minmax(0, 1fr) minmax(0, 1.2fr) 1.5rem;
     align-items: baseline;
     gap: 0 1.5rem;
     padding: 1.4rem 0.75rem;
@@ -293,11 +293,11 @@ const [featuredPost, ...remainingPosts] = sortedPosts;
     -webkit-box-orient: vertical;
   }
 
-  .row-tail {
+  .row-lead {
     display: flex;
-    align-items: baseline;
-    gap: 1rem;
-    justify-content: flex-end;
+    flex-direction: column;
+    gap: 0.4rem;
+    min-width: 0;
   }
 
   .row-tags {
@@ -305,7 +305,7 @@ const [featuredPost, ...remainingPosts] = sortedPosts;
     font-size: 0.72rem;
     letter-spacing: 0.04em;
     color: var(--color-text-dim);
-    white-space: nowrap;
+    font-style: normal;
   }
 
   .row-arrow {
@@ -353,11 +353,6 @@ const [featuredPost, ...remainingPosts] = sortedPosts;
     .row-desc {
       grid-column: 1 / -1;
       -webkit-line-clamp: 3;
-    }
-
-    .row-tail {
-      align-self: start;
-      gap: 0.6rem;
     }
 
     .row-tags {
