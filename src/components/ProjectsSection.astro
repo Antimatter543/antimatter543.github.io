@@ -3,129 +3,126 @@ import AstraedusShowcase from './AstraedusShowcase.astro';
 import ShippedAppsRow from './ShippedAppsRow.astro';
 import ProjectGrid from './ProjectGrid.astro';
 
-// Nudge and SoulSync get the larger "shipped apps" cards above the grid, so
-// keep them out of the regular grid to avoid showing them twice.
+// Nudge and SoulSync get the feature panels above the list, so keep them out
+// of the row list to avoid showing them twice.
 const SHOWCASED_SLUGS = ['nudge', 'soulsync'];
 ---
 
 <section id="projects" class="projects-section">
   <div class="container">
-    <h2 class="section-title">Featured Projects</h2>
-    <div class="header-accent"></div>
+    <header class="sec-head">
+      <span class="sec-index">02</span>
+      <h2 class="sec-title">Featured Projects</h2>
+    </header>
+
     <AstraedusShowcase />
     <ShippedAppsRow />
-    <div class="row-header">
-      <span class="row-label">More Projects</span>
-    </div>
+
+    <p class="list-label">More projects</p>
     <ProjectGrid exclude={SHOWCASED_SLUGS} />
-    <div class="view-all-projects">
-      <a href="/projects" class="btn-view-all">
-        View All Projects
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-      </a>
+
+    <div class="list-footer">
+      <a href="/projects" class="arrow-link">All projects <span aria-hidden="true">&#8594;</span></a>
     </div>
   </div>
 </section>
 
 <style>
   .projects-section {
-    padding: 6rem 0;
+    padding: clamp(5rem, 10vw, 8rem) 0;
     background-color: var(--color-bg);
+    border-top: 1px solid var(--color-rule);
   }
 
   .container {
-    max-width: 1200px;
+    max-width: var(--container);
     margin: 0 auto;
     padding: 0 2rem;
   }
 
-  .section-title {
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight: 700;
+  /* ---- Editorial section header (shared primitive) ---- */
+  .sec-head {
+    display: grid;
+    grid-template-columns: 3.5rem 1fr;
+    gap: 0 1rem;
+    align-items: baseline;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .sec-index {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--color-text-dim);
+    letter-spacing: 0.08em;
+  }
+
+  .sec-title {
+    grid-column: 2;
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    line-height: 1.05;
     letter-spacing: -0.02em;
-    margin-bottom: 1rem;
+    color: var(--color-heading);
   }
 
-  .header-accent {
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    margin: 0 auto 3rem;
-    border-radius: 2px;
-  }
-
-  /* ---- Row label (matches ShippedAppsRow) ---- */
-  .row-header {
-    text-align: center;
-    margin-bottom: 0.5rem;
-  }
-
-  .row-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 1rem;
+  /* ---- Quiet mono eyebrow above the row list ---- */
+  .list-label {
+    margin: 0 0 0.25rem;
+    font-family: var(--font-mono);
     font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--color-text-alt);
+    color: var(--color-text-dim);
   }
 
-  .row-label::before,
-  .row-label::after {
-    content: '';
-    width: 48px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--color-text-dim));
+  /* ---- Arrow link under the list ---- */
+  .list-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.75rem;
   }
 
-  .row-label::after {
-    background: linear-gradient(90deg, var(--color-text-dim), transparent);
-  }
-
-  .view-all-projects {
-    text-align: center;
-    margin-top: 2.5rem;
-  }
-
-  .btn-view-all {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 2rem;
-    border-radius: var(--radius-md);
-    font-size: 1rem;
+  .arrow-link {
+    color: var(--accent);
     font-weight: 500;
     text-decoration: none;
-    cursor: pointer;
-    transition: all 0.35s cubic-bezier(0.19, 1, 0.22, 1);
-    background: rgba(100, 255, 218, 0.08);
-    color: var(--primary-color);
-    border: 1px solid rgba(100, 255, 218, 0.2);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.25s ease;
   }
 
-  :global([data-theme="light"]) .btn-view-all {
-    background: rgba(8, 145, 178, 0.08);
-    border-color: rgba(8, 145, 178, 0.2);
+  .arrow-link span {
+    display: inline-block;
+    transition: transform 0.25s ease;
   }
 
-  .btn-view-all:hover {
-    background: var(--primary-color);
-    color: var(--color-bg);
-    border-color: var(--primary-color);
-    transform: translateY(-2px);
-    box-shadow: var(--glow-primary);
-    gap: 0.75rem;
+  .arrow-link:hover {
+    border-bottom-color: var(--accent);
   }
 
-  .btn-view-all svg {
-    transition: transform 0.3s ease;
+  .arrow-link:hover span {
+    transform: translateX(4px);
   }
 
-  .btn-view-all:hover svg {
-    transform: translateX(2px);
+  @media (max-width: 600px) {
+    .container {
+      padding: 0 1.25rem;
+    }
+
+    .sec-head {
+      grid-template-columns: 2.75rem 1fr;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .arrow-link,
+    .arrow-link span {
+      transition: none;
+    }
+
+    .arrow-link:hover span {
+      transform: none;
+    }
   }
 </style>
